@@ -1,0 +1,42 @@
+{
+    "name": "SweetDrop",
+    "short_name": "SweetDrop",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "orientation": "portrait",
+    "description": "Aplicación para comerciantes y provedores",
+    "background_color": "#f2f7ff",
+    "theme_color": "#5D51B4",
+    "icons": [
+        {
+            "src": "./assets/images/icons/android-launchericon-48.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "./assets/images/icons/android-launchericon-72.png",
+            "type": "image/png",
+            "sizes": "72x72"
+        },
+        {
+            "src": "./assets/images/icons/android-launchericon-96.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "./assets/images/icons/android-launchericon-144.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "./assets/images/icons/android-launchericon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "./assets/images/icons/android-launchericon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SweetDrop  Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+</head>
+
+<body>
+    <div id="auth">
+        <div class="row h-100">
+            <div class="col-lg-5 d-none d-lg-block">
+                <div id="auth-right" class="right d-flex justify-content-center align-items-center">
+                    <img src="/assets/images/samples/Deliveries.png"
+                     class="img-fluid" alt="Sample image">
+                </div>
+            </div>
+            <div class="col-lg-7 col-12 ">
+                <div id="auth-left">
+                    <div class="auth-logo" >
+                        <img src="/assets/images/logo/logo.png" alt="Logo" style="height: 40px;">
+                    </div>
+                  <h1 class="auth-title">Registrarse</h1>
+                  <form action="#">
+                     <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <div class="form-group">
+                                <label for="first-name-column">Nombre</label>
+                                <input type="text" id="first-name-column" class="form-control"
+                                    placeholder="Nombre" name="fname-column">
+                                    <div class="form-control-icon">
+                                        <i class="bi bi-person"></i>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="form-group">
+                                <label for="mobile-column">Telefono</label>
+                                <input type="text" id="mobile-column" class="form-control"
+                                    placeholder="Telefono" name="fmobile-column">
+                                    <div class="form-control-icon">
+                                        <i class="bi bi-phone"></i>
+                                    </div>
+                                    
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-12">
+                            <div class="form-group">
+                                <label for="mobile-column">Manager</label>
+                                <input type="text" id="mobile-column" class="form-control"
+                                    placeholder="Manager" name="fmobile-column">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-12">
+                            <div class="form-group">
+                                <label for="mobile-column">Giro</label>
+                                <fieldset class="form-group">
+                                    <select class="form-select" id="basicSelect">
+                                        <option>Zapateria</option>
+                                        <option>Ferreteria</option>
+                                        <option>Papeleria</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-12">
+                            <div class="form-group">
+                                <label for="description" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="description" rows="3"></textarea>
+                            </div>
+                        </div>
+
+
+                        
+                     </div>
+                      
+                      
+                      <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Registarse</button>
+                  </form>
+                  <div class="text-center mt-5 text-lg fs-4">
+                      <p class="text-gray-600">¿Tienes una cuenta? <a href="/views/authentication/auth-login.html"
+                              class="font-bold">Inicia Sesión</a>.</p>
+                  </div> 
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+</body>
+
+</html>
