@@ -7,7 +7,7 @@
     --bs-primary: #5D51B4;
     --bs-secondary: #6c757d;
     --bs-success: #54d37a;
-    --bs-info: #0dcaf0;
+    --bs-info: #55aec0;
     --bs-warning: #ffc107;
     --bs-danger: #f3616d;
     --bs-light: #f8f9fa;
@@ -16,6 +16,8 @@
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, hsla(0, 0%, 100%, 0.15), hsla(0, 0%, 100%, 0))
 }
+
+
 
 
 
@@ -360,18 +362,23 @@
 }
 
 .bg-label-success {
-    background-color: #e8fadf !important;
+    background-color: #54d37a1c !important;
     color: #54d37a !important;
 }
 
 .bg-label-primary {
     background-color: #e7e7ff !important;
-    color: #696cff !important;
+    color: #5D51B4 !important;
 }
 
 .bg-label-secondary {
     background-color: #ebeef0 !important;
     color: #8592a3 !important;
+}
+
+.bg-label-auxiliar {
+    background-color: #f652a11f !important;
+    color: #F652A0 !important;
 }
 
 
@@ -1647,7 +1654,7 @@ a {
 }
 
 .bg-light-secondary {
-    background-color: #f652a117;
+    background-color: #f2f7ff;
     color: var(--bs-secondary)
 }
 

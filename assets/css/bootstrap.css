@@ -20,6 +20,7 @@
      --bs-gray-dark: #343a40;
      --bs-primary: #5D51B4;
      --bs-secondary: #6c757d;
+     --bs-auxiliar: #F652A0;     
      --bs-success: #54d37a;
      --bs-info: #0dcaf0;
      --bs-warning: #ffc107;
@@ -2725,8 +2726,9 @@
 
  .form-floating>.form-control,
  .form-floating>.form-select {
-     height: calc(3.5rem + 2px);
+     height: calc(5.5rem + 2px);
      padding: 1rem .75rem
+     
  }
 
  .form-floating>label {
@@ -2736,6 +2738,7 @@
      height: 100%;
      padding: 1rem .75rem;
      pointer-events: none;
+   
      border: 1px solid transparent;
      transform-origin: 0 0;
      transition: opacity .1s ease-in-out, transform .1s ease-in-out
@@ -3081,7 +3084,6 @@
      -webkit-user-select: none;
      -moz-user-select: none;
      -ms-user-select: none;
-     box-shadow: 0 0.125rem 0.25rem 0 rgb(105 108 255 / 40%);
      user-select: none;
      background-color: transparent;
      border: 1px solid transparent;
@@ -3090,6 +3092,8 @@
      border-radius: .25rem;
      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
  }
+
+
 
  @media (prefers-reduced-motion:reduce) {
      .btn {
@@ -3168,7 +3172,8 @@
  .btn-secondary:focus,
  .btn-secondary:hover {
      color: #fff;
-     background-color: #ff1686;
+     background-color: #F652A0;
+     border-color: #F652A0;
  }
 
  .btn-check:focus+.btn-secondary,
@@ -3589,8 +3594,26 @@
      border-color: #0dcaf0
  }
 
+ .btn-outline-auxiliar {
+    color: #F652A0;
+    border-color: #F652A0
+}
+
+
+.btn-auxiliar{
+    background-color: #F652A0;
+    color: white;
+}
+
+.btn-outline-auxiliar:hover {    
+    background-color: #F652A0;
+    color: white;
+
+}
+
+
  .btn-outline-info:hover {
-     color: #000;
+     color: white;
      background-color: #0190fd;
      border-color: #0dcaf0
  }
@@ -3747,6 +3770,17 @@
  .btn-outline-dark {
      color: #212529;
      border-color: #212529
+ }
+
+ .btn-primary,
+ .btn-auxiliar,
+ .btn-secondary,
+ .btn-info,
+ .btn-danger,
+ .btn-warning,
+ .btn-light,
+ .btn-dark{
+    box-shadow: 0 0.125rem 0.25rem 0 rgb(105 108 255 / 40%);
  }
 
  .btn-outline-dark:hover {
@@ -7865,6 +7899,10 @@
  .text-primary {
      color: var(--bs-blue) !important
  }
+
+ .text-auxiliar {
+    color: var(--bs-auxiliar) !important
+}
 
  .text-secondary {
      color: var(--bs-secondary) !important
