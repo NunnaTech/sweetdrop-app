@@ -4,7 +4,7 @@
     "start_url": "/index.html",
     "display": "standalone",
     "orientation": "portrait",
-    "description": "Aplicación para comerciantes y provedores",
+    "description": "Aplicación para entrega de dulces",
     "background_color": "#f2f7ff",
     "theme_color": "#5D51B4",
     "icons": [
