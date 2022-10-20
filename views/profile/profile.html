@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/vendors/fontawesome/all.min.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
+</head>
+
+<body>
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            
+            <div class="page-content">
+                <section class="row">
+                    <div class="card shadow-lg col-lg-12 col-md-12 card-profile-bottom">
+                        <div class="card-body p-3">
+                          <div class="row gx-4">
+                            <div class="col-auto my-auto">
+                              <div class="h-100">
+                                <h5 class="mb-1">
+                                  Ricardo Gómez
+                                </h5>
+                                <p class="mb-0 font-weight-bold text-sm">
+                                    Dealer
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="container-fluid py-4">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="card">
+                              <div class="card-header pb-0">
+                                <div class="d-flex align-items-center">
+                                  <p class="mb-0 text-gray-600">Perfil</p>
+                                  <button class="btn btn-primary btn-sm btn-lg  shadow-lg col-lg-1 ms-auto" onclick="activarEdit()">Editar</button>
+                                </div>
+                              </div>
+                              <div class="card-body">
+                                <p class="text-uppercase text-sm">Información del Usuario</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form action="#">
+                                        <div class="form-group">
+                                          <label for="email-text-input" class="form-control-label"><h5>Email</h5></label>
+                                          <input class="form-control" type="email" value="ricardogz@example.com" id="email" disabled="">
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label for="email-text-input" class="form-control-label"><h5>Contraseña</h5></label>
+                                          <input class="form-control" type="password" value="*****" id="password" disabled="">
+                                         
+                                        </div>
+                                      </div> 
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="name-text-input" class="form-control-label"><h5>Nombre</h5></label>
+                                      <input class="form-control" type="text" value="Ricardo" id="name" disabled="">
+                                      
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="fsurname-text-input" class="form-control-label"><h5>Apellido Paterno</h5></label>
+                                      <input class="form-control" type="text" value="Gómez" id="first_surname" disabled="">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="sdsurname-text-input" class="form-control-label"><h5>Apellido Materno</h5></label>
+                                      <input class="form-control" type="text" value="Hernandez" id="second_surname" disabled="">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="mobile-text-input" class="form-control-label"><h5>Telefono</h5></label>
+                                      <input class="form-control" type="text" value="777-712-24-80"  id="phone" disabled="">
+                                    </div>
+                                  </div>
+                                  <div class="card-header col-lg-12">
+                                    <div class="d-flex align-items-center">
+                                      <p class="mb-0"></p>
+                                      <button class="btn btn-primary btn-sm col-lg-1 ms-auto"  id="btnSave" disabled="" onclick="desactivarEdit()">Guardar</button>
+                                    </div>
+                                  </div>
+                                </form>
+                                </div>
+                                <hr class="horizontal dark">
+                                
+                                <p class="text-uppercase text-sm text-gray-600">Cambiar Contraseña</p>
+                                <div class="row">
+                                  <div class="col-lg-6">
+                                <form action="#">
+                                    <div class="form-group">
+                                      <label for="ubication-text-input" class="form-control-label font-bold"><h5>Contraseña Actual</h5></label>
+                                      <input class="form-control" type="password" value="12345" disabled="">
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-6">
+                                    <div class="form-group">
+                                      <label for="example-text-input" class="form-control-label"><h5>Nueva Contraseña</h5></label>
+                                      <input class="form-control" type="password" value="12345" disabled="">
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-6">
+                                    <div class="form-group">
+                                      <label for="cellphone-text-input" class="form-control-label"><h5>Confirmar Contraseña</h5></label>
+                                      <input class="form-control" type="password" value="12345" disabled="">
+                                    </div>
+                                  </div>
+                                  <div class="card-header col-lg-12">
+                                    <div class="d-flex align-items-center">
+                                      <p class="mb-0"></p>
+                                      <button class="btn btn-primary btn-sm col-lg-1 ms-auto"  id="btnSave" disabled="" onclick="desactivarEdit()">Guardar</button>
+                                    </div>
+                                  </div>
+                                </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </section>
+            </div>
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="text-center">
+                        <p>2022 &copy; ThePandaDevs</p>
+                    </div>
+                 
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function activarEdit(){
+            document.getElementById('email').disabled = false;
+            document.getElementById('name').disabled = false;
+            document.getElementById('first_surname').disabled = false;
+            document.getElementById('second_surname').disabled = false;
+            document.getElementById('phone').disabled = false;
+            document.getElementById('btnSave').disabled = false;
+            
+        }
+        function desactivarEdit(){
+            document.getElementById('email').disabled = true;
+            document.getElementById('name').disabled = true;
+            document.getElementById('first_surname').disabled = true;
+            document.getElementById('second_surname').disabled = true;
+            document.getElementById('phone').disabled = true;
+            document.getElementById('btnSave').disabled = true;
+            
+        }
+    </script>
+    <script src="/assets/vendors/fontawesome/all.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendors/apexcharts/apexcharts.js"></script>
+    <script src="/assets/js/pages/dashboard.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
+
