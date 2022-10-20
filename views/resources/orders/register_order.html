@@ -23,29 +23,17 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="" href="#"> <img class="navbar-brand img-fluid" style="width: 100px; height:auto"
+                <a class="" href="../dashboards/dealer_dashboard.html"> <img class="navbar-brand img-fluid" style="width: 100px; height:auto"
                         src="/assets/images/logo/logo.png"></img></a>
                 <div class="collapse navbar-collapse  p-3 p-md-0" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Tiendas
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
+                            <a class="nav-link active text-primary font-bold" aria-current="page" href="../dashboards/dealer_dashboard.html"><i
+                                    class="fas fa-home me-2"></i>Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            <a class="nav-link" aria-current="page" href="../dealer_views/dealer_stores.html"><i
+                                    class="fas fa-store me-2"></i>Tiendas</a>
                         </li>
                     </ul>
                 </div>
@@ -138,8 +126,8 @@
                                             <div class="card mb-3 bg-light">
                                                 <div class="row g-0">
                                                     <div
-                                                        class="col-md-4 d-flex align-items-center justify-content-center">
-                                                        <img class="card-img card-img-left img-fluid w-75 h-auto"
+                                                        class="col-md-4 d-flex align-items-center justify-content-center pt-4 pb-1">
+                                                        <img class="card-img card-img-left img-fluid w-75 h-auto product-image"
                                                             src="../../../assets/images/resources/gudu-mix.jpg"
                                                             alt="Product image">
                                                     </div>
@@ -170,8 +158,8 @@
                                             <div class="card mb-3 bg-light">
                                                 <div class="row g-0">
                                                     <div
-                                                        class="col-md-4 d-flex align-items-center justify-content-center">
-                                                        <img class="card-img card-img-left img-fluid w-75 h-auto"
+                                                        class="col-md-4 d-flex align-items-center justify-content-center pt-4 pb-1">
+                                                        <img class="card-img card-img-left img-fluid w-75 h-auto product-image"
                                                             src="../../../assets/images/resources/gudu-mix.jpg"
                                                             alt="Product image">
                                                     </div>
@@ -202,8 +190,8 @@
                                             <div class="card mb-3 bg-light">
                                                 <div class="row g-0">
                                                     <div
-                                                        class="col-md-4 d-flex align-items-center justify-content-center">
-                                                        <img class="card-img card-img-left img-fluid w-75 h-auto"
+                                                        class="col-md-4 d-flex align-items-center justify-content-center pt-4 pb-1">
+                                                        <img class="card-img card-img-left img-fluid w-75 h-auto product-image"
                                                             src="../../../assets/images/resources/gudu-mix.jpg"
                                                             alt="Product image">
                                                     </div>
@@ -245,6 +233,14 @@
                                                 <textarea class="form-control" placeholder="Leave a comment here"
                                                     id="floatingTextarea"></textarea>
                                                 <label for="floatingTextarea">Tus observaciones</label>
+                                            </div>
+                                            <p class="my-3 font-semibold text-auxiliar">Seleccionar imagenes
+                                                <small class="text-muted fw-light">(jpg, png y jpeg)</small>
+                                            </p>
+                                            <div class="input-group">
+                                                <label class="input-group-text" for="inputGroupFile01">
+                                                    <i class="fas fa-file-upload"></i></label>
+                                                <input type="file" class="form-control" id="inputGroupFile01">
                                             </div>
                                         </div>
 

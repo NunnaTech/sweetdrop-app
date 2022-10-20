@@ -17,11 +17,9 @@
     --bs-gradient: linear-gradient(180deg, hsla(0, 0%, 100%, 0.15), hsla(0, 0%, 100%, 0))
 }
 
-
-
-
-
-
+.product-image{
+    max-width: 6rem;
+}
 
 
 .alert {

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Realizar visita</title>
+    <title>Agregar visita</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
@@ -23,29 +23,17 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="" href="#"> <img class="navbar-brand img-fluid" style="width: 100px; height:auto"
+                <a class="" href="../dashboards/dealer_dashboard.html"> <img class="navbar-brand img-fluid" style="width: 100px; height:auto"
                         src="/assets/images/logo/logo.png"></img></a>
                 <div class="collapse navbar-collapse  p-3 p-md-0" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Tiendas
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
+                            <a class="nav-link active text-primary font-bold" aria-current="page" href="../dashboards/dealer_dashboard.html"><i
+                                    class="fas fa-home me-2"></i>Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            <a class="nav-link" aria-current="page" href="../dealer_views/dealer_stores.html"><i
+                                    class="fas fa-store me-2"></i>Tiendas</a>
                         </li>
                     </ul>
                 </div>
@@ -58,7 +46,7 @@
                     <div class="d-flex align-items-center row">
                         <div class="col-sm-7">
                             <div class="card-body page-heading m-0 px-4">
-                                <h3>Realizar Visita</h3>
+                                <h3>Agregar Visita</h3>
                                 <p class="fw-bold fs-5 text-auxiliar">Dulcería Wonderfully</p>
                                 <span class=" text-secondary">
                                     <i class="fas fa-phone me-2 "></i>
@@ -87,41 +75,42 @@
                     <div class="card">
                         <div class="card-header pb-0">
                             <h4 class="card-title mt-2">Agregar detalles de la visita</h4>
-                            <p class="mb-1">Por favor, llena los siguientes datos para realizar la visita
+                            <p class="mb-1">Por favor, llena los siguientes datos para agregar la visita
                         </div>
                         <div class="card-content">
                             <div class="card-body py-0">
                                 <hr>
                                 <div>
-                                    <p class="text-auxiliar font-semibold">Selecciona la fecha estimada de visita:</p>
+                                    <p class="text-auxiliar font-semibold">Selecciona la fecha de visita:</p>
                                     <div class="form-group mt-3">
-                                        <label for="helpInputTop" class="mb-3">Fecha de entrega</label>
+                                        <label for="helpInputTop" class="mb-3">Fecha de visita</label>
                                         <small class="text-muted">(DD/MM/AAAA)</small>
                                         <input type="date" class="form-control" id="helpInputTop">
                                     </div>
                                     <hr class="my-4">
                                     <div class="card-header p-0">
                                         <p class="text-auxiliar font-semibold">Agrega tus observaciones sobre esta
-                                            orden: </p>
+                                            visita: </p>
                                     </div>
                                     <div class="card-body px-0">
                                         <div class="form-floating">
-                                            <textarea cols="50" rows="4" class="form-control" placeholder="Leave a comment here"
-                                                id="floatingTextarea"></textarea>
+                                            <textarea cols="50" rows="4" class="form-control"
+                                                placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                                             <label for="floatingTextarea">Tus observaciones</label>
                                         </div>
-                                        <p class="my-3 font-semibold text-auxiliar">Seleccionar imagen
-                                             <small class="text-muted fw-light">(jpg, png y jpeg)</small></p>
-                                        <div class="input-group">                                            
+                                        <p class="my-3 font-semibold text-auxiliar">Seleccionar imagenes
+                                            <small class="text-muted fw-light">(jpg, png y jpeg)</small>
+                                        </p>
+                                        <div class="input-group">
                                             <label class="input-group-text" for="inputGroupFile01">
                                                 <i class="fas fa-file-upload"></i></label>
                                             <input type="file" class="form-control" id="inputGroupFile01">
-                                          </div>
+                                        </div>
                                         <button class="btn btn-primary col-12 mt-4">
-                                            <i class="fas fa-walking me-2"></i>Realizar Visita</button>
+                                            <i class="fas fa-walking me-2"></i>Agregar Visita</button>
                                     </div>
 
-                              
+
                                 </div>
                             </div>
                         </div>
