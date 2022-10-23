@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - SweetDrop</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/bootstrap.css">
-    <link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="/assets/css/app.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+      
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/bootstrap.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+      </head>
 
 <body>
     <div id="auth" class="bg-white">
-        
         <div class="row h-100">
-            
             <div class="col-lg-7 col-12">
              
                 <div id="auth-left">
@@ -25,23 +23,21 @@
                 </div>
                     <h1 class="auth-title">Iniciar Sesión</h1>
                     <form action="#">
-                        <div class="form-group position-relative has-icon-left mb-4">
+                        <div class="form-group position-relative has-icon-left m-0 mb-4">
                             <input type="text" class="form-control form-control-xl" placeholder="Usuario">
                             <div class="form-control-icon">
-                                <i class="bi bi-person"></i>
+                                <i class="fas fa-user-alt fs-6 text-secondary"></i>
                             </div>
                         </div>
-                        <div class="form-group position-relative has-icon-left mb-4">
+                        <div class="form-group position-relative has-icon-leftm-0 mb-4">
                             <input type="text" class="form-control form-control-xl" placeholder="Contraseña">
                             <div class="form-control-icon">
-                                <i class="bi bi-lock-fill"></i>
+                                <i class="fas fa-lock fs-6 text-secondary"></i>
                             </div>
                         </div>
                         <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Iniciar Sesión</button>
                     </form>
                     <div class="text-center mt-4 text-lg fs-4">
-                        <p class="text-gray-600">¿No tienes una cuenta? <a href="auth_register.html"
-                                class="font-bold">Registrate</a>.</p>
                         <p><a class="font-bold" href="recovery_pass.html">¿Olvidaste tu contraseña?</a>.</p>
                     </div>
                 </div>
@@ -60,6 +56,11 @@
 
 
     </div>
+    <script src="/assets/vendors/fontawesome/all.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendors/apexcharts/apexcharts.js"></script>
+    <script src="/assets/js/pages/dashboard.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 
 </html>
