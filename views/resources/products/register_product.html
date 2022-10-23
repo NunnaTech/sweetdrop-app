@@ -1,63 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/bootstrap.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/vendors/fontawesome/all.min.css">
-    <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registrar Productos</title>
+      
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/bootstrap.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+      </head>
 
 <body>
+    <div id="app">
         <div id="main">
-            <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
-            </header>
-            <section class="section">
-                <div class="card">
-                    <section id="multiple-column-form">
-                        <div class="row match-height">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title">Registrar Producto</h4>
-                                    </div>
-                                    <div class="card-content">
-                                        <div class="card-body">
+            
+            <div class="mb-0 order-0">
+                <div class="card mb-0">
+                    <div class="d-flex align-items-center row">
+                      <div class="col-sm-7">
+                         <div class="card-body page-heading  m-0 px-4">
+                              <div class="row gx-4">
+                                <div class="col-auto my-auto">
+                                  <div class="h-100">
+                                    <h1 class="mb-1">
+                                      Registrar Productos
+                                    </h1>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="my-3">
+                        </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                          <hr class="horizontal dark">
+            
+                          <div class="page-content">
+                            <div class="card"> 
+                             <div class="card-content">
+                               <div class="card-body">
+                             <div class="row gx-4">
+           
+
                                             <form class="form">
                                                 <div class="row">
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="code">Codigo</label>
-                                                            <input type="text" id="sku" class="form-control"
-                                                                 name="code">
+                                                    <div class="col-md-6 col-12 mt-3 mb-4 ">
+                                                        <div class="form-group position-relative has-icon-left m-0">
+                                                            <input type="text" id="lastname-column" class="form-control"
+                                                                 name="name" placeholder="Nombre">
+                                                                 <div class="form-control-icon">
+                                                                    <i class="fas fa-box fs-6 text-secondary"></i>
+                                                                </div>    
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="name">Nombre</label>
-                                                            <input type="text" id="last-name-column" class="form-control"
-                                                                 name="name">
+                                                    <div class="col-md-6 col-12 mt-3 mb-4 ">
+                                                        <div class="form-group position-relative has-icon-left m-0">
+                                                            
+                                                            <input type="number" id="price" class="form-control"
+                                                                name="price" placeholder="Precio Unitario">
+                                                                <div class="form-control-icon">
+                                                                    <i class="fas fa-dollar-sign fs-6 text-secondary"></i>
+                                                                </div>    
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="city-column">Precio</label>
-                                                            <input type="number" id="price" class="form-control" placeholder="$"
-                                                                name="price">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="country-floating">Imagen</label>
+                                                   <br/>  
+                                                    <div class="col-md-6 col-12 mt-3 mb-4 ">
+                                                        <div class="form-group position-relative">
+                                
                                                             <input class="form-control form-control-lg" id="formFileLg" type="file">
                                                         </div>
                                                     </div>
@@ -73,14 +86,18 @@
                                                     </div>
                                                 </div>
                                             </form>
+
+                                        </div>
+                                    </div>
+                                </div> 
+                              </div>
+                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </section>
+                         
+             
 
 
 

@@ -1,46 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <title>Perfil</title>
+  
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/vendors/fontawesome/all.min.css">
-    <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
-</head>
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+  </head>
+
 
 <body>
-        <div id="main">
-            <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
-            </header>
 
-            
-            <div class="page-content">
-                <section class="row">
-                    <div class="card shadow-lg col-lg-12 col-md-12 card-profile-bottom">
-                        <div class="card-body p-3">
+  <div id="app">
+        
+            <!-- Navbar -->
+            <nav class="navbar nv-style  navbar-expand-md  navbar-light bg-primary">
+              <div class="container-fluid">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                      aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <a class="" href="../resources/dashboards/dealer_dashboard.html"> <img class="navbar-brand img-fluid" style="width: 100px; height:auto"
+                          src="/assets/images/logo/logo.png"></img></a>
+                  <div class="collapse navbar-collapse  p-3 p-md-0" id="navbarSupportedContent">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li class="nav-item">
+                              <a class="nav-link active text-primary font-bold" aria-current="page" href="../resources/dashboards/dealer_dashboard.html"><i class="fas fa-home me-2"></i>Dashboard</a>
+                          </li>    
+                          <li class="nav-item">
+                              <a class="nav-link" aria-current="page" href="../resources/store/stores.html"><i class="fas fa-store me-2"></i>Tiendas</a>
+                          </li>  
+                          <li class="nav-item">
+                              <a class="nav-link" aria-current="page" href="../../profile/profile.html"><i class="fas fa-user me-2"></i>Perfil</a>
+                          </li>                                                  
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+          <!-- Acaba Navbar -->
+          <div id="main">
+
+          
+          <div class="mb-0 order-0">
+            <div class="card mb-0">
+                <div class="d-flex align-items-center row">
+                  <div class="col-sm-7">
+                     <div class="card-body page-heading  m-0 px-4">
+
                           <div class="row gx-4">
                             <div class="col-auto my-auto">
                               <div class="h-100">
-                                <h5 class="mb-1">
-                                  Ricardo Gómez
-                                </h5>
-                                <p class="mb-0 font-weight-bold text-sm">
-                                    Dealer
-                                </p>
+                                <h1 class="mb-1">
+                                  Perfil
+                                </h1>
                               </div>
                             </div>
                           </div>
+                          <div class="my-3">
+                    </div>
                         </div>
                       </div>
+  
+                      <div class="col-sm-5 text-center text-sm-left ">
+                        <div class="card-body py-0 px-0 px-md-4">
+                          <a class="btn btn-outline-primary font-bold" href="#" onclick="activarEdit()">
+                            <i class="fas fa-pencil-alt me-2"></i>
+                            Editar Perfil</a>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <hr class="horizontal dark">
+            
                       <div class="container-fluid py-4">
                         <div class="row">
                           <div class="col-lg-12">
@@ -48,50 +85,74 @@
                               <div class="card-header pb-0">
                                 <div class="d-flex align-items-center">
                                   <p class="mb-0 text-gray-600">Perfil</p>
-                                  <button class="btn btn-primary btn-sm btn-lg  shadow-lg col-lg-1 ms-auto" onclick="activarEdit()">Editar</button>
+
                                 </div>
                               </div>
                               <div class="card-body">
                                 <p class="text-uppercase text-sm">Información del Usuario</p>
-                                <div class="row">
+                                <div class="row mb-1">
+                                  <form action="#"></form>
                                     <div class="col-md-6">
-                                        <form action="#">
-                                        <div class="form-group">
+                                        
                                           <label for="email-text-input" class="form-control-label"><h5>Email</h5></label>
+                                        <div class="form-group position-relative has-icon-left m-0">
+                                          
                                           <input class="form-control" type="email" value="ricardogz@example.com" id="email" disabled="">
+                                          <div class="form-control-icon">
+                                            <i class="fas fa-envelope fs-6 text-secondary"></i>
+                                        </div>   
                                         </div>
                                       </div>
                                       <div class="col-md-6">
-                                        <div class="form-group">
-                                          <label for="email-text-input" class="form-control-label"><h5>Contraseña</h5></label>
+                                        <label for="email-text-input" class="form-control-label"><h5>Contraseña</h5></label>
+                                        <div class="form-group position-relative has-icon-left m-0">
+                                          
                                           <input class="form-control" type="password" value="*****" id="password" disabled="">
-                                         
+                                          <div class="form-control-icon">
+                                            <i class="fas fa-lock fs-6 text-secondary"></i>
+                                        </div>  
                                         </div>
+                                        <a  class="form-control-label"  onclick="cambioNuevaCont()">Cambiar Contraseña</a>
                                       </div> 
                                   <div class="col-md-6">
-                                    <div class="form-group">
-                                      <label for="name-text-input" class="form-control-label"><h5>Nombre</h5></label>
+                                    <label for="name-text-input" class="form-control-label"><h5>Nombre</h5></label>
+                                    <div class="form-group position-relative has-icon-left m-0">
+                                     
                                       <input class="form-control" type="text" value="Ricardo" id="name" disabled="">
-                                      
+                                      <div class="form-control-icon">
+                                        <i class="fas fa-user fs-6 text-secondary"></i>
+                                    </div>  
                                     </div>
                                   </div>
                                   
                                   <div class="col-md-6">
-                                    <div class="form-group">
-                                      <label for="fsurname-text-input" class="form-control-label"><h5>Apellido Paterno</h5></label>
+                                    <label for="fsurname-text-input" class="form-control-label"><h5>Apellido Paterno</h5></label>
+                                    <div class="form-group position-relative has-icon-left m-0">
+                                      
                                       <input class="form-control" type="text" value="Gómez" id="first_surname" disabled="">
+                                      <div class="form-control-icon">
+                                        <i class="fas fa-user fs-6 text-secondary"></i>
+                                    </div>  
                                     </div>
                                   </div>
                                   <div class="col-md-6">
-                                    <div class="form-group">
-                                      <label for="sdsurname-text-input" class="form-control-label"><h5>Apellido Materno</h5></label>
+                                    <label for="sdsurname-text-input" class="form-control-label"><h5>Apellido Materno</h5></label>
+                                    <div class="form-group position-relative has-icon-left m-0">
+                                      
                                       <input class="form-control" type="text" value="Hernandez" id="second_surname" disabled="">
+                                      <div class="form-control-icon">
+                                        <i class="fas fa-user fs-6 text-secondary"></i>
+                                    </div>  
                                     </div>
                                   </div>
                                   <div class="col-md-6">
-                                    <div class="form-group">
-                                      <label for="mobile-text-input" class="form-control-label"><h5>Telefono</h5></label>
+                                    
+                                    <label for="mobile-text-input" class="form-control-label"><h5>Telefono</h5></label>
+                                    <div class="form-group position-relative has-icon-left m-0">
                                       <input class="form-control" type="text" value="777-712-24-80"  id="phone" disabled="">
+                                      <div class="form-control-icon">
+                                        <i class="fas fa-phone-alt fs-6 text-secondary"></i>
+                                    </div> 
                                     </div>
                                   </div>
                                   <div class="card-header col-lg-12">
@@ -108,27 +169,38 @@
                                 <div class="row">
                                   <div class="col-lg-6">
                                 <form action="#">
-                                    <div class="form-group">
-                                      <label for="ubication-text-input" class="form-control-label font-bold"><h5>Contraseña Actual</h5></label>
-                                      <input class="form-control" type="password" value="12345" disabled="">
+                                  <label for="ubication-text-input" class="form-control-label font-bold"><h5>Contraseña Actual</h5></label>
+                                    <div class="form-group position-relative has-icon-left m-0">
+                                      <input class="form-control" type="password" placeholder="****" id="actPass" disabled="">
+                                      <div class="form-control-icon">
+                                        <i class="fas fa-lock fs-6 text-secondary"></i>
+                                       </div> 
                                     </div>
                                   </div>
                                   <div class="col-lg-6">
-                                    <div class="form-group">
-                                      <label for="example-text-input" class="form-control-label"><h5>Nueva Contraseña</h5></label>
-                                      <input class="form-control" type="password" value="12345" disabled="">
+                                    <label for="example-text-input" class="form-control-label"><h5>Nueva Contraseña</h5></label>
+                                    <div class="form-group position-relative has-icon-left m-0">
+                                      
+                                      <input class="form-control" type="password" id="nuevaPass" value="***" disabled="">
+                                      <div class="form-control-icon">
+                                        <i class="fas fa-lock fs-6 text-secondary"></i>
+                                    </div> 
                                     </div>
                                   </div>
                                   <div class="col-lg-6">
-                                    <div class="form-group">
-                                      <label for="cellphone-text-input" class="form-control-label"><h5>Confirmar Contraseña</h5></label>
-                                      <input class="form-control" type="password" value="12345" disabled="">
+                                    <label for="cellphone-text-input" class="form-control-label"><h5>Confirmar Contraseña</h5></label>
+                                    <div class="form-group position-relative has-icon-left m-0">
+                                      
+                                      <input class="form-control" type="password" id="confPass" value="***" disabled="">
+                                      <div class="form-control-icon">
+                                        <i class="fas fa-lock fs-6 text-secondary"></i>
+                                    </div> 
                                     </div>
                                   </div>
                                   <div class="card-header col-lg-12">
                                     <div class="d-flex align-items-center">
                                       <p class="mb-0"></p>
-                                      <button class="btn btn-primary btn-sm col-lg-1 ms-auto"  id="btnSave" disabled="" onclick="desactivarEdit()">Guardar</button>
+                                      <button class="btn btn-primary btn-sm col-lg-1 ms-auto"  id="btnGuardar" disabled="" onclick="cambioNuevaCont2()">Guardar</button>
                                     </div>
                                   </div>
                                 </form>
@@ -148,8 +220,10 @@
                  
                 </div>
             </footer>
+            
         </div>
-    </div>
+      </div>
+   
     <script type="text/javascript">
         function activarEdit(){
             document.getElementById('email').disabled = false;
@@ -168,6 +242,20 @@
             document.getElementById('phone').disabled = true;
             document.getElementById('btnSave').disabled = true;
             
+        }
+        function cambioNuevaCont(){
+            document.getElementById('actPass').disabled = false;
+            document.getElementById('confPass').disabled = false;
+            document.getElementById('nuevaPass').disabled = false;
+            document.getElementById('btnGuardar').disabled = false;
+          
+        }
+        function cambioNuevaCont2(){
+            document.getElementById('actPass').disabled = true;
+            document.getElementById('confPass').disabled = true;
+            document.getElementById('nuevaPass').disabled = true;
+            document.getElementById('btnGuardar').disabled = true;
+          
         }
     </script>
     <script src="/assets/vendors/fontawesome/all.min.js"></script>
