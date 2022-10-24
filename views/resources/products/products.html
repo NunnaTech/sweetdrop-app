@@ -12,145 +12,163 @@
   <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
 </head>
 <div id="app">
-  <div id="main">
-      
-      <div class="mb-0 order-0">
-          <div class="card mb-0">
-              <div class="d-flex align-items-center row">
-                <div class="col-sm-7">
-                   <div class="card-body page-heading  m-0 px-4">
-                        <div class="row gx-4">
-                          <div class="col-auto my-auto">
-                            <div class="h-100">
-                              <h1 class="mb-1">
-                                Productos
-                              </h1>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="my-3">
-                  </div>
-                      </div>
-                    </div>
-
-                    <div class="col-sm-5 text-center text-sm-left ">
-                      <div class="card-body py-0 px-0 px-md-4">
-                        <a class="btn btn-outline-primary font-bold" href="/views/resources/products/register_product.html">
-                          <i class="fas fa-plus me-2"></i>
-                          Registrar Productos</a>
-                      </div>
-                  </div>
-                </div>
-            </div>
+   <!-- Navbar -->
+   <nav class="navbar nv-style  navbar-expand-md  navbar-light bg-primary">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="" href="../dashboards/dealer_dashboard.html"> <img class="navbar-brand img-fluid" style="width: 100px; height:auto"
+                src="/assets/images/logo/logo.png"></img></a>
+        <div class="collapse navbar-collapse  p-3 p-md-0" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active text-primary font-bold" aria-current="page" href="../dashboards/dealer_dashboard.html"><i
+                            class="fas fa-home me-2"></i>Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="../dealer_views/dealer_stores.html"><i
+                            class="fas fa-store me-2"></i>Tiendas</a>
+                </li>
+            </ul>
         </div>
+    </div>
+</nav>
+<!-- Acaba Navbar -->
+  <div id="main">
+    <div class="card mb-0">
+      <div class="row">
+          <div class="col-12 m-0 px-4">
+              <div class="card-body page-heading">
+                  <h3>Productos</h3>
+              </div>
+          </div>
+      </div>
+  </div>
         <hr class="horizontal dark">
+        <div class="flex-md-row-reverse py-0 my-4 px-md-4">
+          <a href="../products/register_product.html" class="btn btn-outline-primary font-bold">
+              <i class="fas fa-plus me-2"></i>
+              Registrar Producto
+          </a>
+      </div>
             
          
          
-           <div class="page-content">
-           <div class="card"> 
-            <div class="card-content">
-              <div class="card-body">
-            <div class="row gx-4">
+        <div class="page-content">
 
-                <div class="col-xl-4 col-lg-6  col-md-6">
-                  <div class="card mb-3 bg-light">
-                    <div class="row g-0">
-                      <div class="col-md-4 d-flex align-items-center justify-content-center pt-4 pb-1">         
-                    <img class="card-img card-img-left img-fluid w-75 h-auto product-image" src="/assets/images/resources/palanquetas.jpg"  style="height: 250px;
-                    width: 250px;" alt="dulce">
-                    </div>  
-                   <div class="col-md-8">
-                    <div class="card-body">
-                      <h4 class="card-title mb-0">Palanqueta</h4>
-                      <p class="card-text text-auxiliar font-extrabold">SKU: PA-TXRJ5</p>
-                      <p class="card-text">
-                          Barra de cacahuate pelado y sin cáscara mezclado con jarabe de piloncillo, su textura es crujiente, su nombre deriva de la voz 'papaquili' que significa feliz o alegre.
-                      <div class="buy d-flex justify-content-between align-items-center">
-                        <p class="card-text text-auxiliar font-extrabold">$20 MXN</p>
-                        <div class="btn-group align-items-center mx-2 px-1">
-                            <a type="button" class="btn btn-link p-2 m-1 text-gray-600" href="#">
-                                <i class="fas fa-trash d-flex align-items-center justify-content-center text-danger"></i>
-                              </a>
-                            <a type="button" class="btn btn-link p-2 m-1 text-gray-600" href="/views/resources/products/edit_product.html">
-                              <i class="fas fa-pencil-alt d-flex align-items-center justify-content-center text-danger"></i>
-                            </a>
-                        
-                          </div>
+          <div class="card">
+              <div class="card-content">
+                  <div class="card-body">                 
+                      
+                      <div class="tab-content text-justify">                           
+                              <!-- Productos grid -->
+                              <section class="row gx-4">
+                                  <div class="col-xl-4 col-lg-6 col-md-6">
+                                      <div class="card mb-3 bg-light">
+                                          <div class="row g-0">
+                                              <div
+                                                  class="col-md-4 d-flex align-items-center justify-content-center pt-4 pb-1">
+                                                  <img class="card-img card-img-left img-fluid w-75 h-auto product-image"
+                                                      src="../../../assets/images/resources/palanquetas.jpg"
+                                                      alt="Product image">
+                                              </div>
+                                              <div class="col-md-8">
+                                                  <div class="card-body">
+                                                      <h5 class="card-title mb-0">Palanqueta</h5>
+                                                      <small>SKU: 2013FX</small>
+                                                      <p class="card-text mt-3">
+                                                          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                      </p>
+                                                      <p class="card-text text-auxiliar font-extrabold">$15 MXN
+                                                      </p>
+                                                      <a href="/views/resources/products/edit_product.html" class="btn btn-secondary col-12" type="submit">
+                                                        <i class="fas fa-pencil-alt me-2"></i>
+                                                        Editar</a>
+                                                      <div class="d-flex justify-content-center mt-4">
+                                                          <a class="btn btn-secondary col-12" type="submit">
+                                                              <i class="fas fa-trash me-2"></i>
+                                                              Eliminar</a>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-xl-4 col-lg-6 col-md-6">
+                                    <div class="card mb-3 bg-light">
+                                        <div class="row g-0">
+                                            <div
+                                                class="col-md-4 d-flex align-items-center justify-content-center pt-4 pb-1">
+                                                <img class="card-img card-img-left img-fluid w-75 h-auto product-image"
+                                                    src="../../../assets/images/resources/palanquetas.jpg"
+                                                    alt="Product image">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-0">Palanqueta</h5>
+                                                    <small>SKU: 2013FX</small>
+                                                    <p class="card-text mt-3">
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                    </p>
+                                                    <p class="card-text text-auxiliar font-extrabold">$15 MXN
+                                                    </p>
+                                                    <a href="/views/resources/products/edit_product.html" class="btn btn-secondary col-12" type="submit">
+                                                      <i class="fas fa-pencil-alt me-2"></i>
+                                                      Editar</a>
+                                                    <div class="d-flex justify-content-center mt-4">
+                                                        <a class="btn btn-secondary col-12" type="submit">
+                                                            <i class="fas fa-trash me-2"></i>
+                                                            Eliminar</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-6">
+                                  <div class="card mb-3 bg-light">
+                                      <div class="row g-0">
+                                          <div
+                                              class="col-md-4 d-flex align-items-center justify-content-center pt-4 pb-1">
+                                              <img class="card-img card-img-left img-fluid w-75 h-auto product-image"
+                                                  src="../../../assets/images/resources/palanquetas.jpg"
+                                                  alt="Product image">
+                                          </div>
+                                          <div class="col-md-8">
+                                              <div class="card-body">
+                                                  <h5 class="card-title mb-0">Palanqueta</h5>
+                                                  <small>SKU: 2013FX</small>
+                                                  <p class="card-text mt-3">
+                                                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                  </p>
+                                                  <p class="card-text text-auxiliar font-extrabold">$15 MXN
+                                                  </p>
+                                                  <a href="/views/resources/products/edit_product.html" class="btn btn-secondary col-12" type="submit">
+                                                    <i class="fas fa-pencil-alt me-2"></i>
+                                                    Editar</a>
+                                                  <div class="d-flex justify-content-center mt-4">
+                                                      <a class="btn btn-secondary col-12" type="submit">
+                                                          <i class="fas fa-trash me-2"></i>
+                                                          Eliminar</a>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              </section>
+                          
+                       
                       </div>
-                    </div>
                   </div>
-                </div> 
-                </div>
-                </div>
-               <!--  End Card --> 
-               <div class="col-xl-4 col-lg-6  col-md-6">
-                <div class="card mb-3 bg-light">
-                  <div class="row g-0">
-                    <div class="col-md-4 d-flex align-items-center justify-content-center pt-4 pb-1">         
-                  <img class="card-img card-img-left img-fluid w-75 h-auto product-image" src="/assets/images/resources/palanquetas.jpg"  style="height: 250px;
-                  width: 250px;" alt="dulce">
-                  </div>  
-                 <div class="col-md-8">
-                  <div class="card-body">
-                    <h4 class="card-title mb-0">Palanqueta</h4>
-                    <p class="card-text text-auxiliar font-extrabold">SKU: PA-TXRJ5</p>
-                    <p class="card-text">
-                        Barra de cacahuate pelado y sin cáscara mezclado con jarabe de piloncillo, su textura es crujiente, su nombre deriva de la voz 'papaquili' que significa feliz o alegre.
-                    <div class="buy d-flex justify-content-between align-items-center">
-                      <p class="card-text text-auxiliar font-extrabold">$20 MXN</p>
-                      <div class="btn-group align-items-center mx-2 px-1">
-                          <a type="button" class="btn btn-link p-2 m-1 text-gray-600" href="#">
-                              <i class="fas fa-trash d-flex align-items-center justify-content-center text-danger"></i>
-                            </a>
-                          <a type="button" class="btn btn-link p-2 m-1 text-gray-600" href="/views/resources/products/edit_product.html">
-                            <i class="fas fa-pencil-alt d-flex align-items-center justify-content-center text-danger"></i>
-                          </a>
-                      
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div> 
               </div>
-              </div>
-
-              <div class="col-xl-4 col-lg-6  col-md-6">
-                <div class="card mb-3 bg-light">
-                  <div class="row g-0">
-                    <div class="col-md-4 d-flex align-items-center justify-content-center pt-4 pb-1">         
-                  <img class="card-img card-img-left img-fluid w-75 h-auto product-image" src="/assets/images/resources/palanquetas.jpg"  style="height: 250px;
-                  width: 250px;" alt="dulce">
-                  </div>  
-                 <div class="col-md-8">
-                  <div class="card-body">
-                    <h4 class="card-title mb-0">Palanqueta</h4>
-                    <p class="card-text text-auxiliar font-extrabold">SKU: PA-TXRJ5</p>
-                    <p class="card-text">
-                        Barra de cacahuate pelado y sin cáscara mezclado con jarabe de piloncillo, su textura es crujiente, su nombre deriva de la voz 'papaquili' que significa feliz o alegre.
-                    <div class="buy d-flex justify-content-between align-items-center">
-                      <p class="card-text text-auxiliar font-extrabold">$20 MXN</p>
-                      <div class="btn-group align-items-center mx-2 px-1">
-                          <a type="button" class="btn btn-link p-2 m-1 text-gray-600" href="#">
-                              <i class="fas fa-trash d-flex align-items-center justify-content-center text-danger"></i>
-                            </a>
-                          <a type="button" class="btn btn-link p-2 m-1 text-gray-600" href="/views/resources/products/edit_product.html">
-                            <i class="fas fa-pencil-alt d-flex align-items-center justify-content-center text-danger"></i>
-                          </a>
-                      
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div> 
-              </div>
-              </div>
-               
-                  </div>
-                </div>
-            </div> 
           </div>
-        </div>
+
+
+      </div>
 
                   <footer>
                     <div class="footer clearfix mb-0 text-muted">
