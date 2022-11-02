@@ -107,16 +107,16 @@
                                                 placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                                             <label for="floatingTextarea">Tus observaciones</label>
                                         </div>
-                                        <p class="my-3 font-semibold text-auxiliar">Seleccionar imagenes
-                                            <small class="text-muted fw-light">(jpg, png y jpeg)</small>
-                                        </p>
-                                        <div class="input-group">
-                                            <label class="input-group-text" for="inputGroupFile01">
-                                                <i class="fas fa-file-upload"></i></label>
-                                            <input type="file" class="form-control" id="inputGroupFile01">
+                                        <p class="my-3 font-semibold text-auxiliar">Subir foto(s)
+                                            <small class="text-muted fw-light">Realiza una foto a la evidencia
+                                                correspondiente.</small>
+                                        </p>  
+                                        <div class="m-0">
+                                            <input type="file" aria-describedby="button-addon2" class="form-control" id="selectedFile" style="display: none;" />
+                                            <button type="button" id="button-addon2" class="btn btn-secondary col-12"
+                                                onclick="document.getElementById('selectedFile').click()">
+                                                <i class="fas fa-camera me-2"></i>Abrir cámara</button>
                                         </div>
-                                        <button class="btn btn-primary col-12 mt-4">
-                                            <i class="fas fa-walking me-2"></i>Agregar Visita</button>
                                     </div>
 
 
