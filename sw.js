@@ -15,7 +15,6 @@ self.addEventListener("install", (event) => {
 
       // Authentication views
       "./views/authentication/login.html",
-      "./views/authentication/recovery_pass.html",
 
       // Error views
       "./views/errors/error-403.html",
