@@ -4,32 +4,50 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Store</title>
+    <title>Registrar Tienda</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="/assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css" />
-    <link rel="stylesheet" href="/assets/css/app.css" />
-    <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
 </head>
 
 <body>
     <div id="app">
+        <!-- Navbar -->
+        <nav class="navbar nv-style  navbar-expand-md  navbar-light bg-primary">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="" href="#"> <img class="navbar-brand img-fluid" style="width: 100px; height:auto"
+                        src="/assets/images/logo/logo.png"></img></a>
+                <div class="collapse navbar-collapse  p-3 p-md-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active text-primary font-bold" aria-current="page" href="#"><i class="fas fa-home me-2"></i>Dashboard</a>
+                        </li>    
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="../dealer_views/dealer_stores.html"><i class="fas fa-store me-2"></i>Tiendas</a>
+                        </li>  
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="../profile/profile.html"><i class="fas fa-user me-2"></i>Perfil</a>
+                        </li>                                                  
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Acaba Navbar -->
         <div id="main">
 
-            <!-- Titulo de la página web -->
-            <div class="card m-4">
-                <div class="page-heading ms-4 p-4 text-center">
-                    <div class="row">
-                        <div class="col-6">
-                            <img class="img-fluid rounded" src="./../../../assets/images/resources/store.png">
-                          </div>
-                          <div class="col-6">
-                            <h3>Nombre del Usuario</h3>
-                            <p>Rol</p> 
-                          </div>
+            <div class="card mb-0">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="card-body page-heading m-0 px-4">
+                            <h3 class="text-center">Registrar tienda</h3>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -43,7 +61,7 @@
                             <div class="card">
                               <div class="card-header pb-0">
                                 <div class="d-flex align-items-center">
-                                    <h3 class=" text-center">Editar Tienda</h3>
+                                    <h3 class=" text-center">Datos de la Tienda</h3>
                                 </div>
                               </div>
                               <div class="card-body">
@@ -101,7 +119,7 @@
                                                 </div>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                  <button class="btn btn-primary btn-lg ms-auto">Actualizar</button>
+                                  <button class="btn btn-primary btn-lg ms-auto">Registrar</button>
                                 </div>
                               </div>
                             </div>
@@ -121,10 +139,8 @@
             </footer>
         </div>
     </div>
-    <script src="/assets/vendors/fontawesome/all.min.js"></script>
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/pages/dashboard.js"></script>
-    <script src="/assets/js/main.js"></script>
+    <script src="../../assets/vendors/fontawesome/all.min.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

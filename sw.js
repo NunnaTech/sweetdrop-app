@@ -15,36 +15,47 @@ self.addEventListener("install", (event) => {
 
       // Authentication views
       "./views/authentication/login.html",
-      "./views/authentication/recovery_pass.html",
+
       // Error views
       "./views/errors/error-403.html",
       "./views/errors/error-404.html",
       "./views/errors/error-500.html",
+
       // Profile views
-      "./views/profile/edit_password.html",
       "./views/profile/profile.html",
+
       // Dashboard views
       "./views/resources/dashboards/admin_dashboard.html",
       "./views/resources/dashboards/dealer_dashboard.html",
+
       // Dealer views for dealer user
       "./views/resources/dealer_views/dealer_observations.html",
       "./views/resources/dealer_views/dealer_orders.html",
       "./views/resources/dealer_views/dealer_stores.html",
       "./views/resources/dealer_views/register_observation.html",
+
       // Dealer views
       "./views/resources/dealers/dealers.html",
       "./views/resources/dealers/edit_dealer.html",
       "./views/resources/dealers/register_dealer.html",
+
       // Order views
       "./views/resources/orders/observations.html",
       "./views/resources/orders/order_details.html",
       "./views/resources/orders/orders.html",
       "./views/resources/orders/register_order.html",
       "./views/resources/orders/register_visit.html",
+
       // Product views
       "./views/resources/products/edit_product.html",
       "./views/resources/products/products.html",
       "./views/resources/products/register_product.html",
+
+      // Store views
+      "./views/resources/store/edit_store.html",
+      "./views/resources/store/register_store.html",
+      "./views/resources/store/stores.html",
+
       // CSS
       "./assets/css/bootstrap.css",
       "./assets/css/landing-page.css",
@@ -61,24 +72,24 @@ self.addEventListener("install", (event) => {
       "./assets/images/logo/logo.png",
       "./assets/images/resources/add-order.png",
       "./assets/images/resources/bg-phone.jpg",
+      "./assets/images/resources/candies-right.png",
+      "./assets/images/resources/candies.png",
       "./assets/images/resources/dealer-stores.png",
       "./assets/images/resources/dealer-visit.png",
+      "./assets/images/resources/dealer.png",
+      "./assets/images/resources/delivery.png",
       "./assets/images/resources/dulces-chompys.png",
       "./assets/images/resources/gudu-mix.jpg",
+      "./assets/images/resources/list_stores.png",
       "./assets/images/resources/man-laptop.png",
       "./assets/images/resources/notes-details.png",
       "./assets/images/resources/order-history.png",
-      "./assets/images/resources/san_jose_logo.png",
-      "./assets/images/resources/woman-candys.png",
-      "./assets/images/resources/candies-right.png",
-      "./assets/images/resources/candies.png",
-      "./assets/images/resources/dealer.png",
-      "./assets/images/resources/delivery.png",
-      "./assets/images/resources/list_stores.png",
       "./assets/images/resources/palanquetas.jpg",
       "./assets/images/resources/paleta.jpg",
-      "./assets/images/resources/store.png",
       "./assets/images/resources/product.jpg",
+      "./assets/images/resources/san_jose_logo.png",
+      "./assets/images/resources/store.png",
+      "./assets/images/resources/woman-candys.png",
       "./assets/images/favicon.ico",
 
       //Vendors
