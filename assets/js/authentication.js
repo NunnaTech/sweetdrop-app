@@ -1,4 +1,3 @@
-import {API_URI, HEADERS_URI} from "./services/API.js";
 import {setData, getUser, clear} from './utils/LocalStorage.js'
 import {goToPage} from "./utils/Routes.js";
 import AuthService from "./services/AuthService.js";
@@ -30,14 +29,14 @@ function sendLoginRequest() {
     AuthService.Login(inputEmail.value, inputPassword.value)
         .then(response => response.json())
         .then(data => {
-            if (data.success === true) {
+            if (data.success) {
                 let token = data.token;
                 let user = data.data;
                 setData('token', token);
                 setData('user', JSON.stringify(user));
                 if (user.role_id === 1) goToPage('../../views/dashboards/admin_dashboard.html')
                 else goToPage('../../views/dashboards/dealer_dashboard.html');
-            } else console.error('Hubo un error')
+            } else console.error(data)
         }).catch(error => console.error(error));
 }
 

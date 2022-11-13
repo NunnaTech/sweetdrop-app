@@ -1,4 +1,4 @@
-import {getUser} from "../js/utils/LocalStorage.js";
+import {getUser} from "./utils/LocalStorage.js";
 
 const navTemplate = document.querySelector('#navTemplate');
 document.addEventListener('DOMContentLoaded', setNavbar)
