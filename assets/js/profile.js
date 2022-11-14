@@ -1,7 +1,7 @@
 import {setData, getUser, clear} from './utils/LocalStorage.js'
 import AuthService from "./services/AuthService.js";
 import {goToPage} from "./utils/Routes.js";
-
+import ToastifyService from "./utils/ToastifyService.js";
 
 const formProfile = document.querySelector('#formProfile');
 const formPassword = document.querySelector('#formPassword');
@@ -37,10 +37,10 @@ function updatePassword() {
                 clear();
                 goToPage('../../index.html')
             } else {
-                console.log('No cambiada password')
+                ToastifyService.notificatonError('Las contraseñas no fueron cambiadas, favor de revisar')
             }
         })
-        .catch(error => console.error(error));
+        .catch(error => ToastifyService.notificatonError('Hubo un error en el servicio'));
 }
 
 function savePassword(e) {
@@ -48,7 +48,7 @@ function savePassword(e) {
     if (validPasswords()) {
         updatePassword()
     } else {
-        console.log('No validado')
+        ToastifyService.notificatonError('Los campos de contraseña no deben estar vacios');
     }
 }
 
@@ -57,7 +57,7 @@ function saveProfile(e) {
     if (validateForm()) {
         updateProfile()
     } else {
-        console.log('No validado')
+        ToastifyService.notificatonError('Los campos del perfil no deben estar vacios');
     }
 }
 
@@ -69,7 +69,6 @@ function setDataOnForm() {
     inputSecondSurname.value = user.second_surname;
     inputPhone.value = user.phone;
 }
-
 
 function updateProfile() {
     const user = getUser();
@@ -88,10 +87,9 @@ function updateProfile() {
                 if (data.success) {
                     let user = data.data;
                     setData('user', JSON.stringify(user));
-                    console.log(data)
-                } else console.error(data)
+                } else ToastifyService.notificatonError('El perfil no fue actualizado, favor de revisar');
             }
-        ).catch(error => console.error(error));
+        ).catch(error => ToastifyService.notificatonError('Hubo un error en el servicio'));
 }
 
 function validateForm() {
