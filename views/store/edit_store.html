@@ -44,25 +44,19 @@
     </nav>
     <div id="main">
 
-        <!-- Titulo de la página web -->
-        <div class="card m-4">
-            <div class="page-heading ms-4 p-4 text-center">
-                <div class="row">
-                    <div class="col-6">
-                        <img class="img-fluid rounded" src="../../assets/images/resources/store.png">
-                    </div>
-                    <div class="col-6">
-                        <h3>Nombre del Usuario</h3>
-                        <p>Rol</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="../dashboards/dealer_dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="../dealer_views/dealer_stores.html">Tiendas</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Detalles de la tienda
+                </li>
+            </ol>
+        </nav>
         <!-- Contenido de la página web -->
-        <div class="page-content p-4 ">
+        <div class="page-content ">
             <section class="row">
-                <div class="container-fluid py-4">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
@@ -75,10 +69,12 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group position-relative has-icon-left mb-4">
-                                                <label class="form-label" for="name">Nombre</label>
-                                                <div class="input-group mb-3"></span>
-                                                    <input type="text" class="form-control"
-                                                           placeholder="Abarrotes Domínguez"/>
+                                                <label class="form-label" for="phone">Nombre</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="phone"><i
+                                                            class="fas fa-phone"></i></span>
+                                                    <input type="text" id="name" class="form-control"
+                                                           placeholder="7775674323"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -88,7 +84,7 @@
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="phone"><i
                                                             class="fas fa-phone"></i></span>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" id="phone" class="form-control"
                                                            placeholder="7775674323"/>
                                                 </div>
                                             </div>
@@ -99,17 +95,19 @@
                                                 <div class="input-group mb-3">
                                                         <span class="input-group-text" id="deliver_date"><i
                                                                 class="fas fa-map"></i></span>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" id="address" class="form-control"
                                                            placeholder="Av.Plan de Ayala No.45"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group position-relative has-icon-left mb-4">
-                                                <label class="form-label" for="zipcode">Código Postal</label>
+                                                <label class="form-label" for="phone">Código Postal</label>
                                                 <div class="input-group mb-3">
-                                                    <input type="number" class="form-control"
-                                                           placeholder="62000"/>
+                                                    <span class="input-group-text" id="phone"><i
+                                                            class="fas fa-phone"></i></span>
+                                                    <input type="text" id="zipcode" class="form-control"
+                                                           placeholder="7775674323"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -119,7 +117,7 @@
                                                 <div class="input-group mb-3">
                                                                 <span class="input-group-text" id="owner"><i
                                                                         class="fas fa-user "></i></span>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control" id="owner"
                                                            placeholder="Alejandro López"/>
                                                 </div>
                                             </div>
@@ -157,6 +155,8 @@
 </div>
 <script src="../../assets/vendors/fontawesome/all.min.js"></script>
 <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/services/StoreService.js" type="module"></script>
+
 </body>
 
 </html>
