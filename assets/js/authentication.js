@@ -1,6 +1,7 @@
 import {setData, getUser, clear} from './utils/LocalStorage.js'
 import {goToPage} from "./utils/Routes.js";
 import AuthService from "./services/AuthService.js";
+import ToastifyService from "./utils/ToastifyService.js";
 
 const loginForm = document.querySelector('#loginForm') || document.createElement('form');
 const inputEmail = document.querySelector('#email') || document.createElement('input');
@@ -17,12 +18,7 @@ function sesionActive() {
 }
 
 function validInputs() {
-    if (inputEmail.value === '' || inputPassword.value === '') {
-        alert('Please fill in all fields');
-        return false;
-    } else {
-        return true;
-    }
+    return inputEmail.value !== '' || inputPassword.value !== ''
 }
 
 function sendLoginRequest() {
@@ -36,8 +32,8 @@ function sendLoginRequest() {
                 setData('user', JSON.stringify(user));
                 if (user.role_id === 1) goToPage('../../views/dashboards/admin_dashboard.html')
                 else goToPage('../../views/dashboards/dealer_dashboard.html');
-            } else console.error(data)
-        }).catch(error => console.error(error));
+            } else ToastifyService.notificatonError('Usuario no encontrado')
+        }).catch(error => ToastifyService.notificatonError('Hubo un error en el servicio'));
 }
 
 function login(e) {
@@ -45,7 +41,7 @@ function login(e) {
     if (validInputs()) {
         sendLoginRequest();
     } else {
-        console.error('Inputs sin validar')
+        ToastifyService.notificatonError('Los campos no deben estar vacios');
     }
 }
 

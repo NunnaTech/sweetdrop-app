@@ -1,11 +1,15 @@
 import {clear} from "./utils/LocalStorage.js";
 import {goToPage} from "./utils/Routes.js";
 import AuthService from "./services/AuthService.js";
+import ToastifyService from "./utils/ToastifyService.js";
 
 let btnLogout;
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
     btnLogout = document.querySelector('#btnLogout');
-    document.addEventListener('load', btnLogout.addEventListener('click', logout));
+    setTimeout(() => {
+        document.addEventListener('load', btnLogout.addEventListener('click', logout));
+    }, 1000);
+
 })
 
 
@@ -15,5 +19,5 @@ function logout() {
             clear();
             goToPage('../../index.html')
         }
-    }).catch(error => console.error(error));
+    }).catch(error => ToastifyService.notificatonError('Hubo un error en el servicio'));
 }
