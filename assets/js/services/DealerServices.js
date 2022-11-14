@@ -6,7 +6,7 @@ const totalStores = document.getElementById("totalStores");
 const totalOrders = document.getElementById("totalOrders");
 const name = document.getElementById("name");
 const ownLastOrders = document.getElementById("ownLastOrders");
-const viewStores = document.getElementById("viewStores");
+
 
 
 const user = getUser();
@@ -24,9 +24,16 @@ fetch(API_URI + "/dashboard/dealer", {
 
     totalStores.innerHTML = `<span class="fw-bold fs-3" >${
       data.data.ownStores === 0
-        ? "No tienes registrada alguna tienda"
+        ? "No tienes tiendas registradas"
         : data.data.ownStores + " tiendas"
     } </span>`;
+
+    
+    if (data.data.ownStores === 0) {
+      document.getElementById("viewStores").style.display = "none";
+    }else{
+      document.getElementById("viewStores").style.display = "block";
+    }
 
     totalOrders.innerHTML = `<span class="fw-bold fs-3" >${
       data.data.ownOrders === 0
@@ -163,11 +170,3 @@ fetch(API_URI + "/dashboard/dealer", {
   })
   .catch((err) => console.log("Ha ocurrido un error...", err));
 
-// console.log(data.data.ownLastOrders[2].folio);
-// console.log(data.data.ownLastOrders[2].store.name);
-// console.log(data.data.ownLastOrders[2].request_date);
-// console.log(data.data.ownLastOrders[2].deliver_date);
-// console.log(data.data.ownLastOrders[2].total);
-// console.log(user.name);
-// console.log(data.data.ownLastOrders[2].received_by);
-// console.log(data.data.ownLastOrders[2].status.name);

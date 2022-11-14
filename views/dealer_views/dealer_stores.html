@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiendas | Repartidor</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
@@ -13,12 +12,9 @@
 </head>
 
 <body>
-
 <div id="app">
-    <nav id="dealerNavTemplate"></nav>
-
+    <nav id="navTemplate"></nav>
     <div id="main">
-
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="../dashboards/dealer_dashboard.html">Dashboard</a></li>
@@ -59,11 +55,10 @@
                 </div>
             </div>
 
-            <section class="row gx-4">
+            <section class="row gx-4" id="stores">
                 <!-- Empieza card -->
-                <div class="col-xl-4 col-lg-6 col-md-6" id="stores">
                    
-                </div>
+               
             </section>
         </div>
         <footer>
@@ -80,9 +75,9 @@
 
 <script src="../../assets/vendors/fontawesome/all.min.js"></script>
 <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/js/components.js"></script>
+<script src="../../assets/js/components.js" type="module"></script>
+<script src="../../assets/js/logout.js" type="module"></script>
 <script src="../../assets/js/services/DealerStoresService.js" type="module"></script>
 
 </body>
-
 </html>

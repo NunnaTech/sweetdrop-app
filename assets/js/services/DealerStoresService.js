@@ -1,37 +1,34 @@
 import { API_URI, HEADERS_URI } from "./API.js";
-import { getToken , getUser} from "../utils/LocalStorage.js";
+import { getToken, getUser } from "../utils/LocalStorage.js";
 
 const totalStores = document.getElementById("totalStores");
-
 
 const user = getUser();
 
 fetch(API_URI + `/users/stores/${user.id}`, {
   method: "GET",
-  headers: HEADERS_URI
+  headers: HEADERS_URI,
 })
   .then((response) => response.json())
   .then((data) => {
-
-    console.log(data.data.length);
-
     totalStores.innerHTML = `<span class="fw-bold fs-3" >
-    ${ data.data.length === 0 ? "No tienes registrada alguna tienda" : + data.data.length + " tiendas"
+    ${
+      data.data.length === 0
+        ? "No tienes registrada alguna tienda"
+        : +data.data.length + " tiendas"
     } </span>`;
 
-
-    console.log(data);
     let card = document.getElementById("stores");
 
     if (data.data.length === 0) {
       card.innerHTML = `
           <p class="text-primary text-center">No tienes tiendas registradas</p>
           `;
-    }  
+    }
 
     data.data.forEach((store) => {
-      card.innerHTML += 
-      `
+      card.innerHTML += `
+      <div class="col-xl-4 col-lg-6 col-md-6">
       <div class="card">
       <div class="card-header">
           <div class="d-flex align-items-start">
@@ -98,10 +95,8 @@ fetch(API_URI + `/users/stores/${user.id}`, {
           </div>
       </div>
   </div>
+  </div>
       `;
-
-        console.log(data);
-
-      });
+    });
   })
   .catch((err) => console.log("Ha ocurrido un error...", err));
