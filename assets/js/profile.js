@@ -94,7 +94,6 @@ function updateProfile() {
         ).catch(error => console.error(error));
 }
 
-
 function validateForm() {
     return inputEmail.value !== '' && inputName.value !== '' && inputFirstSurname.value !== '' && inputSecondSurname.value !== '' && inputPhone.value !== '';
 }
