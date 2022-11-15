@@ -1,49 +1,75 @@
 import { API_URI, HEADERS_URI } from "./API.js";
 import { getUser } from "../utils/LocalStorage.js";
 import NotifyService from "../utils/NotifyService.js";
-
-const totalStores = document.getElementById("totalStores");
-const totalOrders = document.getElementById("totalOrders");
+// Session
+const user = getUser();
 const name = document.getElementById("name");
 
-const user = getUser();
+// DOM elements
+const totalStores = document.getElementById("totalStores");
+const totalOrders = document.getElementById("totalOrders");
+const totalDealer = document.getElementById("totalDealer");
+const totalProducts = document.getElementById("totalProducts");
+const totalSell = document.getElementById("totalSell");
+const listOrders = document.getElementById("listOrders");
 
 getData();
-
+// get Dashboard data
 function getData() {
+  name.innerHTML = `<span class="font-extrabold"> ${
+    user.name + " " + user.first_surname
+  }.</span>`;
   NotifyService.loadingNotification();
-  fetch(API_URI + "/dashboard/dealer", {
+  fetch(API_URI + "/dashboard/admin", {
     method: "GET",
     headers: HEADERS_URI,
   })
     .then((response) => response.json())
     .then((data) => {
-      name.innerHTML = `<span class="font-extrabold"> ${
-        user.name + " " + user.first_surname
-      }.</span>`;
-      totalStores.innerHTML = `<span class="fw-bold fs-3" >${
-        data.data.ownStores === 0
-          ? "No tienes tiendas registradas"
-          : data.data.ownStores + " tiendas"
-      } </span>`;
-      if (data.data.ownStores === 0) {
-        document.getElementById("viewStores").style.display = "none";
-      } else {
-        document.getElementById("viewStores").style.display = "block";
-      }
-      totalOrders.innerHTML = `<span class="fw-bold fs-3" >${
-        data.data.ownOrders === 0
-          ? "No tienes ordenes registradas"
-          : data.data.ownOrders + " ordenes"
-      } </span>`;
+      // Set data in DOM
+      // Stores
+      totalStores.innerHTML = `<h6 class="font-extrabold mb-0 fs-3">${
+        data.data.stores === 0 ? "Cero" : data.data.stores
+      }</h6>`;
+      // Orders
+      totalOrders.innerHTML = `<h6 class="font-extrabold mb-0 fs-3">${
+        data.data.orders === 0 ? "Cero" : data.data.orders
+      }</h6>`;
+      // Dealers
+      totalDealer.innerHTML = `<h6 class="font-extrabold mb-0 fs-3">${
+        data.data.dealers === 0 ? "Cero" : data.data.dealers
+      }</h6>`;
+      // Products
+      totalProducts.innerHTML = `<h6 class="font-extrabold mb-0 fs-3">${
+        data.data.products === 0 ? "Cero" : data.data.products
+      }</h6>`;
+      // Sell
+      totalSell.innerHTML = `<span class="fw-bold fs-3">${
+        data.data.sales === 0 ? "No hay ventas aún" : "$" + data.data.sales
+      }MXN</span>`;
+      // Last orders
+      loadCards(data.data.lastOrders);
 
-      let card = document.getElementById("ownLastOrders");
-
-      if (data.data.ownLastOrders.length === 0) {
-        card.innerHTML = ` <p class="text-primary text-center">No tienes ordenes registradas</p> `;
-      }
-      data.data.ownLastOrders.forEach((order, index) => {
-        card.innerHTML += `
+      NotifyService.loadingNotificationRemove();
+    })
+    .catch((error) => {
+      NotifyService.loadingNotificationRemove();
+      NotifyService.notificatonError(
+        "Ha ocurrido un error al cargar los datos"
+      );
+    });
+}
+function loadCards(cards) {
+  let card = document.getElementById("ownLastOrders");
+  if (cards.length === 0) {
+    card.innerHTML = ` <p class="text-primary text-center">No tienes ordenes registradas</p> `;
+  } else {
+    cards.forEach((order, index) => {
+      card.innerHTML += ``;
+    });
+  }
+  cards.forEach((order, index) => {
+    card.innerHTML += `
       <div class="carousel-item px-5 px-md-5 ${index === 1 ? "active" : ""}">
         <div class="col px-2">
             <div class="card">
@@ -154,13 +180,5 @@ function getData() {
             </div>
         </div>  
       </div>`;
-      });
-      NotifyService.loadingNotificationRemove();
-    })
-    .catch((err) => {
-      NotifyService.loadingNotificationRemove();
-      NotifyService.notificatonError(
-        "Ha ocurrido un error al cargar los datos"
-      );
-    });
+  });
 }
