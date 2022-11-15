@@ -1,56 +1,40 @@
-import { API_URI, HEADERS_URI } from "./API.js";
-import { getToken } from "../utils/LocalStorage.js";
-import { getUser } from "../utils/LocalStorage.js";
+import {API_URI, HEADERS_URI} from "./API.js";
+import {getUser} from "../utils/LocalStorage.js";
+import NotifyService from "../utils/NotifyService.js";
 
 const totalStores = document.getElementById("totalStores");
 const totalOrders = document.getElementById("totalOrders");
 const name = document.getElementById("name");
-const ownLastOrders = document.getElementById("ownLastOrders");
-
-
 
 const user = getUser();
 
-fetch(API_URI + "/dashboard/dealer", {
-  method: "GET",
-  headers: HEADERS_URI,
-  Authorization: `Bearer 11| ${getToken()}`,
-})
-  .then((response) => response.json())
-  .then((data) => {
-    name.innerHTML = `<span class="font-extrabold"> ${
-      user.name + " " + user.first_surname
-    }.</span>`;
+getData()
 
-    totalStores.innerHTML = `<span class="fw-bold fs-3" >${
-      data.data.ownStores === 0
-        ? "No tienes tiendas registradas"
-        : data.data.ownStores + " tiendas"
-    } </span>`;
+function getData() {
+    NotifyService.loadingNotification()
+    fetch(API_URI + "/dashboard/dealer", {
+        method: "GET",
+        headers: HEADERS_URI,
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            NotifyService.loadingNotificationRemove()
+            name.innerHTML = `<span class="font-extrabold"> ${user.name + " " + user.first_surname}.</span>`;
+            totalStores.innerHTML = `<span class="fw-bold fs-3" >${data.data.ownStores === 0 ? "No tienes tiendas registradas" : data.data.ownStores + " tiendas"} </span>`;
+            if (data.data.ownStores === 0) {
+                document.getElementById("viewStores").style.display = "none";
+            } else {
+                document.getElementById("viewStores").style.display = "block";
+            }
+            totalOrders.innerHTML = `<span class="fw-bold fs-3" >${data.data.ownOrders === 0 ? "No tienes ordenes registradas" : data.data.ownOrders + " ordenes"} </span>`;
 
-    
-    if (data.data.ownStores === 0) {
-      document.getElementById("viewStores").style.display = "none";
-    }else{
-      document.getElementById("viewStores").style.display = "block";
-    }
+            let card = document.getElementById("ownLastOrders");
 
-    totalOrders.innerHTML = `<span class="fw-bold fs-3" >${
-      data.data.ownOrders === 0
-        ? "No tienes ordenes registradas"
-        : data.data.ownOrders + " ordenes"
-    } </span>`;
-
-    let card = document.getElementById("ownLastOrders");
-
-    if (data.data.ownLastOrders.length === 0) {
-      card.innerHTML = `
-          <p class="text-primary text-center">No tienes ordenes registradas</p>
-          `;
-    }  
-
-    data.data.ownLastOrders.forEach((order, index) => {
-      card.innerHTML += `
+            if (data.data.ownLastOrders.length === 0) {
+                card.innerHTML = ` <p class="text-primary text-center">No tienes ordenes registradas</p> `;
+            }
+            data.data.ownLastOrders.forEach((order, index) => {
+                card.innerHTML += `
       <div class="carousel-item px-5 px-md-5 ${index === 1 ? "active" : ""}">
         <div class="col px-2">
             <div class="card">
@@ -62,14 +46,10 @@ fetch(API_URI + "/dashboard/dealer", {
                             </div>
                             <div class="me-2">
                                 <h5 class="mb-1 text-danger">Folio:
-                                    <span class="text-body fw-normal">${
-                                      order.folio
-                                    }</span>
+                                    <span class="text-body fw-normal">${order.folio}</span>
                                 </h5>
                                 <div class="client-info d-flex align-items-center">
-                                    <h6 class="mb-0 me-1">Tienda:</h6><span>${
-                                      order.store.name
-                                    }</span>
+                                    <h6 class="mb-0 me-1">Tienda:</h6><span>${order.store.name}</span>
                                 </div>
                             </div>
                         </div>
@@ -81,15 +61,9 @@ fetch(API_URI + "/dashboard/dealer", {
                             <h6 class="mb-1"><i
                                     class="fas fa-calendar-day me-1 "></i> Fecha de
                                 solicitud: <span
-                                    class="text-body fw-normal">${
-                                      order.request_date
-                                    }</span></h6>
-                            <h6 class="mb-2 mt-4 text-success"><i
-                                    class="fas fa-calendar-check me-2"></i>Fecha de
-                                entrega: <span
-                                    class="text-body fw-normal">${
-                                      order.deliver_date
-                                    }</span>
+                                    class="text-body fw-normal">${order.request_date}</span></h6>
+                            <h6 class="mb-2 mt-4 text-success"><i class="fas fa-calendar-check me-2"></i>Fecha de
+                                entrega: <span class="text-body fw-normal">${order.deliver_date}</span>
                             </h6>
                         </div>
                     </div>
@@ -110,14 +84,10 @@ fetch(API_URI + "/dashboard/dealer", {
                                 class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                 <div class="me-2">
                                     <h6 class="mb-0">Entrega realizada por:</h6>
-                                    <small class="text-muted">${
-                                      user.name + " " + user.first_surname
-                                    }</small>
+                                    <small class="text-muted">${user.name + " " + user.first_surname}</small>
                                 </div>
                                 <div class="user-progress">
-                                    <small class="fw-semibold">${
-                                      user.phone
-                                    }</small>
+                                    <small class="fw-semibold">${user.phone}</small>
                                 </div>
                             </div>
                         </li>
@@ -131,16 +101,11 @@ fetch(API_URI + "/dashboard/dealer", {
                             <div
                                 class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                 <div class="me-2">
-                                    <h6 class="mb-0 text-secondary">Entrega recibida
-                                        por:</h6>
-                                    <small class="text-muted">${
-                                      order.received_by
-                                    }</small>
+                                    <h6 class="mb-0 text-secondary">Entrega recibida por:</h6>
+                                    <small class="text-muted">${order.received_by}</small>
                                 </div>
                                 <div class="user-progress">
-                                    <small class="fw-semibold">${
-                                      order.store.phone
-                                    }</small>
+                                    <small class="fw-semibold">${order.store.phone}</small>
                                 </div>
                             </div>
                         </li>
@@ -149,10 +114,7 @@ fetch(API_URI + "/dashboard/dealer", {
                 <div class="card-body border-top bg-light">
                 <div class="row mt-3">
                     <div class="col-12 col-sm-6 ">
-                        <a
-                            class="btn btn-success col-12 text-center mb-3 mb-md-0">${
-                              order.status.name
-                            }</a>
+                        <a  class="btn btn-success col-12 text-center mb-3 mb-md-0">${order.status.name}</a>
                     </div>
                     <div class="col-12 col-sm-6">
                         <a href="../orders/order_details.html"
@@ -164,9 +126,12 @@ fetch(API_URI + "/dashboard/dealer", {
              </div>  
             </div>
         </div>  
-      </div>
-      `;
-    });
-  })
-  .catch((err) => console.log("Ha ocurrido un error...", err));
+      </div>`;
+            });
+        })
+        .catch((err) => {
+            NotifyService.loadingNotificationRemove()
+            NotifyService.notificatonError('Ha ocurrido un error al cargar los datos')
+        });
+}
 

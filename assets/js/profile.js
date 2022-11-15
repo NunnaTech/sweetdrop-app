@@ -1,7 +1,7 @@
 import {setData, getUser, clear} from './utils/LocalStorage.js'
 import AuthService from "./services/AuthService.js";
 import {goToPage} from "./utils/Routes.js";
-import ToastifyService from "./utils/ToastifyService.js";
+import NotifyService from "./utils/NotifyService.js";
 
 const formProfile = document.querySelector('#formProfile');
 const formPassword = document.querySelector('#formPassword');
@@ -34,31 +34,28 @@ function updatePassword() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                clear();
-                goToPage('../../index.html')
+                NotifyService.loadingNotification('Cerrando sesión, serás redirigido al inicio de sesión');
+                setTimeout(() => {
+                    clear();
+                    goToPage('../../index.html')
+                }, 2000);
             } else {
-                ToastifyService.notificatonError('Las contraseñas no fueron cambiadas, favor de revisar')
+                NotifyService.notificatonError('Las contraseñas no fueron cambiadas, favor de revisar')
             }
         })
-        .catch(error => ToastifyService.notificatonError('Hubo un error en el servicio'));
+        .catch(error => NotifyService.notificatonError('Hubo un error en el servicio'));
 }
 
 function savePassword(e) {
     e.preventDefault()
-    if (validPasswords()) {
-        updatePassword()
-    } else {
-        ToastifyService.notificatonError('Los campos de contraseña no deben estar vacios');
-    }
+    if (validPasswords()) updatePassword()
+    else NotifyService.notificatonError('Los campos de contraseña no deben estar vacios');
 }
 
 function saveProfile(e) {
     e.preventDefault()
-    if (validateForm()) {
-        updateProfile()
-    } else {
-        ToastifyService.notificatonError('Los campos del perfil no deben estar vacios');
-    }
+    if (validateForm()) updateProfile()
+    else NotifyService.notificatonError('Los campos del perfil no deben estar vacios');
 }
 
 function setDataOnForm() {
@@ -87,11 +84,12 @@ function updateProfile() {
                 if (data.success) {
                     let user = data.data;
                     setData('user', JSON.stringify(user));
-                } else ToastifyService.notificatonError('El perfil no fue actualizado, favor de revisar');
+                    NotifyService.notificatonSuccess('El perfil ha sido actualizado');
+                } else NotifyService.notificatonError('El perfil no fue actualizado, favor de revisar');
             }
-        ).catch(error => ToastifyService.notificatonError('Hubo un error en el servicio'));
+        ).catch(error => NotifyService.notificatonError('Hubo un error en el servicio'));
 }
 
 function validateForm() {
-    return inputEmail.value !== '' && inputName.value !== '' && inputFirstSurname.value !== '' && inputSecondSurname.value !== '' && inputPhone.value !== '';
+    return inputEmail.value !== '' && inputName.value !== '' && inputFirstSurname.value !== '' && inputPhone.value !== '';
 }
