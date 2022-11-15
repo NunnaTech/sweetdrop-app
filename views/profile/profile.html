@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
+    <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css">
+    <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
 </head>
 
 <body>
@@ -16,6 +18,12 @@
 <div id="app">
     <nav id="navTemplate"></nav>
     <div id="main">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="../dashboards/dealer_dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Perfil</li>
+            </ol>
+        </nav>
         <div class="card m-2">
             <div class="row col-12">
                 <div class="card-body text-center">
@@ -24,7 +32,6 @@
                 </div>
             </div>
         </div>
-
         <div class="container-fluid">
             <div class="row my-3">
                 <div class="col-12">
@@ -39,8 +46,6 @@
                                                 class="fas fa-envelope fs-6 text-secondary"></i></div>
                                     </div>
                                 </div>
-
-
                                 <div class="col-md-6 mb-3">
                                     <label for="name" class="form-control-label"><h5>Nombre</h5></label>
                                     <div class="form-group position-relative has-icon-left m-0">
@@ -49,7 +54,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-md-6 mb-3">
                                     <label for="first_surname" class="form-control-label"><h5>Apellido Paterno</h5>
                                     </label>
@@ -59,8 +63,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div class="col-md-6 mb-3">
                                     <label for="second_surname" class="form-control-label"><h5>Apellido Materno</h5>
                                     </label>
@@ -71,8 +73,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div class="col-md-6 mb-3">
                                     <label for="phone" class="form-control-label"><h5>Telefono</h5></label>
                                     <div class="form-group position-relative has-icon-left m-0">
@@ -81,8 +81,6 @@
                                                 class="fas fa-phone-alt fs-6 text-secondary"></i></div>
                                     </div>
                                 </div>
-
-
                                 <div class="row mt-3">
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary font-bold col-12">
@@ -93,8 +91,6 @@
                             </form>
                         </div>
                     </div>
-
-
                     <div class="card">
                         <div class="card-body">
                             <h5 class="text-gray-600">Cambiar contraseña</h5>
@@ -108,7 +104,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-md-6 mb-3">
                                     <label for="new_password" class="form-control-label"><h5>Nueva Contraseña</h5>
                                     </label>
@@ -119,7 +114,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-md-6 mb-3">
                                     <label for="new_password_confirmation" class="form-control-label"><h5>Confirmar
                                         Contraseña</h5></label>
@@ -130,7 +124,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-md-6 mt-4">
                                     <button class="btn btn-primary font-bold col-12" id="btnSavePassword">
                                         Guardar
@@ -144,7 +137,6 @@
         </div>
     </div>
 </div>
-
 <footer>
     <div class="footer clearfix mb-0 text-muted">
         <div class="text-center">
@@ -152,16 +144,12 @@
         </div>
     </div>
 </footer>
-
-
 <script src="../../assets/vendors/fontawesome/all.min.js"></script>
 <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../../assets/js/profile.js" type="module"></script>
 <script src="../../assets/js/components.js" type="module"></script>
 <script src="../../assets/js/logout.js" type="module"></script>
-<link rel="stylesheet" href="../../assets/css/toastify.css">
-<script src="../../assets/js/toastify.js"></script>
-<script src="../../assets/vendors/toastify/toastify.js"></script>
+
 </body>
 
 </html>

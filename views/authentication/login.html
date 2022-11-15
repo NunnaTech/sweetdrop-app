@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="icon" href="../../assets/images/favicon.ico"/>
+    <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css">
+    <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
 </head>
 
 <body>
-<div id="auth" class="bg-white">
+<div id="auth" class="bg-light">
     <div class="row h-100">
-        <div class="col-12 col-md-7">
+        <div class="col-12 col-lg-4 offset-lg-4">
             <div class="d-flex align-items-center h-100">
-                <div class="col-12 text-center">
-                    <div class="p-2 p-md-5">
-                        <div class="auth-logo ">
-                            <img src="../../assets/images/logo/logo.png" alt="Logo" style="height: 40px;">
-                        </div>
-                        <h1 class="fs-1 my-3">Iniciar sesión</h1>
+                <div class="col-12 text-center card">
+                    <div class="p-5">
+                        <div class="auth-logo"><a href="../../index.html"><img src="../../assets/images/logo/logo.png" alt="Logo" style="height: 70px;"></a></div>
+                        <h1 class="fs-1 my-5">Iniciar sesión</h1>
                         <form id="loginForm">
                             <div class="form-group position-relative has-icon-left m-0 mb-4">
                                 <input type="email" id="email" name="email" class="form-control form-control-xl" placeholder="Correo electrónico">
@@ -37,20 +37,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-5 d-none d-md-block">
-            <div id="auth-right" class="left d-flex justify-content-center align-items-center">
-                <img src="../../assets/images/resources/candies.png" class="img-fluid" alt="Sample image">
-            </div>
-        </div>
     </div>
 </div>
 <script src="../../assets/vendors/fontawesome/all.min.js"></script>
 <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../../assets/js/authentication.js" type="module"></script>
 
-<link rel="stylesheet" href="../../assets/css/toastify.css">
-<script src="../../assets/js/toastify.js"></script>
-<script src="../../assets/vendors/toastify/toastify.js"></script>
+
 
 </body>
 
