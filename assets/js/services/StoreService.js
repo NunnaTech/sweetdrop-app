@@ -28,3 +28,5 @@ fetch(API_URI + `/stores/${id}`, {
 
 }).catch((err) => console.log(err));
 
+
+
