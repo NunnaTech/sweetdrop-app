@@ -61,7 +61,6 @@ self.addEventListener("install", (event) => {
             "./assets/css/bootstrap.css",
             "./assets/css/landing-page.css",
             "./assets/css/style.css",
-            "./assets/css/toastify.css",
 
             // Images
             "./assets/images/device-mockups/iPhoneX/portrait_black.png",
@@ -97,7 +96,6 @@ self.addEventListener("install", (event) => {
             //Vendors
             "./assets/vendors/fontawesome/all.min.css",
             "./assets/vendors/fontawesome/all.min.js",
-            "./assets/vendors/toastify/toastify.js",
         ]);
     });
 

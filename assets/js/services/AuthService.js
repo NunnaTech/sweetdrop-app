@@ -13,7 +13,6 @@ class AuthService {
     }
 
     Logout() {
-        console.log(HEADERS_URI)
         return fetch(API_URI + '/logout', {
             method: 'GET',
             headers: HEADERS_URI
