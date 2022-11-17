@@ -9,7 +9,8 @@ const registerForm = document.querySelector('#registerProduct') || document.crea
 const inputName = document.querySelector('#name') || document.createElement('input');
 const inputPrice = document.querySelector('#price') || document.createElement('input');
 const inputDescription = document.querySelector('#description') || document.createElement('input');
-const fileField = document.querySelector("#formFileLg") || document.createElement('input');
+const fileField = 'https://static.vecteezy.com/system/resources/previews/008/289/394/non_2x/illustrations-chocolate-cake-free-vector.jpg'
+
 
 registerForm.addEventListener('submit', register);
 
@@ -30,12 +31,10 @@ function validInputs() {
 
 
 function sendProductRequest() {
-    
-    ProductService.RegisterProduct(inputName.value, inputPrice.value, inputDescription.value, fileField.files[0])
+    ProductService.RegisterProduct(inputName.value, inputPrice.value, inputDescription.value, fileField.id)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                let product = data.data;
                 console.log(data);
                 setData('product', JSON.stringify(product));
                 console.log('Exito');
