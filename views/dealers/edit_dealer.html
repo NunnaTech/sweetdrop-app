@@ -61,6 +61,7 @@
                                             <h3 class=" text-center">Datos del Repartidor</h3>
                                         </div>
                                     </div>
+                                    <form id="formulario">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-4">
@@ -69,7 +70,8 @@
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="owner"><i
                                                                 class="fas fa-user "></i></span>
-                                                        <input type="text" class="form-control" placeholder="Armando" />
+                                                                <input id="id"  hidden type="text" class="form-control" placeholder="Armando" />
+                                                        <input id="nombreU" type="text" class="form-control" placeholder="Armando" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -80,7 +82,7 @@
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="owner"><i
                                                                 class="fas fa-user "></i></span>
-                                                        <input type="text" class="form-control"
+                                                        <input id="paternoU" type="text" class="form-control"
                                                             placeholder="Fernández" />
                                                     </div>
                                                 </div>
@@ -92,17 +94,18 @@
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="owner"><i
                                                                 class="fas fa-user "></i></span>
-                                                        <input type="text" class="form-control" placeholder="Gómez" />
+                                                        <input  id="maternoU" type="text" class="form-control" placeholder="Gómez" />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group position-relative has-icon-left mb-4">
+                                                    <input id="passwordU"  hidden type="text" class="form-control" />
                                                     <label class="form-label" for="phone">Teléfono</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="owner"><i
                                                                 class="fas fa-phone "></i></span>
-                                                        <input type="text" class="form-control"
+                                                        <input id="phoneU" type="text" class="form-control"
                                                             placeholder="7771342399" />
                                                     </div>
                                                 </div>
@@ -113,8 +116,9 @@
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="owner"><i
                                                                 class="fas fa-envelope "></i></span>
-                                                        <input type="text" class="form-control"
+                                                        <input id="emailU" type="text" class="form-control"
                                                             placeholder="armandoF@gmail.com" />
+                                                            <input id="role_idU"  hidden type="text" class="form-control" placeholder="Armando" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -123,6 +127,7 @@
                                             <button class="btn btn-primary btn-lg ms-auto">Actualizar</button>
                                         </div>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -142,6 +147,8 @@
     </div>
     <script src="../../assets/vendors/fontawesome/all.min.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/services/Dealer.js" type="module"></script>
+    <
 </body>
 
 </html>
