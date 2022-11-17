@@ -6,7 +6,7 @@ const HEADERS_URI = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
     'Origin': '*',
-    'Authorization': 'Bearer ' + getToken()
+    'Authorization': `Bearer ${getToken()}`
 }
 
 export {

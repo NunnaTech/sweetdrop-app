@@ -1,4 +1,5 @@
 function setData(key, value) {
+    localStorage.removeItem(key);
     localStorage.setItem(key, value);
 }
 

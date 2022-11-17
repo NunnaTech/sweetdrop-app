@@ -5,197 +5,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
+    <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css">
+    <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
 </head>
 
 <body>
 
 <div id="app">
-    <nav class="navbar nv-style  navbar-expand-md  navbar-light bg-primary">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="" href="../dashboards/dealer_dashboard.html"> <img class="navbar-brand img-fluid"
-                                                                         style="width: 100px; height:auto"
-                                                                         src="../../assets/images/logo/logo.png"></img></a>
-            <div class="collapse navbar-collapse  p-3 p-md-0" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active text-primary font-bold" aria-current="page"
-                           href="../dashboards/dealer_dashboard.html"><i class="fas fa-home me-2"></i>Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../store/stores.html"><i
-                                class="fas fa-store me-2"></i>Tiendas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../../profile/profile.html"><i
-                                class="fas fa-user me-2"></i>Perfil</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+    <nav id="navTemplate"></nav>
     <div id="main">
-
-        <div class="card m-0">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card-body page-heading m-0">
-                        <h1> Perfil</h1>
-                        <p class="text-uppercase text-sm">Información del Usuario</p>
-                    </div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="../dashboards/dealer_dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Perfil</li>
+            </ol>
+        </nav>
+        <div class="card m-2">
+            <div class="row col-12">
+                <div class="card-body text-center">
+                    <h3>Perfil</h3>
+                    <p>Aquí se muestran tus datos guardados en la aplicación</p>
                 </div>
             </div>
         </div>
-
         <div class="container-fluid">
             <div class="row my-3">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row mb-1">
-                                <form action="#"></form>
-                                <div class="col-md-6">
-                                    <label for="email-text-input" class="form-control-label">
-                                        <h5>Email</h5>
-                                    </label>
+                            <form class="row" id="formProfile">
+                                <div class="col-md-12 mb-3">
+                                    <label for="email" class="form-control-label"><h5>Email</h5></label>
                                     <div class="form-group position-relative has-icon-left m-0">
-
-                                        <input class="form-control" type="email" value="ricardogz@example.com"
-                                               id="email" disabled="">
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-envelope fs-6 text-secondary"></i>
+                                        <input class="form-control" type="email" name="email" id="email" disabled>
+                                        <div class="form-control-icon"><i
+                                                class="fas fa-envelope fs-6 text-secondary"></i></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-control-label"><h5>Nombre</h5></label>
+                                    <div class="form-group position-relative has-icon-left m-0">
+                                        <input class="form-control" type="text" id="name" name="name">
+                                        <div class="form-control-icon"><i class="fas fa-user fs-6 text-secondary"></i>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-md-6">
-                                    <label for="name-text-input" class="form-control-label">
-                                        <h5>Nombre</h5>
+                                <div class="col-md-6 mb-3">
+                                    <label for="first_surname" class="form-control-label"><h5>Apellido Paterno</h5>
                                     </label>
                                     <div class="form-group position-relative has-icon-left m-0">
-
-                                        <input class="form-control" type="text" value="Ricardo" id="name" disabled="">
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-user fs-6 text-secondary"></i>
+                                        <input class="form-control" type="text" id="first_surname">
+                                        <div class="form-control-icon"><i class="fas fa-user fs-6 text-secondary"></i>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-md-6">
-                                    <label for="fsurname-text-input" class="form-control-label">
-                                        <h5>Apellido Paterno</h5>
+                                <div class="col-md-6 mb-3">
+                                    <label for="second_surname" class="form-control-label"><h5>Apellido Materno</h5>
                                     </label>
                                     <div class="form-group position-relative has-icon-left m-0">
-
-                                        <input class="form-control" type="text" value="Gómez" id="first_surname"
-                                               disabled="">
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-user fs-6 text-secondary"></i>
+                                        <input class="form-control" type="text" name="second_surname"
+                                               id="second_surname">
+                                        <div class="form-control-icon"><i class="fas fa-user fs-6 text-secondary"></i>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="sdsurname-text-input" class="form-control-label">
-                                        <h5>Apellido Materno</h5>
-                                    </label>
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-control-label"><h5>Telefono</h5></label>
                                     <div class="form-group position-relative has-icon-left m-0">
-
-                                        <input class="form-control" type="text" value="Hernandez" id="second_surname"
-                                               disabled="">
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-user fs-6 text-secondary"></i>
-                                        </div>
+                                        <input class="form-control" type="tel" id="phone" name="phone">
+                                        <div class="form-control-icon"><i
+                                                class="fas fa-phone-alt fs-6 text-secondary"></i></div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="mobile-text-input" class="form-control-label">
-                                        <h5>Telefono</h5>
-                                    </label>
-                                    <div class="form-group position-relative has-icon-left m-0">
-                                        <input class="form-control" type="text" value="777-712-24-80" id="phone"
-                                               disabled="">
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-phone-alt fs-6 text-secondary"></i>
-                                        </div>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary font-bold col-12">
+                                            Guardar
+                                        </button>
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class="row gap-2 mt-2">
-                                <div class="col-12 col-md">
-                                    <button class="btn btn-primary font-bold col-12" id="btnSave" disabled=""
-                                            onclick="desactivarEdit()">
-                                        Guardar
-                                    </button>
-                                </div>
-                                <div class="col-12 col-md">
-                                    <button class="btn btn-outline-primary font-bold col-12" onclick="activarEdit()">
-                                        Editar Perfil
-                                    </button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <p class="text-uppercase text-sm text-gray-600">Cambiar Contraseña</p>
-                            <div class="row">
-                                <div class="col-12 col-md-6">
-                                    <label for="ubication-text-input" class="form-control-label font-bold">
-                                        <h5>Contraseña Actual</h5>
-                                    </label>
+                            <h5 class="text-gray-600">Cambiar contraseña</h5>
+                            <form class="row" id="formPassword">
+                                <div class="col-md-6 mb-3">
+                                    <label for="password" class="form-control-label font-bold"><h5>Contraseña
+                                        Actual</h5></label>
                                     <div class="form-group position-relative has-icon-left m-0">
-                                        <input class="form-control" type="password" placeholder="****" id="actPass"
-                                               disabled="">
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-lock fs-6 text-secondary"></i>
+                                        <input class="form-control" type="password" id="password" name="password">
+                                        <div class="form-control-icon"><i class="fas fa-lock fs-6 text-secondary"></i>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-12 col-md-6">
-                                    <label for="example-text-input" class="form-control-label">
-                                        <h5>Nueva Contraseña</h5>
+                                <div class="col-md-6 mb-3">
+                                    <label for="new_password" class="form-control-label"><h5>Nueva Contraseña</h5>
                                     </label>
                                     <div class="form-group position-relative has-icon-left m-0">
-
-                                        <input class="form-control" type="password" id="nuevaPass" value="***"
-                                               disabled="">
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-lock fs-6 text-secondary"></i>
+                                        <input class="form-control" type="password" id="new_password"
+                                               name="new_password">
+                                        <div class="form-control-icon"><i class="fas fa-lock fs-6 text-secondary"></i>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-6">
-                                    <label for="cellphone-text-input" class="form-control-label">
-                                        <h5>Confirmar Contraseña</h5>
-                                    </label>
+                                <div class="col-md-6 mb-3">
+                                    <label for="new_password_confirmation" class="form-control-label"><h5>Confirmar
+                                        Contraseña</h5></label>
                                     <div class="form-group position-relative has-icon-left m-0">
-                                        <input class="form-control" type="password" id="confPass" value="***"
-                                               disabled="">
-                                        <div class="form-control-icon">
-                                            <i class="fas fa-lock fs-6 text-secondary"></i>
+                                        <input class="form-control" type="password" id="new_password_confirmation"
+                                               name="new_password_confirmation">
+                                        <div class="form-control-icon"><i class="fas fa-lock fs-6 text-secondary"></i>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-12 col-md-6 mt-4">
-                                    <button class="btn btn-primary font-bold col-12" id="btnSave" disabled=""
-                                            onclick="cambioNuevaCont2()">
+                                <div class="col-md-6 mt-4">
+                                    <button class="btn btn-primary font-bold col-12" id="btnSavePassword">
                                         Guardar
                                     </button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -210,46 +144,12 @@
         </div>
     </div>
 </footer>
-
-<script type="text/javascript">
-    function activarEdit() {
-        document.getElementById('email').disabled = false;
-        document.getElementById('name').disabled = false;
-        document.getElementById('first_surname').disabled = false;
-        document.getElementById('second_surname').disabled = false;
-        document.getElementById('phone').disabled = false;
-        document.getElementById('btnSave').disabled = false;
-
-    }
-
-    function desactivarEdit() {
-        document.getElementById('email').disabled = true;
-        document.getElementById('name').disabled = true;
-        document.getElementById('first_surname').disabled = true;
-        document.getElementById('second_surname').disabled = true;
-        document.getElementById('phone').disabled = true;
-        document.getElementById('btnSave').disabled = true;
-
-    }
-
-    function cambioNuevaCont() {
-        document.getElementById('actPass').disabled = false;
-        document.getElementById('confPass').disabled = false;
-        document.getElementById('nuevaPass').disabled = false;
-        document.getElementById('btnGuardar').disabled = false;
-
-    }
-
-    function cambioNuevaCont2() {
-        document.getElementById('actPass').disabled = true;
-        document.getElementById('confPass').disabled = true;
-        document.getElementById('nuevaPass').disabled = true;
-        document.getElementById('btnGuardar').disabled = true;
-
-    }
-</script>
 <script src="../../assets/vendors/fontawesome/all.min.js"></script>
 <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/profile.js" type="module"></script>
+<script src="../../assets/js/components.js" type="module"></script>
+<script src="../../assets/js/logout.js" type="module"></script>
+
 </body>
 
 </html>

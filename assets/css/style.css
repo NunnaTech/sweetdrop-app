@@ -24,6 +24,9 @@
     z-index: 999999;
 }
 
+.display-flex {
+    display: flex;
+}
 
 .card-float {
     position: fixed;   
