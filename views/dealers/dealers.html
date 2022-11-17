@@ -1,81 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Repartidores</title>
-    <link href="https:fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
-</head>
+    <link
+      href="https:fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../../assets/images/favicon.ico"
+    />
+    <link
+      rel="stylesheet"
+      href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css"
+    />
+    <script
+      src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js"
+      type="module"
+    ></script>
+  </head>
 
-<body >
+  <body>
     <div id="app">
-        <nav class="navbar nv-style  navbar-expand-md  navbar-light bg-primary">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="" href="#"> <img class="navbar-brand img-fluid" style="width: 100px; height:auto"
-                        src="../../assets/images/logo/logo.png"/></a>
-                <div class="collapse navbar-collapse  p-3 p-md-0" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active text-primary font-bold" aria-current="page" href="#"><i class="fas fa-home me-2"></i>Dashboard</a>
-                        </li>    
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../dealer_views/dealer_stores.html"><i class="fas fa-store me-2"></i>Tiendas</a>
-                        </li>  
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../profile/profile.html"><i class="fas fa-user me-2"></i>Perfil</a>
-                        </li>                                                  
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <nav id="navTemplate"></nav>
 
-        <div id="main">
-            <div class="card mb-0">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <div class="card-body page-heading m-0 px-4">
-                            <h3 class="text-center">Repartidores Registrados</h3>
-                        </div>
-                    </div>
-                </div>
+      <div id="main">
+        <div class="card mb-0">
+          <div class="row">
+            <div class="col-12 text-center">
+              <div class="card-body page-heading m-0 px-4">
+                <h3 class="text-center">Repartidores Registrados</h3>
+              </div>
             </div>
-            <div class="d-md-flex flex-md-row-reverse my-3 mt-4 col-12">
-                <a href="register_dealer.html" class="btn btn-success">
-                    <i class="fas fa-plus me-2"></i>
-                    Agregar nuevo
-                </a>
-            </div>
-            <div class="page-content"  >
-                <section class="row gx-4" id="content-page" >
-                    
-
-                    
-                </section>
-            </div>
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="text-center">
-                        <p>2022 &copy; ThePandaDevs</p>
-                    </div>
-
-                </div>
-            </footer>
+          </div>
         </div>
+        <div class="d-md-flex flex-md-row-reverse my-3 mt-4 col-12">
+          <a href="register_dealer.html" class="btn btn-success">
+            <i class="fas fa-plus me-2"></i>
+            Agregar nuevo
+          </a>
+        </div>
+        <div class="page-content">
+          <section class="row gx-4" id="content-page"></section>
+        </div>
+        <footer>
+          <div class="footer clearfix mb-0 text-muted">
+            <div class="text-center">
+              <p>2022 &copy; ThePandaDevs</p>
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
-
 
     <script src="../../assets/vendors/fontawesome/all.min.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/services/Dealer.js" type="module"></script>
+    <script src="../../assets/js/components.js" type="module"></script>
+    <script src="../../assets/js/logout.js" type="module"></script>
 </body>
-
 </html>
