@@ -10,12 +10,15 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
+    <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css">
+    <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
+
 </head>
 
 <body>
 
 <div id="app">
-    <nav id="dealerNavTemplate"></nav>
+    <nav id="navTemplate"></nav>
 
     <div id="main">
         <nav aria-label="breadcrumb">
@@ -33,18 +36,12 @@
                     <div class="col-sm-7">
                         <div class="card-body page-heading m-0 px-4">
                             <h3>Historial de Ordenes</h3>
-                            <p class="fw-bold fs-5 text-auxiliar">Dulcería Wonderfully</p>
-                            <span class=" text-secondary">
-                                    <i class="fas fa-phone me-2 "></i>
-                                    777 344 50 35</span>
+                            <p id="name"></p>
+                            <span id="phone" class="text-secondary"></span>
                             <div class="mt-3">
-                                    <span class=" text-secondary">
-                                        <i class="fas fa-map-marker-alt me-2"></i>
-                                        Vicente Guerrero #923 Colonia Azteca, Temixco 62353</span>
+                                <span class="text-secondary" id="address"></span>
                             </div>
-                            <div class="my-3"><a class="btn btn-outline-primary font-bold">
-                                <i class="fas fa-external-link-alt me-2"></i>
-                                Abrir en Google Maps</a>
+                            <div class="my-3" id="openAddress">
                             </div>
                         </div>
                     </div>
@@ -64,281 +61,27 @@
                     Filtrar orden por estatus
                 </p>
                 <div class="container">
-                    <div class="row g-3">
-                        <div class="col-12 col-sm">
-                            <button class="btn btn-primary col-12">
-                                <i class="fas fa-walking me-2"></i>
-                                Visitada
-                            </button>
+                    <div class="card-body">
+
+                        <div class="list-group list-group-horizontal-sm mb-1 text-center" role="tablist">
+                            <a class="list-group-item list-group-item-action btn-primary active" id="list-sunday-list" data-bs-toggle="list" href="#list-sunday" role="tab" aria-selected="true"> <i class="fas fa-walking me-2"></i>Visitada</a>
+                            <a class="list-group-item list-group-item-action btn-primary " id="list-monday-list" data-bs-toggle="list" href="#list-monday" role="tab" aria-selected="false" tabindex="-1"> <i class="fas fa-spinner me-2"></i>En proceso</a>
+                            <a class="list-group-item list-group-item-action btn-primary " id="list-tuesday-list" data-bs-toggle="list" href="#list-tuesday" role="tab" aria-selected="false" tabindex="-1"><i class="fas fa-check-circle me-2"></i>Finalizada</a>
                         </div>
-                        <div class="col-12 col-sm">
-                            <button class="btn btn-outline-auxiliar col-12">
-                                <i class="fas fa-spinner me-2"></i>
-                                En Proceso
-                            </button>
-                        </div>
-                        <div class="col-12 col-sm">
-                            <button class="btn btn-outline-success col-12">
-                                <i class="fas fa-check-circle me-2"></i>
-                                Finalizada
-                            </button>
+                        <div class="tab-content text-justify">
+                            <div class="tab-pane fade active show" id="list-sunday" role="tabpanel" aria-labelledby="list-sunday-list">
+                                <section class="row gx-4 mt-5" id="ordersVisit"></section>
+                            </div>
+                            <div class="tab-pane fade" id="list-monday" role="tabpanel" aria-labelledby="list-monday-list">
+                                <section class="row gx-4 mt-5" id="ordersInProcess"></section>
+                            </div>
+                            <div class="tab-pane fade" id="list-tuesday" role="tabpanel" aria-labelledby="list-tuesday-list">
+                                <section class="row gx-4 mt-5" id="orderFinished"></section>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <section class="row gx-4">
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="d-flex align-items-start">
-                                <div class="d-flex align-items-center">
-                                    <div class="avatar me-3">
-                                        <i class="fas fa-info-circle text-primary fs-1"></i>
-                                    </div>
-                                    <div class="me-2">
-                                        <h5 class="mb-1 text-primary font-bold">Folio:
-                                            <span class="text-body fw-normal">36635</span>
-                                        </h5>
-                                        <div class="client-info d-flex align-items-center">
-                                            <h6 class="mb-0 me-1 font-bold">Tienda:</h6>
-                                            <span class="fw-normal">Dulcería
-                                                        Wonderfull</span>
-                                        </div>
-                                        <span class="badge bg-primary mt-2">
-                                                    Visitada
-                                                </span>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body pb-0">
-                            <div class="d-flex align-items-center flex-wrap">
-                                <div class="text-left mb-3">
-                                    <ul class="p-0 m-0 mt-1">
-                                        <li class="d-flex mb-4 pb-1">
-                                            <div class="avatar flex-shrink-5 me-3">
-                                                        <span class="avatar-initial rounded bg-label-primary px-4">
-                                                         <i class="fas fa-calendar"></i>                                                             
-                                                        </span>
-                                            </div>
-                                            <div
-                                                    class="d-flex w-100 flex-wrap align-items-center justify-content-between ">
-                                                <div class="me-2">
-                                                    <h6 class="mb-0 ">Fecha de visita:</h6>
-                                                    <small class="text-muted text-primary">19/10/2022</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="d-flex mb-4 pb-1">
-                                            <div class="avatar flex-shrink-5 me-3">
-                                                        <span class="avatar-initial rounded bg-label-secondary px-4">
-                                                         <i class="fas fa-user"></i>                                                             
-                                                        </span>
-                                            </div>
-                                            <div
-                                                    class="d-flex w-100 flex-wrap align-items-center justify-content-between ">
-                                                <div class="me-2">
-                                                    <h6 class="mb-0 text-secondary">Visita realizada
-                                                        por:</h6>
-                                                    <small class="text-muted">Luis Álvarez</small>
-                                                    <div class="user-progress">
-                                                        <small class="fw-semibold">777 344 54 25</small>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body border-top bg-light d-flex align-content-center p-3 ">
-                            <div class="col-12 d-flex justify-content-around ">
-                                <a href="../../views/orders/order_details.html" class="btn btn-outline-secondary">Ver Detalles
-                                    <i class="fas fa-chevron-right ms-2"></i>
-                                </a>
-                                <a href="#" class="btn btn-outline-danger">Eliminar Orden
-                                    <i class="fas fa-trash ms-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="d-flex align-items-start">
-                                <div class="d-flex align-items-center">
-                                    <div class="avatar me-3">
-                                        <i class="fas fa-info-circle text-primary fs-1"></i>
-                                    </div>
-                                    <div class="me-2">
-                                        <h5 class="mb-1 text-primary font-bold">Folio:
-                                            <span class="text-body fw-normal">36635</span>
-                                        </h5>
-                                        <div class="client-info d-flex align-items-center">
-                                            <h6 class="mb-0 me-1 font-bold">Tienda:</h6>
-                                            <span class="fw-normal">Dulcería
-                                                        Wonderfull</span>
-                                        </div>
-                                        <span class="badge bg-auxiliar mt-2">
-                                                    En proceso
-                                                </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body pb-1">
-                            <div class="d-flex align-items-center flex-wrap">
-                                <div class="text-left mb-3">
-                                    <ul class="p-0 m-0 mt-1">
-                                        <li class="d-flex mb-4 pb-1">
-                                            <div class="avatar flex-shrink-5 me-3">
-                                                        <span class="avatar-initial rounded bg-label-primary px-4">
-                                                         <i class="fas fa-calendar"></i>                                                             
-                                                        </span>
-                                            </div>
-                                            <div
-                                                    class="d-flex w-100 flex-wrap align-items-center justify-content-between ">
-                                                <div class="me-2">
-                                                    <h6 class="mb-0 ">Fecha de visita:</h6>
-                                                    <small class="text-muted text-primary">19/10/2022</small>
-                                                    <div class="user-progress">
-                                                        <small class="fw-semibold text-primary">Luis Álvarez</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="d-flex mb-0 pb-1">
-                                            <div class="avatar flex-shrink-5 me-3">
-                                                        <span class="avatar-initial rounded bg-label-secondary px-4">
-                                                         <i class="fas fa-calendar-check"></i>                                                             
-                                                        </span>
-                                            </div>
-                                            <div
-                                                    class="d-flex w-100 flex-wrap align-items-center justify-content-between ">
-                                                <div class="me-2">
-                                                    <h6 class="mb-0 text-secondary">Fecha del pedido:</h6>
-                                                    <small class="text-muted">21/10/22</small>
-                                                    <div class="user-progress">
-                                                        <small class="fw-semibold">Luis Álvarez</small>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body border-top bg-light d-flex align-content-center p-3 ">
-                            <div class="col-12 d-flex justify-content-around ">
-                                <a href="../../views/orders/order_details.html"  class="btn btn-outline-secondary">Ver Detalles
-                                    <i class="fas fa-chevron-right ms-2"></i>
-                                </a>
-                                <a href="#" class="btn btn-outline-danger">Eliminar Orden
-                                    <i class="fas fa-trash ms-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="d-flex align-items-start">
-                                <div class="d-flex align-items-center">
-                                    <div class="avatar me-3">
-                                        <i class="fas fa-info-circle text-primary fs-1"></i>
-                                    </div>
-                                    <div class="me-2">
-                                        <h5 class="mb-1 text-primary font-bold">Folio:
-                                            <span class="text-body fw-normal">36635</span>
-                                        </h5>
-                                        <div class="client-info d-flex align-items-center">
-                                            <h6 class="mb-0 me-1 font-bold">Tienda:</h6>
-                                            <span class="fw-normal">Dulcería
-                                                        Wonderfull</span>
-                                        </div>
-                                        <span class="badge bg-success mt-2">
-                                                    Finalizada
-                                                </span>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body pb-0">
-                            <div class="d-flex align-items-center flex-wrap">
-                                <div class="text-left mb-3">
-                                    <h6 class="mb-1"><i class="fas fa-calendar-day me-1"></i> Fecha de
-                                        solicitud: <span class="text-body fw-normal">14/2/21</span></h6>
-                                    <h6 class="mb-2 mt-4 text-auxiliar"><i
-                                            class="fas fa-calendar-check me-2"></i>Fecha de
-                                        entrega: <span class="text-body fw-normal">28/2/22</span>
-                                    </h6>
-                                </div>
-                            </div>
-                            <div class="bg-light-secondary p-2 rounded me-auto mb-4 text-center">
-                                <span>Monto total:</span>
-                                <h6 class="mb-1 fs-5 text-secondary">$1463.53
-                                </h6>
-                            </div>
-                            <ul class="p-0 m-0">
-                                <li class="d-flex mb-4 pb-1">
-                                    <div class="avatar flex-shrink-5 me-3">
-                                                <span class="avatar-initial rounded bg-label-primary px-3">
-                                                    <i class="fas fa-truck"></i>
-                                                </span>
-                                    </div>
-                                    <div
-                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between ">
-                                        <div class="me-2">
-                                            <h6 class="mb-0">Entrega realizada por:</h6>
-                                            <small class="text-muted">Luis Álvarez</small>
-                                        </div>
-                                        <div class="user-progress">
-                                            <small class="fw-semibold">777 522 36 58</small>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex mb-4 pb-1">
-                                    <div class="avatar flex-shrink-5 me-3">
-                                                <span class="avatar-initial rounded bg-label-secondary px-3">
-                                                    <i class="fas fa-sign-in-alt"></i>
-                                                </span>
-                                    </div>
-                                    <div
-                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between">
-                                        <div class="me-2">
-                                            <h6 class="mb-0 text-secondary">Entrega recibida
-                                                por:</h6>
-                                            <small class="text-muted">Ernesto Torres</small>
-                                        </div>
-                                        <div class="user-progress">
-                                            <small class="fw-semibold">777 344 54 25</small>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-body border-top bg-light d-flex align-content-center p-3 ">
-                            <div class="col-12 d-flex justify-content-around ">
-                                <a href="../../views/orders/order_details.html"  class="btn btn-outline-secondary">Ver Detalles
-                                    <i class="fas fa-chevron-right ms-2"></i>
-                                </a>
-                                <a href="#" class="btn btn-outline-danger">Eliminar Orden
-                                    <i class="fas fa-trash ms-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
         </div>
         <footer>
             <div class="footer clearfix mb-0 text-muted">
@@ -354,7 +97,9 @@
 
 <script src="../../assets/vendors/fontawesome/all.min.js"></script>
 <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/js/components.js"></script>
+<script src="../../assets/js/components.js" type="module"></script>
+<script src="../../assets/js/logout.js" type="module"></script>
+<script src="../../assets/js/services/OrderServices.js" type="module"></script>
 </body>
 
 </html>

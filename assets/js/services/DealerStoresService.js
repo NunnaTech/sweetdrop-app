@@ -72,11 +72,11 @@ function getData() {
                       </a>
                   </div>
                   <div class="d-flex justify-content-between my-3 mt-4">
-                      <a href="../orders/orders.html" class="btn btn-outline-auxiliar">
+                      <a href="../orders/orders.html?id=${store.id}" class="btn btn-outline-auxiliar">
                           <i class="fas fa-history me-2"></i>
                           Ver ordenes
                       </a>
-                      <a href="../orders/register_visit.html" class="btn btn-outline-secondary">
+                      <a href="../orders/register_visit.html?id=${store.id}" class="btn btn-outline-secondary">
                           <i class="fas fa-walking me-2"></i>
                           Agregar Visita
                       </a>
