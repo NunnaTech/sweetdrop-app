@@ -18,9 +18,9 @@ formVisit.addEventListener("submit", saveVisit);
 const getUrl = new URLSearchParams(window.location.search);
 let id = getUrl.get("id");
 
-getData();
+getInfoStore();
 
-function getData() {
+function getInfoStore() {
   NotifyService.loadingNotification();
   fetch(API_URI + `/stores/${id}`, {
     method: "GET",
@@ -51,7 +51,6 @@ function validateForm() {
 }
 
 function registerVisit() {
-  console.log("entro rv");
   NotifyService.loadingNotification();
   fetch(API_URI + `/orders/visit`, {
     method: "POST",
@@ -82,7 +81,7 @@ function registerVisit() {
     .catch((err) => {
       NotifyService.loadingNotificationRemove();
       NotifyService.notificatonError(
-        "Ha ocurrido un error al registrar la visita"
+        "Ha ocurrido un error al registrar la visita campos."
       );
     });
 }
