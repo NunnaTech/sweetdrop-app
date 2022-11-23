@@ -1,9 +1,9 @@
 // const minusButton = document.getElementById("minus");
 // const plusButton = document.getElementById("plus");
 // const inputField = document.getElementById("input");
-
+//
 // let value = Number(inputField.value);
-
+//
 // if (value <= 0) {
 //     minusButton.disabled = true;
 //     console.log(value);
@@ -15,7 +15,7 @@
 //         inputField.value = currentValue - 1;
 //     });
 // }
-
+//
 // plusButton.addEventListener("click", (event) => {
 //     event.preventDefault();
 //     const currentValue = Number(inputField.value) || 0;

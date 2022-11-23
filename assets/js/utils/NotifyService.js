@@ -25,6 +25,17 @@ class NotifyService {
     notificatonInfo(text) {
         Notiflix.Notify.info(text);
     }
+
+    notificationConfirm( functionConfirm){
+        Notiflix.Confirm.show(
+            'Confirmación',
+            '¿Estas seguro de eliminar el producto?',
+            'Si, eliminar',
+            'No, regresar',
+            function(){ functionConfirm() },
+            function(){ /* No button callback */ }
+        );
+    }
 }
 
 

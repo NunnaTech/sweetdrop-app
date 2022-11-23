@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
+    <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css">
+    <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
+
 </head>
 
 <body>
@@ -54,15 +57,11 @@
                 <div class="d-flex align-items-center row">
                     <div class="col-sm-7">
                         <div class="card-body page-heading m-0 px-4">
-                            <h3>Detalles de la orden 36635</h3>
-                            <p class="fw-bold fs-5 text-auxiliar">Dulcería Wonderfully</p>
-                            <span class=" text-secondary">
-                                    <i class="fas fa-phone me-2 "></i>
-                                    777 344 50 35</span>
+                            <h3 id="folio">Detalles de la orden 36635</h3>                            
+                            <p id="name"></p>
+                            <span id="phone" class="text-secondary"></span>
                             <div class="mt-3">
-                                    <span class=" text-secondary">
-                                        <i class="fas fa-map-marker-alt me-2"></i>
-                                        Vicente Guerrero #923 Colonia Azteca, Temixco 62353</span>
+                                <span class="text-secondary" id="address"></span>
                             </div>
                             <span class="badge bg-success mt-2">
                                     Finalizada
@@ -415,6 +414,7 @@
 <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../../assets/js/components.js" type="module"></script>
 <script src="../../assets/js/logout.js" type="module"></script>
+<script src="../../assets/js/services/OrderDetailsService.js" type="module"></script>
 </body>
 
 </html>
