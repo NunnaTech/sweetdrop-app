@@ -17,14 +17,7 @@ const getUrl = new URLSearchParams(window.location.search);
 let id = getUrl.get("id");
 const user = getUser();
 
-let productsArray = [
-  /*  {
-        id: 3,
-        quantity: 10,
-    },
-
-    */
-];
+let productsArray = [];
 
 let images = [
   "https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg",
@@ -32,14 +25,6 @@ let images = [
 
 getInfoStore();
 getProducts();
-
-isTheOwner.addEventListener("change", (event) => {
-  if (isTheOwner.checked) {
-    received_by.value = user.name + " " + user.first_surname;
-  } else {
-    received_by.value = "";
-  }
-});
 
 formOrder.addEventListener("submit", saveOrder);
 
@@ -52,6 +37,14 @@ function getInfoStore() {
     .then((response) => response.json())
     .then((data) => {
       NotifyService.loadingNotificationRemove();
+
+      isTheOwner.addEventListener("change", (event) => {
+        if (isTheOwner.checked) {
+          received_by.value = data.data.owner;
+        } else {
+          received_by.value = "";
+        }
+      });
       name.innerHTML = `<p class="fw-bold fs-5 text-auxiliar">${data.data.name}</p>`;
       phone.innerHTML = `<i class="fas fa-phone me-2 "></i>${data.data.phone}</span>`;
       address.innerHTML = `<i class="fas fa-map-marker-alt me-2"></i>${
@@ -94,30 +87,6 @@ function getProducts() {
 
 function render(products) {
   products.data.forEach((product) => {
-    const input = document.createElement("input");
-
-    input.innerHTML = `<input type="number" min="0" value="0" class="form-control h-auto d-inline-block" id="${product.id}">`;
-
-    input.addEventListener("change", (event) => {
-      console.log(product.id);
-
-
-      if (event.target.value > 0) {
-        productsArray.push({
-          id: product.id,
-          quantity: event.target.value,
-        });
-
-        console.log(productsArray);
-      } else {
-        productsArray = products.filter(
-          (product) => product.id !== event.target.id
-        );
-      }
-    });
-
-    container.appendChild(input);
-
     let cardOutside = document.createElement("div");
     cardOutside.classList.add("col-xl-6", "col-lg-6", "col-md-6");
 
@@ -174,7 +143,7 @@ function render(products) {
     quantityContainer.classList.add("input-group", "mb-3");
 
     let inputQuantity = document.createElement("input");
-    inputQuantity.classList.add("form-control", "h-auto", "d-inline-block");
+    inputQuantity.classList.add("form-control", "h-auto", "d-inline-block", "text-center");
     inputQuantity.setAttribute("type", "number");
     inputQuantity.setAttribute("min", "0");
     inputQuantity.setAttribute("value", "0");
@@ -205,7 +174,9 @@ function render(products) {
     addBtn.classList.add("btn", "btn-auxiliar", "col-12", "mt-2");
     addBtn.innerHTML = "Agregar";
     btnPlus.setAttribute("type", "button");
-    addBtn.addEventListener("click", (event) => addProductToCart(event,  product.id ));
+    addBtn.addEventListener("click", (event) =>
+      addProduct(event, product.id)
+    );
 
     cardImage.appendChild(image);
 
@@ -241,8 +212,7 @@ function minusProduct(input) {
     input.value = input.dataset.quantity;
   } else {
     input.dataset.quantity = 0;
-    input.value = 0;
-    NotifyService.notificatonError("No puedes agregar menos de 0 productos");
+    input.value = 0;    
   }
 }
 
@@ -251,22 +221,29 @@ function plusProduct(input) {
   input.value = input.dataset.quantity;
 }
 
-function addProductToCart(event, productId) {
+function addProduct(event, productId) {
   let products = document.querySelectorAll(".form-control");
   products.forEach((product) => {
-    if (product.value > 0) {
-      productsArray.push({
-        id: productId,
-        quantity: product.value,
-      });
+    if (product.dataset.id == productId) {
+      if (product.dataset.quantity > 0) {
+        productsArray.push({
+          id: productId,
+          quantity: product.value,
+        });
+        // do not reload the page
+        event.preventDefault();
+        NotifyService.notificatonSuccess(
+          "Producto agregado satisfactoriamente"
+        );
+
+        // print the array in JSON format
+        console.log(JSON.stringify(productsArray));
+      } else {
+        event.preventDefault();
+        NotifyService.notificatonError("Por favor, agrega al menos 1 producto");
+      }
     }
   });
-  // do not reload the page
-  event.preventDefault();
-  NotifyService.notificatonSuccess("Producto agregado al carrito");
-  
-  // print the array in JSON format
-    console.log(JSON.stringify(productsArray));
 }
 
 function confirmDeleteOrder(id) {
@@ -303,7 +280,7 @@ function createOrder() {
     body: JSON.stringify({
       store_id: id,
       received_by: received_by.value,
-      products: products,
+      products: productsArray,
       comment: comment.value,
       images: images,
     }),
@@ -313,10 +290,15 @@ function createOrder() {
       console.log(order);
       if (order.success) {
         NotifyService.loadingNotificationRemove();
-        NotifyService.notificatonSuccess("Orden registrada correctamente");
+        NotifyService.notificatonSuccess(
+          "Orden registrada correctamente con el folio " + order.data.folio
+        );
+        NotifyService.notificatonSuccess(
+          "Redireccionando a la lista de ordenes"
+        );
         setTimeout(() => {
           window.location.href = "../../../views/orders/orders.html?id=" + id;
-        }, 1000);
+        }, 3000);
       } else {
         NotifyService.loadingNotificationRemove();
         NotifyService.notificatonError(
@@ -337,13 +319,12 @@ function validateForm() {
     comment.value !== "" &&
     received_by.value !== "" &&
     images.length !== 0 &&
-    products.length !== 0 &&
-    id !== ""
+    products.length !== 0
   );
 }
 
 function saveOrder(e) {
-  /*e.preventDefault();
-    if (validateForm()) createOrder();
-    else NotifyService.notificatonError("Los campos no deben estar vacios");*/
+  e.preventDefault();
+  if (validateForm()) createOrder();
+  else NotifyService.notificatonError("Los campos no deben estar vacios");
 }
