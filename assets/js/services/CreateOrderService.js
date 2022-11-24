@@ -1,6 +1,8 @@
 import { API_URI, HEADERS_URI } from "./API.js";
 import { getUser } from "../utils/LocalStorage.js";
 import NotifyService from "../utils/NotifyService.js";
+import { base64ToFile } from "../utils/FileFormat.js";
+import { saveImageFirestore } from "../utils/Firestore-functions.js";
 
 const name = document.getElementById("name");
 const phone = document.getElementById("phone");
@@ -12,6 +14,8 @@ const isTheOwner = document.querySelector("#isTheOwner");
 const comment = document.querySelector("#comment");
 const formOrder = document.querySelector("#formOrder");
 const container = document.querySelector("#container");
+const storeImage = document.querySelector("#storeImage");
+const openCamera = document.querySelector("#button-camera");
 
 const getUrl = new URLSearchParams(window.location.search);
 let id = getUrl.get("id");
@@ -22,7 +26,12 @@ let productsArray = [];
 let images = [
     "https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg",
 ];
-
+openCamera.addEventListener("click", () => {
+  window.location.href = "../../../views/orders/take_photo.html";
+  sessionStorage.setItem("photoType", "order");
+  sessionStorage.setItem("orderId", id);
+  sessionStorage.setItem("observations", comment.value);
+});
 getInfoStore();
 getProducts();
 
@@ -60,6 +69,16 @@ function getInfoStore() {
                 "Ha ocurrido un error al cargar los datos"
             );
         });
+    
+        // load text from session storage
+        const observations = sessionStorage.getItem("observations");
+        if (observations) comment.value = observations;
+        // load images from session storage
+        const image = sessionStorage.getItem("image");
+        if (image) {
+            storeImage.setAttribute("src", image);
+            storeImage.setAttribute("style", "visibility: visible");
+        }
 }
 
 function getProducts() {
@@ -170,13 +189,11 @@ function render(products) {
         let addBtnContainer = document.createElement("div");
         addBtnContainer.classList.add("d-flex", "justify-content-center", "mt-5");
 
-        let addBtn = document.createElement("button");
-        addBtn.classList.add("btn", "btn-auxiliar", "col-12", "mt-2");
-        addBtn.innerHTML = "Agregar";
-        btnPlus.setAttribute("type", "button");
-        addBtn.addEventListener("click", (event) =>
-            addProduct(event, product.id)
-        );
+    let addBtn = document.createElement("button");
+    addBtn.classList.add("btn", "btn-auxiliar", "col-12", "mt-2");
+    addBtn.innerHTML = "Agregar";
+    btnPlus.setAttribute("type", "button");
+    addBtn.addEventListener("click", (event) => addProduct(event, product.id));
 
         cardImage.appendChild(image);
 
@@ -246,18 +263,50 @@ function addProduct(event, productId) {
     });
 }
 
-function createOrder() {
-    NotifyService.loadingNotification();
-    fetch(API_URI + `/orders`, {
-        method: "POST",
-        headers: HEADERS_URI,
-        body: JSON.stringify({
-            store_id: id,
-            received_by: received_by.value,
-            products: productsArray,
-            comment: comment.value,
-            images: images,
-        }),
+async function createOrder() {
+  NotifyService.loadingNotification();
+  const image = base64ToFile(
+    sessionStorage.getItem("image"),
+    new Date().getTime() + ".jpg"
+  );
+  const imageUrl = await saveImageFirestore(image);
+  fetch(API_URI + `/orders`, {
+    method: "POST",
+    headers: HEADERS_URI,
+    body: JSON.stringify({
+      store_id: id,
+      received_by: received_by.value,
+      products: productsArray,
+      comment: comment.value,
+      images: [imageUrl],
+    }),
+  })
+    .then((response) => response.json())
+    .then((order) => {
+      console.log(order);
+      if (order.success) {
+        // clear session storage
+        sessionStorage.removeItem("image");
+        sessionStorage.removeItem("observations");
+        sessionStorage.removeItem("photoType");
+        sessionStorage.removeItem("orderId");
+        // send notifications
+        NotifyService.loadingNotificationRemove();
+        NotifyService.notificatonSuccess(
+          "Orden registrada correctamente con el folio " + order.data.folio
+        );
+        NotifyService.notificatonSuccess(
+          "Redireccionando a la lista de ordenes"
+        );
+        setTimeout(() => {
+          window.location.href = "../../../views/orders/orders.html?id=" + id;
+        }, 3000);
+      } else {
+        NotifyService.loadingNotificationRemove();
+        NotifyService.notificatonError(
+          "La orden no fue registrada, favor de revisar campos."
+        );
+      }
     })
         .then((response) => response.json())
         .then((order) => {
