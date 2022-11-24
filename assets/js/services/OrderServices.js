@@ -410,9 +410,7 @@ function getOrdersByStore() {
                         </div>
                         <div class="card-body border-top d-flex align-content-center p-3 ">
                             <div class="col-12 d-flex justify-content-around ">
-                            <a href="../../views/orders/order_details.html?id=${
-                    order.id
-                }" class="btn btn-outline-secondary">Ver
+                            <a href="../../views/orders/order_details.html?id=${order.id}" class="btn btn-outline-secondary">Ver
                             Detalles
                                     <i class="fas fa-chevron-right ms-2"></i>
                                 </a>

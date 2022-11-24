@@ -119,7 +119,7 @@ function getData() {
                         <a  class="btn btn-success col-12 text-center mb-3 mb-md-0">${order.status.name}</a>
                     </div>
                     <div class="col-12 col-sm-6">
-                        <a href="../orders/order_details.html"
+                        <a href="../orders/order_details.html?id=${order.id}"
                             class="btn btn-outline-secondary col-12">Ver más detalles
                             <i class="fas fa-chevron-right text-secondary ms-2"></i>
                         </a>
