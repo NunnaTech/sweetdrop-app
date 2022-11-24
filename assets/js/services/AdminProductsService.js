@@ -1,21 +1,19 @@
 import { API_URI, HEADERS_URI } from "./API.js";
+import { goToPage } from "../utils/Routes.js";
 import ProductService from "./ProductService.js";
-import { getToken, getUser } from "./../utils/LocalStorage.js";
+import NotifyService from "../utils/NotifyService.js";
 
-//import ToastifyService from "./../utils/ToastifyService.js"; 
-
-const user = getUser();
 const registerForm = document.querySelector('#registerProduct') || document.createElement('form');
 const inputName = document.querySelector('#name') || document.createElement('input');
 const inputPrice = document.querySelector('#price') || document.createElement('input');
 const inputDescription = document.querySelector('#description') || document.createElement('input');
-const fileField = 'https://static.vecteezy.com/system/resources/previews/008/289/394/non_2x/illustrations-chocolate-cake-free-vector.jpg'
+let fileField = ["https://static.vecteezy.com/system/resources/previews/008/289/394/non_2x/illustrations-chocolate-cake-free-vector.jpg"];
 
 
 registerForm.addEventListener('submit', register);
 
 
-fetch(API_URI + `/users/products/${user.id}`, {
+fetch(API_URI + `/products`, {
     method: "GET",
     headers: HEADERS_URI,
   })
@@ -31,16 +29,24 @@ function validInputs() {
 
 
 function sendProductRequest() {
-    ProductService.RegisterProduct(inputName.value, inputPrice.value, inputDescription.value, fileField.id)
+    NotifyService.loadingNotification()
+    ProductService.RegisterProduct(inputName.value, inputPrice.value, inputDescription.value, fileField.value)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
                 console.log(data);
                 setData('product', JSON.stringify(product));
-                console.log('Exito');
-            } else alert('No se pudo registrar al producto')
+                NotifyService.notificatonError('Producto Registrado')
+                NotifyService.loadingNotificationRemove()
+            } else {
+                NotifyService.notificatonError('Error al registrar la Tienda')
+                NotifyService.loadingNotificationRemove()
+            }
             console.log('Error');
-        }).catch(error => alert('Hubo un error en el servicio'+ error));
+        }).catch(error => {
+            NotifyService.notificatonError('Hubo un error en el servicio')
+            NotifyService.loadingNotificationRemove()
+            })
 }
 
 function register(e) {
