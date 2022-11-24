@@ -157,7 +157,7 @@ function getOrdersByStore() {
                         </div>
                         <div class="card-body border-top d-flex align-content-center p-3 ">
                             <div class="col-12 d-flex justify-content-around ">
-                                <a href="../../views/orders/order_details.html?id=${order.id}" class="btn btn-outline-secondary">Ver
+                                <a href="../../views/orders/visit_details.html?id=${order.id}" class="btn btn-outline-secondary">Ver
                                     Detalles
                                     <i class="fas fa-chevron-right ms-2"></i>
                                 </a>
@@ -459,7 +459,7 @@ function confirmFinishOrder(id) {
 function deleteOrder(id) {
     Notiflix.Confirm.show(
         'Confirmación',
-        '¿Estás seguro de eliminar la oden?',
+        '¿Estás seguro de eliminar la orden?',
         'Sí, eliminar',
         'No, cancelar',
         () => {
@@ -487,7 +487,7 @@ function finishOrder(id) {
         .then((response) => {
             NotifyService.loadingNotificationRemove();
             if (response.status === 200) {
-                NotifyService.notificatonSuccess("Orden completada con exito");
+                NotifyService.notificatonSuccess("Orden completada con éxito");
                 getOrdersByStore()
             } else {
                 NotifyService.notificatonError("Ha ocurrido un error");
