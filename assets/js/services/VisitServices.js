@@ -89,6 +89,12 @@ async function registerVisit() {
       console.log(data);
 
       if (data.success) {
+        // clear session storage
+        sessionStorage.removeItem("image");
+        sessionStorage.removeItem("observations");
+        sessionStorage.removeItem("photoType");
+        sessionStorage.removeItem("orderId");
+        // send notifications
         NotifyService.loadingNotificationRemove();
         NotifyService.notificatonSuccess("Visita registrada correctamente");
         setTimeout(() => {
