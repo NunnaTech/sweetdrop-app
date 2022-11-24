@@ -1,6 +1,8 @@
 import { API_URI, HEADERS_URI } from "./API.js";
 import { getUser } from "../utils/LocalStorage.js";
 import NotifyService from "../utils/NotifyService.js";
+import { base64ToFile } from "../utils/FileFormat.js";
+import { saveImageFirestore } from "../utils/Firestore-functions.js";
 
 const name = document.getElementById("name");
 const phone = document.getElementById("phone");
@@ -8,15 +10,22 @@ const address = document.getElementById("address");
 const openAddress = document.querySelector("#openAddress");
 const comment = document.querySelector("#comment");
 const formVisit = document.querySelector("#formVisit");
+const openCamera = document.querySelector("#button-camera");
+const storeImage = document.querySelector("#storeImage");
 let images = [
   "https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg",
   "https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg",
 ];
-
+openCamera.addEventListener("click", () => {
+  window.location.href = "../../../views/orders/take_photo.html";
+  sessionStorage.setItem("photoType", "visit");
+  sessionStorage.setItem("orderId", id);
+  sessionStorage.setItem("observations", comment.value);
+});
 formVisit.addEventListener("submit", saveVisit);
 
 const getUrl = new URLSearchParams(window.location.search);
-let id = getUrl.get("id");
+const id = getUrl.get("id");
 
 getInfoStore();
 
@@ -44,21 +53,35 @@ function getInfoStore() {
         "Ha ocurrido un error al cargar los datos"
       );
     });
+  // load text from session storage
+  const observations = sessionStorage.getItem("observations");
+  if (observations) comment.value = observations;
+  // load images from session storage
+  const image = sessionStorage.getItem("image");
+  if (image) {
+    storeImage.setAttribute("src", image);
+    storeImage.setAttribute("style", "visibility: visible");
+  }
 }
 
 function validateForm() {
   return comment.value !== "" && images.length !== 0;
 }
 
-function registerVisit() {
+async function registerVisit() {
   NotifyService.loadingNotification();
+  const image = base64ToFile(
+    sessionStorage.getItem("image"),
+    new Date().getTime() + ".jpg"
+  );
+  const imageUrl = await saveImageFirestore(image);
   fetch(API_URI + `/orders/visit`, {
     method: "POST",
     headers: HEADERS_URI,
     body: JSON.stringify({
       store_id: id,
       comment: comment.value,
-      images: images,
+      images: [imageUrl],
     }),
   })
     .then((response) => response.json())
