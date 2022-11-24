@@ -3,5 +3,4 @@
     console.log('SW: Soportado');
 }else{
     console.log('SW: NO soportado');
-}
-*/
+}*/

@@ -1,5 +1,6 @@
 import { API_URI, HEADERS_URI } from "./API.js";
 
+<<<<<<< HEAD
 import { goToPage } from "../utils/Routes.js";
 import NotifyService from "../utils/NotifyService.js";
 const getUrl = new URLSearchParams(window.location.search);
@@ -72,3 +73,23 @@ fetch(API_URI + "/products/" + id, {
     }
   })
   .catch((error) => console.log(error));
+=======
+
+
+class ProductService{
+    RegisterProduct(name, description, price, image){
+        return fetch(API_URI + `/products`,{
+            method:'POST',
+            headers: HEADERS_URI,
+            body:JSON.stringify({
+                name: name,
+                description:description,
+                price:price,
+                image:image
+            })
+        })
+    }
+}
+
+export default new ProductService();
+>>>>>>> 207b8f8eb4513ad2221ed5040224ebc4bac0782c
