@@ -3,9 +3,13 @@ import {getUser} from "../utils/LocalStorage.js";
 import NotifyService from "../utils/NotifyService.js";
 
 const totalStores = document.getElementById("totalStores");
-
+const inputStores = document.getElementById("inputStores");
 const user = getUser();
-getData()
+
+let allStores = []
+let filterStores = []
+
+getData();
 
 function getData() {
     NotifyService.loadingNotification()
@@ -15,15 +19,37 @@ function getData() {
     })
         .then((response) => response.json())
         .then((data) => {
+            allStores = data.data;
+            renderStores(allStores)
+        })
+        .catch((err) => {
             NotifyService.loadingNotificationRemove()
-            totalStores.innerHTML = `<span class="fw-bold fs-3" >
-            ${data.data.length === 0 ? "No tienes registrada alguna tienda" : +data.data.length + " tiendas"} </span>`;
-            let card = document.getElementById("stores");
-            if (data.data.length === 0) {
-                card.innerHTML = `<p class="card  py-5 bg-light  text-primary text-center">No tienes tiendas registradas</p>`;
-            }
-            data.data.forEach((store) => {
-                card.innerHTML += `
+            NotifyService.notificatonError('Ha ocurrido un error al cargar los datos')
+        });
+}
+
+
+inputStores.addEventListener('keyup', e => {
+    if (e.target.value.length > 0) {
+        filterStores = allStores.filter(store => store.name.toLowerCase().includes(e.target.value.toLowerCase()))
+        renderStores(filterStores)
+    } else {
+        renderStores(allStores)
+    }
+})
+
+function renderStores(myStores) {
+    NotifyService.loadingNotificationRemove()
+    totalStores.innerHTML = `<span class="fw-bold fs-3" >
+          ${allStores.length === 0 ? "No tienes registrada alguna tienda" : +allStores.length + " tiendas"} </span>`;
+    let card = document.getElementById("stores");
+    if (myStores.length === 0) {
+        card.innerHTML = `<p class="card  py-5 bg-light  text-primary text-center">No tienes tiendas registradas</p>`;
+    } else {
+        card.innerHTML = "";
+    }
+    myStores.forEach((store) => {
+        card.innerHTML += `
               <div class="col-xl-4 col-lg-6 col-md-6">
               <div class="card">
               <div class="card-header">
@@ -92,12 +118,5 @@ function getData() {
               </div>
           </div>
           </div>`;
-            });
-        })
-        .catch((err) => {
-            NotifyService.loadingNotificationRemove()
-            NotifyService.notificatonError('Ha ocurrido un error al cargar los datos')
-        });
+    });
 }
-
-
