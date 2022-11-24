@@ -1,123 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agregar visita</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../../assets/images/favicon.ico"
+    />
+    <link
+      rel="stylesheet"
+      href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css"
+    />
+    <script
+      src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js"
+      type="module"
+    ></script>
+  </head>
 
-<body>
+  <body>
+    <div id="app">
+      <nav id="navTemplate"></nav>
 
-<div id="app">
-    <nav id="dealerNavTemplate"></nav>
-
-    <div id="main">
+      <div id="main">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item "><a href="../dashboards/dealer_dashboard.html">Dashboard</a></li>
-                <li class="breadcrumb-item "><a href="../dealer_views/dealer_stores.html">Tiendas</a></li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    Agregar visita
-                </li>
-            </ol>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="../dashboards/dealer_dashboard.html">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="../dealer_views/dealer_stores.html">Tiendas</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Agregar visita
+            </li>
+          </ol>
         </nav>
         <div class="mb-0 order-0">
-            <div class="card mb-0">
-                <div class="d-flex align-items-center row">
-                    <div class="col-sm-7">
-                        <div class="card-body page-heading m-0 px-4">
-                            <h3>Agregar Visita</h3>
-                            <p class="fw-bold fs-5 text-auxiliar">Dulcería Wonderfully</p>
-                            <span class=" text-secondary">
-                                    <i class="fas fa-phone me-2 "></i>
-                                    777 344 50 35</span>
-                            <div class="mt-3">
-                                    <span class=" text-secondary">
-                                        <i class="fas fa-map-marker-alt me-2"></i>
-                                        Vicente Guerrero #923 Colonia Azteca, Temixco 62353</span>
-                            </div>
-                            <div class="my-3"><a class="btn btn-outline-primary font-bold">
-                                <i class="fas fa-external-link-alt me-2"></i>
-                                Abrir en Google Maps</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-5 text-center text-sm-left ">
-                        <div class="card-body py-0 px-0 px-md-4">
-                            <img src="../../assets/images/resources/dealer-visit.png" height="200" alt="add-order"</div>
-                    </div>
+          <div class="card mb-0">
+            <div class="d-flex align-items-center row">
+              <div class="col-sm-7">
+                <div class="card-body page-heading m-0 px-4">
+                  <h3>Agregar Visita</h3>
+                  <p id="name"></p>
+                  <span id="phone" class="text-secondary"></span>
+                  <div class="mt-3">
+                    <span class="text-secondary" id="address"></span>
+                  </div>
+                  <div class="my-3" id="openAddress"></div>
                 </div>
+              </div>
+              <div class="col-sm-5 text-center text-sm-left">
+                <div class="card-body py-0 px-0 px-md-4">
+                  <img
+                    src="../../assets/images/resources/dealer-visit.png"
+                    height="200"
+                    alt="add-order"
+                  />
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-        <hr class="my-4">
+        <hr class="my-4" />
         <div class="page-content">
-
-            <div class="card">
-                <div class="card-header pb-0">
-                    <h4 class="card-title mt-2">Agregar detalles de la visita</h4>
-                    <p class="mb-1">Por favor, llena los siguientes datos para agregar la visita
-                </div>
-                <div class="card-content">
-                    <div class="card-body py-0">
-                        <hr>
-                        <div>
-                            <p class="text-auxiliar font-semibold">Selecciona la fecha de visita:</p>
-                            <div class="form-group mt-3">
-                                <label for="helpInputTop" class="mb-3">Fecha de visita</label>
-                                <small class="text-muted">(DD/MM/AAAA)</small>
-                                <input type="date" class="form-control" id="helpInputTop">
-                            </div>
-                            <hr class="my-4">
-                            <div class="card-header p-0">
-                                <p class="text-auxiliar font-semibold">Agrega tus observaciones sobre esta
-                                    visita: </p>
-                            </div>
-                            <div class="card-body px-0">
-                                <div class="form-floating">
-                                            <textarea cols="50" rows="4" class="form-control"
-                                                      placeholder="Leave a comment here"
-                                                      id="floatingTextarea"></textarea>
-                                    <label for="floatingTextarea">Tus observaciones</label>
-                                </div>
-                                <p class="my-3 font-semibold text-auxiliar">Subir foto(s)
-                                    <small class="text-muted fw-light">Realiza una foto a la evidencia
-                                        correspondiente.</small>
-                                </p>
-                                <div class="m-0">
-                                    <input type="file" aria-describedby="button-addon2" class="form-control"
-                                           id="selectedFile" style="display: none;"/>
-                                    <button type="button" id="button-addon2" class="btn btn-secondary col-12"
-                                            onclick="document.getElementById('selectedFile').click()">
-                                        <i class="fas fa-camera me-2"></i>Abrir cámara
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <div class="card">
+            <div class="card-header pb-0">
+              <h4 class="card-title mt-2">Agregar detalles de la visita</h4>
+              <p class="mb-1">
+                Por favor, llena los siguientes datos para agregar la visita
+              </p>
             </div>
+
+            <div class="card-content">
+              <div class="card-body py-0">
+                <div>
+                  <hr class="my-4" />
+                  <div class="card-header p-0">
+                    <p class="text-auxiliar font-semibold">
+                      Agrega tus observaciones sobre esta visita:
+                    </p>
+                  </div>
+                  <div class="card-body px-0">
+                    <form id="formVisit">
+                      <div class="form-floating">
+                        <textarea
+                          cols="50"
+                          rows="4"
+                          class="form-control"
+                          placeholder="Tus observaciones"
+                          id="comment"
+                        ></textarea>
+                        <label for="floatingTextarea">Tus observaciones</label>
+                      </div>
+                      <p class="my-3 font-semibold text-auxiliar">
+                        Subir foto
+                        <small class="text-muted fw-light"
+                          >Realiza una foto a la evidencia
+                          correspondiente.</small
+                        >
+                      </p>
+                      <div class="m-0">
+                        <button
+                          type="button"
+                          id="button-camera"
+                          class="btn btn-secondary col-12"
+                        >
+                          <i class="fas fa-camera me-2"></i>Abrir cámara
+                        </button>
+                      </div>
+                      <div
+                        class="card-body py-1 px-1 px-md-4 d-flex justify-content-center"
+                      >
+                        <img
+                          id="storeImage"
+                          height="200"
+                          alt="add-order"
+                          style="visibility: hidden"
+                        />
+                      </div>
+                      <hr class="my-5" />
+                      <button class="btn btn-primary col-12">
+                        <i class="fas fa-walking me-2"></i>Guardar Visita
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <footer>
-            <div class="footer clearfix mb-0 text-muted">
-                <div class="text-center">
-                    <p>2022 &copy; ThePandaDevs</p>
-                </div>
+          <div class="footer clearfix mb-0 text-muted">
+            <div class="text-center">
+              <p>2022 &copy; ThePandaDevs</p>
             </div>
+          </div>
         </footer>
+      </div>
     </div>
-</div>
 
-
-<script src="../../assets/vendors/fontawesome/all.min.js"></script>
-<script src="../../assets/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/js/components.js"></script>
-
-</body>
-
+    <script src="../../assets/vendors/fontawesome/all.min.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/components.js" type="module"></script>
+    <script src="../../assets/js/logout.js" type="module"></script>
+    <script
+      src="../../assets/js/services/VisitServices.js"
+      type="module"
+    ></script>
+  </body>
 </html>
