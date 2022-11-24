@@ -10,109 +10,84 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico" />
+    <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css">
+    <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
 </head>
 
 <body>
-    <nav id="navTemplate"></nav>
-    <div id="app">        
+    <div id="app">
         <div id="main">
-
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a href="../dashboards/dealer_dashboard.html">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="../dealer_views/dealer_stores.html">Tiendas</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                        Detalles de la tienda
-                    </li>
-                </ol>
-            </nav>
             <!-- Contenido de la página web -->
-            <div class="page-content ">
-                <section class="row">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header pb-0">
-                                        <div class="d-flex align-items-center">
-                                            <h3 class=" text-center">Datos de la Tienda</h3>
+            <div class="page-content">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="row gx-4">
+                                <form class="form" id="updateForm">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12 mt-3 mb-4">
+                                            <div class="form-group position-relative has-icon-left m-0">
+                                                <label class="form-label" for="name">Nombre</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Abarrotes Domínguez" id="name" name="name" />
+                                                    <div class="form-control-icon">
+                                                        <i class="fas fa-store fs-6 text-secondary"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12 mt-3 mb-4">
+                                            <div class="form-group position-relative has-icon-left m-0">
+                                                <label class="form-label" for="phone">Teléfono</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="phone"><i
+                                                            class="fas fa-phone"></i></span>
+                                                    <input type="text" class="form-control" placeholder="7775674323"
+                                                        id="phone" name="phone" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12 mt-3 mb-4">
+                                            <div class="form-group position-relative has-icon-left m-0">
+                                                <label class="form-label" for="address">Dirección</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="deliver_date"><i
+                                                            class="fas fa-map"></i></span>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Av.Plan de Ayala No.45" id="address" name="address"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12 mt-3 mb-4">
+                                            <div class="form-group position-relative has-icon-left m-0">
+                                                <label class="form-label" for="zipcode">Código Postal</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="number" class="form-control" placeholder="62000"
+                                                        id="zipcode" name="zipcode" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12 mt-3 mb-4">
+                                            <div class="form-group position-relative has-icon-left m-0">
+                                                <label class="form-label" for="owner">Nombre del Propietario</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text"><i class="fas fa-user "></i></span>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Alejandro López" id="owner" name="owner"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1" id="update">Enviar</button>
+                                            
                                         </div>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label" for="phone">Nombre</label>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i
-                                                                class="fas fa-store"></i></span>
-                                                        <input type="text" id="name" class="form-control" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label" for="phone">Teléfono</label>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i
-                                                                class="fas fa-phone"></i></span>
-                                                        <input type="text" id="phone" class="form-control"
-                                                            placeholder="7775674323" />
-                                                    </div>
-                                                </div>
-                                            </div>                                           
-                                            <div class="col-md-4">
-                                                <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label" for="phone">Código Postal</label>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text" id="phone"><i
-                                                                class="fas fa-location-arrow"></i></span>
-                                                        <input type="text" id="zipcode" class="form-control"
-                                                            placeholder="7775674323" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label" for="owner">Nombre del Propietario</label>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text" id="owner"><i
-                                                                class="fas fa-user "></i></span>
-                                                        <input type="text" class="form-control" id="owner"
-                                                            placeholder="Alejandro López" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label" for="address">Dirección</label>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text" id="deliver_date"><i
-                                                                class="fas fa-map"></i></span>                                                        
-                                                        <textarea id="address" class="form-control" id="exampleFormControlTextarea1"
-                                                            rows="2"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-between mt-4">
-                                            <a href="../orders/register_visit.html" class="btn btn-primary col-12 mb-5">
-                                                <i class="fas fa-pen me-2"></i>
-                                                Actualizar
-                                            </a>
-                                        </div>
-                                        <div class="d-flex justify-content-between mb-md-4">
-                                            <a href="../orders/orders.html" class="btn btn-danger col-12">
-                                                <i class="fas fa-trash me-2"></i>
-                                                Eliminar tienda
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
             </div>
             <!-- Termina contenido de la página web -->
             <footer>
@@ -129,8 +104,7 @@
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/components.js" type="module"></script>
     <script src="../../assets/js/logout.js" type="module"></script>
-    <script src="../../assets/js/services/StoreService.js" type="module"></script>
-
+    <script src="./../../assets/js/services/AdminStoresService.js" type="module"></script>
 </body>
 
 </html>

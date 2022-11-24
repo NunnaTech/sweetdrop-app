@@ -1,6 +1,6 @@
 import {getToken} from "../utils/LocalStorage.js";
 
-const API_URI = 'https://sweetdrop-production.up.railway.app/api'
+const API_URI = 'https://sweetdrop-production-bd28.up.railway.app/api';
 
 const HEADERS_URI = {
     'Accept': 'application/json',

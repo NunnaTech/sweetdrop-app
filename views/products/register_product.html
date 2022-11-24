@@ -46,12 +46,12 @@
                         <div class="row gx-4">
 
 
-                            <form class="form">
+                            <form class="form" id="registerProduct">
                                 <div class="row">
                                     <div class="col-md-6 col-12 mt-3 mb-4 ">
                                         <div class="form-group position-relative has-icon-left m-0">
-                                            <input type="text" id="lastname-column" class="form-control"
-                                                   name="name" placeholder="Nombre">
+                                            <input type="text" id="lastname-column" class="form-control" 
+                                                   name="name"  id="name" placeholder="Nombre">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-box fs-6 text-secondary"></i>
                                             </div>
@@ -61,7 +61,7 @@
                                         <div class="form-group position-relative has-icon-left m-0">
 
                                             <input type="number" id="price" class="form-control"
-                                                   name="price" placeholder="Precio Unitario">
+                                                   name="price" id="price" placeholder="Precio Unitario">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-dollar-sign fs-6 text-secondary"></i>
                                             </div>
@@ -69,7 +69,7 @@
                                     </div>
                                     <br/>
                                     <div class="col-md-6 col-12 mt-3 mb-4 ">
-                                        <div class="form-group position-relative">
+                                        <div class="form-group position-relative" >
 
                                             <input class="form-control form-control-lg" id="formFileLg" type="file">
                                         </div>
@@ -82,7 +82,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Enviar</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1" id="register">Enviar</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Cancelar</button>
                                     </div>
                                 </div>
@@ -111,6 +111,9 @@
 
 <script src="../../assets/vendors/fontawesome/all.min.js"></script>
 <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/logout.js" type="module"></script>
+<script src="../../assets/js/services/AdminProductsService.js" type="module"></script>
+
 </body>
 
 </html>

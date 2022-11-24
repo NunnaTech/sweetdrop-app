@@ -85,10 +85,7 @@
                                 <div class="list-group list-group-horizontal-sm mb-4 text-center" role="tablist">
                                     <a class="list-group-item list-group-item-action active" id="list-sunday-list"
                                         data-bs-toggle="list" href="#list-sunday" role="tab" aria-selected="true"><i
-                                            class="fas fa-info-circle me-2 "></i>Información</a>
-                                    <a class="list-group-item list-group-item-action" id="list-monday-list"
-                                        data-bs-toggle="list" href="#list-monday" role="tab" aria-selected="false"
-                                        tabindex="-1"><i class="fas fa-candy-cane me-2 "></i>Productos</a>
+                                            class="fas fa-info-circle me-2 "></i>Información</a>                                   
                                     <a class="list-group-item list-group-item-action" id="list-tuesday-list"
                                         data-bs-toggle="list" href="#list-tuesday" role="tab" aria-selected="false"
                                         tabindex="-1"><i class="fas fa-eye me-2 "></i>Observaciones</a>
@@ -100,7 +97,7 @@
                                         aria-labelledby="list-sunday-list">
                                         <div class="col-12 mt-4 card">
                                             <div class=" bg-light">
-                                                <div class="card-header bg-light">
+                                                <div class="card-header bg-light pb-0">
                                                     <div class="d-flex align-items-start">
                                                         <div class="d-flex align-items-center">
                                                             <div class="avatar me-3">
@@ -118,11 +115,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-body pb-0">
-                                                    <div class="bg-white p-2 rounded me-auto mb-4 text-center border">
-                                                        <span>Monto total:</span>
-                                                        <h6 class="mb-1 fs-5 text-secondary" id="totalOrder"></h6>
-                                                    </div>
+                                                <hr>  
+                                                <div class="card-body my-4 pb-0">                                                    
                                                     <div class="d-flex align-items-center flex-wrap">
                                                         <div class="text-left mb-0">
                                                             <ul class="p-0 m-0">
@@ -155,68 +149,13 @@
                                                                 </li>
                                                             </ul>
                                                         </div>
-                                                    </div>
-                                                    <hr>
-                                                    <ul class="p-0 m-0 mt-4">
-                                                        <li class="d-flex mb-4 pb-1">
-                                                            <div class="avatar flex-shrink-5 me-3">
-                                                                <span
-                                                                    class="avatar-initial rounded bg-label-auxiliar px-3">
-                                                                    <i class="fas fa-truck"></i>
-                                                                </span>
-                                                            </div>
-                                                            <div
-                                                                class="d-flex w-100 flex-wrap align-items-center justify-content-between ">
-                                                                <div class="me-2" id="deliveredBy">
-                                                                    
-                                                                </div>
-                                                                <div class="user-progress">
-                                                                    <small id="deliveredByPhone" class="fw-semibold"></small>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="d-flex mb-4 pb-1">
-                                                            <div class="avatar flex-shrink-5 me-3">
-                                                                <span class="avatar-initial rounded bg-label-info px-3">
-                                                                    <i class="fas fa-sign-in-alt"></i>
-                                                                </span>
-                                                            </div>
-                                                            <div
-                                                                class="d-flex w-100 flex-wrap align-items-center justify-content-between">
-                                                                <div class="me-2" id="receivedBy">
-                                                                   
-                                                                </div>
-                                                                <div class="user-progress">
-                                                                    <small class="fw-semibold" id="receivedByPhone"></small>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
+                                                    </div>                                                                                                    
                                                 </div>
                                             </div>
                                         </div>
 
 
-                                    </div>
-                                    <!-- Productos -->
-                                    <div class="tab-pane fade" id="list-monday" role="tabpanel"
-                                        aria-labelledby="list-monday-list">
-                                        <p class="text-auxiliar font-semibold">A continuación se muestran los productos
-                                            solicitados de la orden.</p>
-                                        <div class="mt-3 mb-4 ">
-                                            <div class="form-group position-relative has-icon-left m-0">
-                                                <input type="text" class="form-control "
-                                                    placeholder="Filtrar producto por nombre o SKU">
-                                                <div class="form-control-icon">
-                                                    <i class="fas fa-search fs-6 text-secondary"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Productos grid -->
-                                        <section id="productsOrder" class="row gx-4">
-                                                                                    
-                                        </section>
-                                    </div>
+                                    </div>                                 
                                     <!-- Observaciones -->
                                     <div class="tab-pane fade" id="list-tuesday" role="tabpanel"
                                         aria-labelledby="list-tuesday-list">
@@ -292,7 +231,7 @@
                     <div class="modal-body">
                         <div class="col-12">
                             <div class="card bg-light d-flex align-content-center align-items-center mb-0">
-                                <div class="card-body m-0 p-0" id="imageModal">                                   
+                                <div class="card-body m-0 p-0" id="imageModal">                                    
                                 </div>
                             </div>
                         </div>
@@ -309,7 +248,7 @@
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/components.js" type="module"></script>
     <script src="../../assets/js/logout.js" type="module"></script>
-    <script src="../../assets/js/services/OrderDetailsService.js" type="module"></script>
+    <script src="../../assets/js/services/VisitDetailsServices.js" type="module"></script>
 </body>
 
 </html>
