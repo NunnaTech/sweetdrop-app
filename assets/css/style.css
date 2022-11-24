@@ -429,6 +429,13 @@ input {
     color: #F652A0 !important;
 }
 
+.bg-label-info {
+    background-color:#0dcaf029 !important;
+    color: #0dcaf0 !important;
+}
+
+
+
 
 
 
@@ -1836,4 +1843,10 @@ a {
 .like {
 
     font-size: 1.5rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
