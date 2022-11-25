@@ -17,11 +17,26 @@ const inputUpdateAddress = document.querySelector('#address') || document.create
 const inputUpdateZipcode = document.querySelector('#zipcode') || document.createElement('input');
 const inputUpdateOwner = document.querySelector('#owner') || document.createElement('input');
 
+const inputStores = document.getElementById("inputStores");
+
+
 registerForm.addEventListener('submit', register);
 updateForm.addEventListener('submit', update);
 
 const getUrl = new URLSearchParams(window.location.search);
 let id = getUrl.get('id');
+
+let allStores = []
+let filterStores = []
+
+inputStores.addEventListener('keyup', e => {
+    if (e.target.value.length > 0) {
+        filterStores = allStores.filter(store => store.name.toLowerCase().includes(e.target.value.toLowerCase()))
+        renderStores(filterStores)
+    } else {
+        renderStores(allStores)
+    }
+})
 
 const totalStores = document.getElementById("totalStores");
 
@@ -73,14 +88,85 @@ function getStores() {
   .then((response) => response.json())
         .then((data) => {
             NotifyService.loadingNotificationRemove()
-            totalStores.innerHTML = `<span class="fw-bold fs-3" >
-            ${data.data.length === 0 ? "No tienes registrada alguna tienda" : +data.data.length + " tiendas"} </span>`;
-            let card = document.getElementById("adminStores")
-            if (data.data.length === 0) {
-                card.innerHTML = `<p class="text-primary text-center">No tienes tiendas registradas</p>`;
-            }
-            data.data.forEach((store) => {
-                card.innerHTML += `
+            allStores = data.data;
+            renderStores(allStores)
+        })
+        .catch((err) => {
+            NotifyService.loadingNotificationRemove()
+            NotifyService.notificatonError('Ha ocurrido un error al cargar los datos')
+        });
+}
+
+function updateStore(){
+    NotifyService.loadingNotification()
+    AdminRegisterStore.UpdateStore(id.value, inputUpdateName.value, inputUpdatePhone.value, inputUpdateAddress.value, inputUpdateZipcode.value, inputUpdateOwner.value)
+    fetch(API_URI + `/stores`,{
+        method: "PUT",
+        headers: HEADERS_URI,
+    })
+    .then((response) => response.json())
+    .then(data => {
+        console.log(data)
+        if (data.success) {
+            let storeUpdate = data.data;
+            setData('store', JSON.stringify(storeUpdate))
+            NotifyService.notificatonError('Registro Actualizado')
+            NotifyService.loadingNotificationRemove()
+        } else {
+            NotifyService.notificatonError('Error al actualizar la Tienda')
+            NotifyService.loadingNotificationRemove()
+        }
+    }).catch(error => {
+    NotifyService.notificatonError('Hubo un error en el servicio')
+    NotifyService.loadingNotificationRemove()
+    })
+}
+
+function update(e) {
+    e.preventDefault();
+    if (validInputsUpdate()) updateStore();
+    else NotifyService.notificatonError('Los campos no deben estar vacios');
+  }
+
+
+  
+function deleteStore() {
+    NotifyService.loadingNotification()
+    fetch(API_URI + `/stores/${id}`,{
+      method: "DELETE",
+      headers: HEADERS_URI,
+    })
+      .then((respuesta) => respuesta.json())
+      .then((data) => {
+        if (data.success == true) {
+          NotifyService.notificatonError('Eliminación Exitosa')
+          NotifyService.loadingNotificationRemove()
+          goToPage("../../../views/store/stores.html");
+        } else {
+          NotifyService.notificatonError('Error al Eliminar')
+          NotifyService.loadingNotificationRemove()
+          goToPage("../../../views/store/stores.html");
+        }
+      })
+  
+      .catch((error) => {
+        NotifyService.notificatonError('Hubo un error en el servicio')
+        NotifyService.loadingNotificationRemove()
+      });
+  }
+
+
+function renderStores(myStores) {
+    totalStores.innerHTML = `<span class="fw-bold fs-3" >
+            ${allStores.length === 0 ? "No tienes registrada alguna tienda" : +allStores.length + " tiendas"} </span>`;
+    let card = document.getElementById("adminStores")
+    if (myStores.length === 0) {
+        card.innerHTML = `<p class="text-primary text-center">No tienes tiendas registradas</p>`;
+    }else {
+        card.innerHTML = "";
+    }
+    myStores.forEach((store) => {
+        card.innerHTML += `
               <div class="col-xl-4 col-lg-6 col-md-6">
               <div class="card">
               <div class="card-header">
@@ -143,69 +229,5 @@ function getStores() {
               </div>
           </div>
           </div>`;
-
-            });
-            
-        })
-        .catch((err) => {
-            NotifyService.loadingNotificationRemove()
-            NotifyService.notificatonError('Ha ocurrido un error al cargar los datos')
-        });
+    });
 }
-
-function updateStore(){
-    NotifyService.loadingNotification()
-    AdminRegisterStore.UpdateStore(id.value, inputUpdateName.value, inputUpdatePhone.value, inputUpdateAddress.value, inputUpdateZipcode.value, inputUpdateOwner.value)
-    fetch(API_URI + `/stores`,{
-        method: "PUT",
-        headers: HEADERS_URI,
-    })
-    .then((response) => response.json())
-    .then(data => {
-        console.log(data)
-        if (data.success) {
-            let storeUpdate = data.data;
-            setData('store', JSON.stringify(storeUpdate))
-            NotifyService.notificatonError('Registro Actualizado')
-            NotifyService.loadingNotificationRemove()
-        } else {
-            NotifyService.notificatonError('Error al actualizar la Tienda')
-            NotifyService.loadingNotificationRemove()
-        }
-    }).catch(error => {
-    NotifyService.notificatonError('Hubo un error en el servicio')
-    NotifyService.loadingNotificationRemove()
-    })
-}
-
-function update(e) {
-    e.preventDefault();
-    if (validInputsUpdate()) updateStore();
-    else NotifyService.notificatonError('Los campos no deben estar vacios');
-  }
-
-  
-function deleteStore() {
-    NotifyService.loadingNotification()
-    fetch(API_URI + `/stores/${id}`,{
-      method: "DELETE",
-      headers: HEADERS_URI,
-    })
-      .then((respuesta) => respuesta.json())
-      .then((data) => {
-        if (data.success == true) {
-          NotifyService.notificatonError('Eliminación Exitosa')
-          NotifyService.loadingNotificationRemove()
-          goToPage("../../../views/store/stores.html");
-        } else {
-          NotifyService.notificatonError('Error al Eliminar')
-          NotifyService.loadingNotificationRemove()
-          goToPage("../../../views/store/stores.html");
-        }
-      })
-  
-      .catch((error) => {
-        NotifyService.notificatonError('Hubo un error en el servicio')
-        NotifyService.loadingNotificationRemove()
-      });
-  }
