@@ -4,6 +4,7 @@ import { getToken, setData } from "../utils/LocalStorage.js";
 import { goToPage } from "../utils/Routes.js";
 import NotifyService from "../utils/NotifyService.js";
 
+
 const form = document.querySelector("#formulario") || document.createElement('form');
 //Form
 const nombreU = document.getElementById("nombreU");
@@ -16,7 +17,6 @@ const emailU = document.getElementById("emailU");
 const contenedor = document.getElementById("content-page");
  
 form.addEventListener("submit", validarFormulario);
-
 
 //Validar Formulario de Registro de Repartidor
  function validarFormulario(e) {
@@ -45,7 +45,6 @@ function getDealers() {
   fetch(API_URI + "/roles/users/dealers", {
     method: "GET",
     headers: HEADERS_URI,
-    Authorization: `Bearer 11| ${getToken()}`
   })
     .then((response) => response.json())
     .then((data) => mostrar(data))
@@ -56,8 +55,6 @@ function getDealers() {
   const mostrar = (dealers) => {
     NotifyService.loadingNotificationRemove();
     dealers.data.forEach((dealer) => {
-     
-       
       contenedor.innerHTML +=  `
       <div class="col-xl-4 col-lg-6 col-md-6">
           <div class="card">
@@ -96,7 +93,7 @@ function getDealers() {
                       </li>
                   </ul>
                   <div class="d-flex justify-content-between my-3 mt-4">
-                      <a href="../dealers/dealers.html?id=${dealer.id}" class="btn btn-outline-danger">
+                      <a class="btn btn-outline-danger" id="${dealer.id}"  id="btnDelete">
                           <i class="fas fa-trash me-2"></i>
                           Eliminar
                       </a>
@@ -109,11 +106,14 @@ function getDealers() {
 
           </div>
       </div> `
-        
-    
-      
-    });
-  };
+    })
+    dealers.data.forEach((i) => {
+      let id =document.getElementById(`${i.id}`);
+        id.onclick =()=> {
+         eliminarDealer(id.id);
+             }
+  });
+}
 }
 //End Consulta
 
@@ -139,6 +139,21 @@ async function agregarDealer() {
       }
       });
   }
+//Eliminar Repartidor
+function eliminarDealer(id) {
+  fetch(API_URI+'/users/'+id, {
+     method: "DELETE",
+     headers: HEADERS_URI,
+    })
+    .then((response) => response.json())
+   .then((data) => {
+    if (data.success === true) {
+      goToPage("../../views/dealers/dealers.html");
+     } else {
+       NotifyService.notificatonError('No se elimino correctamente!');
+      }
+      });
+     }
 
 
 

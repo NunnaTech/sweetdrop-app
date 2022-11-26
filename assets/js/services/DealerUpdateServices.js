@@ -47,7 +47,6 @@ headers: HEADERS_URI,
         ].includes("")
       ) {
         NotifyService.notificatonError('Todos los campos son obligatorios')
-        return true;
       } else {
         actualizarDealer();
       }
@@ -77,19 +76,3 @@ headers: HEADERS_URI,
         });
     }
 
-//Eliminar Repartidor
-      fetch(API_URI+'/users/'+id, {
-        method: "DELETE",
-        headers: HEADERS_URI,
-        
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success === true) {
-            NotifyService.notificatonSuccess('Se elimino Correctamente!');
-            goToPage("../../views/dealers/dealers.html");
-          } else {
-            NotifyService.notificatonError('No se elimino correctamente!');
-          }
-        });
-    
