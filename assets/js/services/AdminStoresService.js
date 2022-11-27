@@ -1,6 +1,5 @@
 import { API_URI, HEADERS_URI } from "./API.js";
 import { goToPage } from "../utils/Routes.js";
-import AdminRegisterStore from "./AdminRegisterStore.js";
 import NotifyService from "../utils/NotifyService.js";
 
 const registerForm = document.querySelector('#registerForm') || document.createElement('form');
@@ -10,18 +9,10 @@ const inputAddress = document.querySelector('#address') || document.createElemen
 const inputZipcode = document.querySelector('#zipcode') || document.createElement('input');
 const inputOwner = document.querySelector('#owner') || document.createElement('input');
 
-const updateForm = document.querySelector('#updateForm') || document.createElement('form');
-const inputUpdateName = document.querySelector('#name') || document.createElement('input');
-const inputUpdatePhone = document.querySelector('#phone') || document.createElement('input');
-const inputUpdateAddress = document.querySelector('#address') || document.createElement('input');
-const inputUpdateZipcode = document.querySelector('#zipcode') || document.createElement('input');
-const inputUpdateOwner = document.querySelector('#owner') || document.createElement('input');
-
 const inputStores = document.getElementById("inputStores");
 
 
-registerForm.addEventListener('submit', register);
-updateForm.addEventListener('submit', update);
+registerForm.addEventListener('submit', validInputsRegister);
 
 const getUrl = new URLSearchParams(window.location.search);
 let id = getUrl.get('id');
@@ -40,40 +31,47 @@ inputStores.addEventListener('keyup', e => {
 
 const totalStores = document.getElementById("totalStores");
 
-function validInputs() {
-  return inputName.value !== '' || inputPhone.value !== '' || inputAddress.value !== '' || inputZipcode.value !== '' || inputOwner.value !== ''
-}
-
-function validInputsUpdate(){
-    return inputUpdateName.value != '' || inputUpdatePhone.value !== '' || inputUpdateAddress.value !== '' || inputUpdateZipcode.value !== '' || inputUpdateOwner.value !== ''
-}
-
-
-function sendStoreRequest() {
-    NotifyService.loadingNotification()
-    AdminRegisterStore.RegisterStore(inputName.value, inputPhone.value, inputAddress.value, inputZipcode.value, inputOwner.value)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            if (data.success) {
-                let store = data.data;
-                setData('store', JSON.stringify(store))
-                NotifyService.notificatonError('Registro Exitoso')
-                NotifyService.loadingNotificationRemove()
-            } else {
-                NotifyService.notificatonError('Error al registrar la Tienda')
-                NotifyService.loadingNotificationRemove()
-            }
-        }).catch(error => {
-        NotifyService.notificatonError('Hubo un error en el servicio')
-        NotifyService.loadingNotificationRemove()
-    });
-  }
-  
-  function register(e) {
+function validInputsRegister(e) {
     e.preventDefault();
-    if (validInputs()) sendStoreRequest();
-    else NotifyService.notificatonError('Los campos no deben estar vacios');
+ 
+    if (
+      [
+        inputName.value,
+        inputPhone.value,
+        inputAddress.value,
+        inputZipcode.value,
+        inputOwner.value,
+      ].includes("")
+    ) {
+      NotifyService.notificatonError('Todos los campos son obligatorios')
+      return true;
+    } else {
+      registerStore();
+    }
+}    
+
+async function registerStore() {
+    fetch(API_URI+'/stores', {
+      method: "POST",
+      headers: HEADERS_URI,
+      body: JSON.stringify({
+        name: inputName.value,
+        phone: inputPhone.value,
+        address: inputAddress.value,
+        zipcode: inputZipcode.value,
+        owner: inputOwner.value,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success === true) {
+          goToPage("../../../views/store/stores.html");
+          NotifyService.notificatonSuccess('Tienda registrada correctamente')
+          NotifyService.loadingNotificationRemove()
+        } else {
+          NotifyService.notificatonError('Error al registrar');
+        }
+      });
   }
 
 getStores();
@@ -97,64 +95,8 @@ function getStores() {
         });
 }
 
-function updateStore(){
-    NotifyService.loadingNotification()
-    AdminRegisterStore.UpdateStore(id.value, inputUpdateName.value, inputUpdatePhone.value, inputUpdateAddress.value, inputUpdateZipcode.value, inputUpdateOwner.value)
-    fetch(API_URI + `/stores`,{
-        method: "PUT",
-        headers: HEADERS_URI,
-    })
-    .then((response) => response.json())
-    .then(data => {
-        console.log(data)
-        if (data.success) {
-            let storeUpdate = data.data;
-            setData('store', JSON.stringify(storeUpdate))
-            NotifyService.notificatonError('Registro Actualizado')
-            NotifyService.loadingNotificationRemove()
-        } else {
-            NotifyService.notificatonError('Error al actualizar la Tienda')
-            NotifyService.loadingNotificationRemove()
-        }
-    }).catch(error => {
-    NotifyService.notificatonError('Hubo un error en el servicio')
-    NotifyService.loadingNotificationRemove()
-    })
-}
-
-function update(e) {
-    e.preventDefault();
-    if (validInputsUpdate()) updateStore();
-    else NotifyService.notificatonError('Los campos no deben estar vacios');
-  }
-
 
   
-function deleteStore() {
-    NotifyService.loadingNotification()
-    fetch(API_URI + `/stores/${id}`,{
-      method: "DELETE",
-      headers: HEADERS_URI,
-    })
-      .then((respuesta) => respuesta.json())
-      .then((data) => {
-        if (data.success == true) {
-          NotifyService.notificatonError('Eliminación Exitosa')
-          NotifyService.loadingNotificationRemove()
-          goToPage("../../../views/store/stores.html");
-        } else {
-          NotifyService.notificatonError('Error al Eliminar')
-          NotifyService.loadingNotificationRemove()
-          goToPage("../../../views/store/stores.html");
-        }
-      })
-  
-      .catch((error) => {
-        NotifyService.notificatonError('Hubo un error en el servicio')
-        NotifyService.loadingNotificationRemove()
-      });
-  }
-
 
 function renderStores(myStores) {
     totalStores.innerHTML = `<span class="fw-bold fs-3" >
@@ -209,25 +151,39 @@ function renderStores(myStores) {
                           </span>
                   </div>
                   <div class="d-flex justify-content-between my-3 mt-4">
-                      <button type="submit" id="eliminar" class="btn btn-outline-auxiliar">
+                      <button type="submit" id="btnEliminar" class="btn btn-outline-auxiliar" >
                           <i class="fas fa-trash me-2"></i>
                           Eliminar 
                       </button>
-                      <a href="../../../views/store/register_store.html?=id=${store.id}" class="btn btn-outline-secondary">
-                          <i class="fas fa-store me-2"></i>
-                          Agregar Tienda
-                      </a>
-                  </div>
-              </div>
-              <div class="card-body border-top bg-light p-4">
-                  <div class="d-flex justify-content-center">
-                      <a href='../../../views/store/edit_store.html?id=${store.id}' class="btn btn-info">
+                     <a href='../../../views/store/edit_store.html?id=${store.id}' class="btn btn-info">
                           <i class="fas fa-info-circle me-2"></i>
                           Ver detalles
                       </a>
                   </div>
               </div>
           </div>
-          </div>`;
+          </div>`;   
     });
+    myStores.forEach((i) => {
+        let id =document.getElementById(`${i.id}`);
+          id.onclick =()=> {
+           deleteStore(id.id);
+               }
+    });
+    
 }
+
+function deleteStore(id) {
+    fetch(API_URI+'/stores/'+id, {
+       method: "DELETE",
+       headers: HEADERS_URI,
+      })
+      .then((response) => response.json())
+     .then((data) => {
+      if (data.success === true) {
+        goToPage("../../../views/store/stores.html");
+       } else {
+         NotifyService.notificatonError('No se eliminó correctamente!');
+        }
+        });
+       }
