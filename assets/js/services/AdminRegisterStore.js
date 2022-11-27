@@ -16,20 +16,6 @@ class AdminRegisterStore {
         })
     }
 
-    UpdateStore(id, name, phone, address, zipcode, owner){
-        return fetch(API_URI + `/stores`,{
-            method: 'PUT',
-            headers: HEADERS_URI,
-            body: JSON.stringify({
-                id:id,
-                name: name,
-                phone: phone, 
-                address: address,
-                zipcode: zipcode,
-                owner: owner
-            })
-        })
-    }
 }
 
 
