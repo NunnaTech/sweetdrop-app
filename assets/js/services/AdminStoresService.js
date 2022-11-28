@@ -20,7 +20,7 @@ let id = getUrl.get('id');
 let allStores = []
 let filterStores = []
 
-inputStores.addEventListener('keyup', e => {
+inputStores.addEventListener('keyup',e => {
     if (e.target.value.length > 0) {
         filterStores = allStores.filter(store => store.name.toLowerCase().includes(e.target.value.toLowerCase()))
         renderStores(filterStores)
@@ -30,6 +30,27 @@ inputStores.addEventListener('keyup', e => {
 })
 
 const totalStores = document.getElementById("totalStores");
+
+getStores();
+
+//Obtener Tiendas
+function getStores() {
+  NotifyService.loadingNotification();
+  fetch(API_URI + '/stores', {
+    method: "GET",
+    headers: HEADERS_URI,
+  })
+  .then((response) => response.json())
+        .then((data) => {
+            NotifyService.loadingNotificationRemove()
+            allStores = data.data;
+            renderStores(allStores)
+        })
+        .catch((err) => {
+            NotifyService.loadingNotificationRemove()
+            NotifyService.notificatonError('Ha ocurrido un error al cargar los datos')
+        });
+}
 
 function validInputsRegister(e) {
     e.preventDefault();
@@ -73,29 +94,6 @@ async function registerStore() {
         }
       });
   }
-
-getStores();
-
-//Obtener Tiendas
-function getStores() {
-  NotifyService.loadingNotification();
-  fetch(API_URI + `/stores`, {
-    method: "GET",
-    headers: HEADERS_URI,
-  })
-  .then((response) => response.json())
-        .then((data) => {
-            NotifyService.loadingNotificationRemove()
-            allStores = data.data;
-            renderStores(allStores)
-        })
-        .catch((err) => {
-            NotifyService.loadingNotificationRemove()
-            NotifyService.notificatonError('Ha ocurrido un error al cargar los datos')
-        });
-}
-
-
   
 
 function renderStores(myStores) {
@@ -164,12 +162,12 @@ function renderStores(myStores) {
           </div>
           </div>`;   
     });
-    myStores.forEach((i) => {
+    /*myStores.forEach((i) => {
         let id =document.getElementById(`${i.id}`);
           id.onclick =()=> {
            deleteStore(id.id);
                }
-    });
+    });*/
     
 }
 
