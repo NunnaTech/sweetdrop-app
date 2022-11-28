@@ -53,10 +53,34 @@ const mostrar = (products) => {
   products.data.forEach((i) => {
     let id = document.getElementById(`${i.id}`);
     id.onclick =()=>{
-      eliminarProducto(id.id);
+      deleteProduct(id.id);
     }
 
 });
+}
+
+
+
+//Eliminar Producto
+function deleteProduct(id) {
+  Notiflix.Confirm.show(
+      'Confirmación',
+      '¿Estás seguro de eliminar el Producto?',
+      'Sí, eliminar',
+      'No, cancelar',
+      () => {
+          eliminarProducto(id)
+      },
+      () => {
+      },
+      {
+          titleColor: '#5D51B4',
+          okButtonColor: '#f8f9fa',
+          okButtonBackground: '#54d37a',
+          cancelButtonColor: '#f8f9fa',
+          cancelButtonBackground: '#f3616d',
+      }
+  );
 }
 function eliminarProducto(id){
   fetch(API_URI + "/products/" + id, {

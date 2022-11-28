@@ -1,6 +1,6 @@
 import { API_URI, HEADERS_URI } from "./API.js";
 import { goToPage } from "../utils/Routes.js";
-import ProductService from "./ProductService.js";
+import ProductService from "../services/ProductService.js";
 import NotifyService from "../utils/NotifyService.js";
 
 const registerForm = document.querySelector('#registerProduct') || document.createElement('form');
