@@ -58,7 +58,7 @@ function getInfoStore() {
         }
       });
       name.innerHTML = `<p class="fw-bold fs-5 text-auxiliar">${data.data.name}</p>`;
-      phone.innerHTML = `<i class="fas fa-phone me-2 "></i>${data.data.phone}</span>`;
+      phone.innerHTML = `<a class="text-secondary" href="tel:${data.data.phone}"><i class="fas fa-phone me-2 "></i>${data.data.phone}</a>`;
       address.innerHTML = `<i class="fas fa-map-marker-alt me-2"></i>${
         data.data.address + " CP " + data.data.zipcode
       }</span>`;
@@ -258,14 +258,12 @@ function addProduct(event, productId) {
         // do not reload the page
         event.preventDefault();
         NotifyService.notificatonSuccess(
-          "Producto agregado satisfactoriamente"
+          "Producto agregado"
         );
-
-        // print the array in JSON format
-        console.log(JSON.stringify(productsArray));
+       
       } else {
         event.preventDefault();
-        NotifyService.notificatonError("Por favor, agrega al menos 1 producto");
+        NotifyService.notificatonError("Por favor, agrega al menos 1 unidad");
       }
     }
   });
@@ -325,10 +323,11 @@ async function createOrder() {
 }
 
 function validateForm() {
-  return (
-    comment.value !== "" &&
+  return (    
     received_by.value !== "" &&
-    products.length !== 0
+    products.length !== 0 &&
+    comment.value !== "" &&
+    sessionStorage.getItem("image") !== null
   );
 }
 

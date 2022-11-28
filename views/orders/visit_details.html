@@ -2,207 +2,184 @@
 <html lang="en">
 
 <head>
-     <script src="../../assets/js/utils/Routes.js" type="module"></script>
+    <script src="../../assets/js/utils/Routes.js" type="module"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles de la orden</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico" />
     <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css">
     <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
 </head>
 
 <body>
 
-<div class="d-flex justify-content-center">
-    <div class="card mb-0 card-float row col-12 py-2 d-flex justify-content-center align-items-center">
-        <div class="text-center col-md-6 col-lg-4 d-flex justify-content-center align-items-center">
-            <span class="text-primary fw-bold" id="folioFixed"></span>
-        </div>
-        <div class="text-center col-md-6 col-lg-4 d-flex justify-content-center align-items-center">
-            <span class="text-auxiliar" id="nameFixed"></span>
-        </div>
-        <div class="text-center col-md-6 col-lg-4 d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center">
+        <div class="card mb-0 card-float row col-12 py-2 d-flex justify-content-center align-items-center">
+            <div class="text-center col-md-6 col-lg-4 d-flex justify-content-center align-items-center">
+                <span class="text-primary fw-bold" id="folioFixed"></span>
+            </div>
+            <div class="text-center col-md-6 col-lg-4 d-flex justify-content-center align-items-center">
+                <span class="text-auxiliar" id="nameFixed"></span>
+            </div>
+            <div class="text-center col-md-6 col-lg-4 d-flex justify-content-center align-items-center">
                 <span class=" text-secondary" id="phoneFixed">
                 </span>
-        </div>
-        <div class="text-center col-md-6 col-lg-4 d-flex justify-content-center align-items-center">
+            </div>
+            <div class="text-center col-md-6 col-lg-4 d-flex justify-content-center align-items-center">
                 <span class=" text-secondary" id="addressFixed">
                 </span>
+            </div>
         </div>
     </div>
-</div>
 
-<div id="app">
+    <div id="app">
 
-    <nav id="navTemplate"></nav>
+        <nav id="navTemplate"></nav>
 
-    <div id="main">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb  mt-3 mt-sm-0">
-                <li class="breadcrumb-item "><a href="../dashboards/dealer_dashboard.html">Dashboard</a></li>
-                <li class="breadcrumb-item "><a href="../dealer_views/dealer_stores.html">Tiendas</a></li>
-                <li class="breadcrumb-item" id="storeId"></li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    Detalles de orden
-                </li>
-            </ol>
-        </nav>
-        <div class="mb-0 order-0">
-            <div class="card mb-0">
-                <div class="d-flex align-items-center row">
-                    <div class="col-sm-7">
-                        <div class="card-body page-heading m-0 px-4">
-                            <h3 id="folio"></h3>
-                            <p id="name"></p>
-                            <span id="phone" class="text-secondary"></span>
-                            <div class="mt-3">
-                                <span class="text-secondary" id="address"></span>
+        <div id="main">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb  mt-3 mt-sm-0">
+                    <li class="breadcrumb-item "><a href="../dashboards/dealer_dashboard.html">Dashboard</a></li>
+                    <li class="breadcrumb-item "><a href="../dealer_views/dealer_stores.html">Tiendas</a></li>
+                    <li class="breadcrumb-item" id="storeId"></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Detalles de orden
+                    </li>
+                </ol>
+            </nav>
+            <div class="mb-0 order-0">
+                <div class="card mb-0">
+                    <div class="d-flex align-items-center row">
+                        <div class="col-sm-7">
+                            <div class="card-body page-heading m-0 px-4">
+                                <h3 id="folio"></h3>
+                                <p id="name"></p>
+                                <span id="phone" class="text-secondary"></span>
+                                <div class="mt-3">
+                                    <span class="text-secondary" id="address"></span>
+                                </div>
+                                <span id="status"></span>
+
                             </div>
-                            <span id="status"></span>
-
                         </div>
-                    </div>
-                    <div class="col-sm-5 text-center text-sm-left ">
-                        <div class="card-body py-0 px-0 px-md-4">
-                            <img src="../../assets/images/resources/notes-details.png" height="200"
-                                 alt="add-order"/>
+                        <div class="col-sm-5 text-center text-sm-left ">
+                            <div class="card-body py-0 px-0 px-md-4">
+                                <img src="../../assets/images/resources/notes-details.png" height="200"
+                                    alt="add-order" />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <hr class="my-4">
-            <div class="page-content">
-                <div class="card">
-                    <div class="card-header pb-0">
-                        <h4 class="card-title mt-2">Detalles de la orden</h4>
-                        <p class="mb-1">A continuación, se muestra la información completa de la órden</p>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="list-group list-group-horizontal-sm mb-4 text-center" role="tablist">
-                                <a class="list-group-item list-group-item-action active" id="list-sunday-list"
-                                   data-bs-toggle="list" href="#list-sunday" role="tab" aria-selected="true"><i
-                                        class="fas fa-info-circle me-2 "></i>Información</a>
-                                <a class="list-group-item list-group-item-action" id="list-tuesday-list"
-                                   data-bs-toggle="list" href="#list-tuesday" role="tab" aria-selected="false"
-                                   tabindex="-1"><i class="fas fa-eye me-2 "></i>Observaciones</a>
-                            </div>
-                            <hr>
-                            <div class="tab-content text-justify">
-                                <!-- Información -->
-                                <div class="tab-pane fade show active" id="list-sunday" role="tabpanel"
-                                     aria-labelledby="list-sunday-list">
-                                    <div class="col-12 mt-4 card">
-                                        <div class=" bg-light">
-                                            <div class="card-header bg-light pb-0">
-                                                <div class="d-flex align-items-start">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar me-3">
-                                                            <i class="fas fa-info-circle text-primary fs-1"></i>
-                                                        </div>
-                                                        <div class="me-2">
-                                                            <h5 id="folioNote" class="mb-1 text-primary font-bold">
-                                                            </h5>
-                                                            <div class="client-info d-flex align-items-center">
-                                                                <h6 id="storeNote" class="mb-0 me-1 font-bold"></h6>
-
+                <hr class="my-4">
+                <div class="page-content">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <h4 class="card-title mt-2">Detalles de la orden</h4>
+                            <p class="mb-1">A continuación, se muestra la información completa de la órden</p>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="list-group list-group-horizontal-sm mb-4 text-center" role="tablist">
+                                    <a class="list-group-item list-group-item-action active" id="list-sunday-list"
+                                        data-bs-toggle="list" href="#list-sunday" role="tab" aria-selected="true"><i
+                                            class="fas fa-info-circle me-2 "></i>Información</a>
+                                    <a class="list-group-item list-group-item-action" id="list-tuesday-list"
+                                        data-bs-toggle="list" href="#list-tuesday" role="tab" aria-selected="false"
+                                        tabindex="-1"><i class="fas fa-eye me-2 "></i>Observaciones</a>
+                                </div>
+                                <hr>
+                                <div class="tab-content text-justify">
+                                    <!-- Información -->
+                                    <div class="tab-pane fade show active" id="list-sunday" role="tabpanel"
+                                        aria-labelledby="list-sunday-list">
+                                        <div class="col-12 mt-4 card">
+                                            <div class=" bg-light">
+                                                <div class="card-header bg-light pb-0">
+                                                    <div class="d-flex align-items-start">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="avatar me-3">
+                                                                <i class="fas fa-info-circle text-primary fs-1"></i>
                                                             </div>
-                                                            <span id="statusNote"></span>
+                                                            <div class="me-2">
+                                                                <h5 id="folioNote" class="mb-1 text-primary font-bold">
+                                                                </h5>
+                                                                <div class="client-info d-flex align-items-center">
+                                                                    <h6 id="storeNote" class="mb-0 me-1 font-bold"></h6>
+
+                                                                </div>
+                                                                <span id="statusNote"></span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <hr>
-                                            <div class="card-body my-4 pb-0">
-                                                <div class="d-flex align-items-center flex-wrap">
-                                                    <div class="text-left mb-0">
-                                                        <ul class="p-0 m-0">
-                                                            <li class="d-flex mb-4 pb-1">
-                                                                <div class="avatar flex-shrink-5 me-3">
+                                                <hr>
+                                                <div class="card-body my-4 pb-0">
+                                                    <div class="d-flex align-items-center flex-wrap">
+                                                        <div class="text-left mb-0">
+                                                            <ul class="p-0 m-0">
+                                                                <li class="d-flex mb-4 pb-1">
+                                                                    <div class="avatar flex-shrink-5 me-3">
                                                                         <span
-                                                                                class="avatar-initial rounded bg-label-primary px-3">
+                                                                            class="avatar-initial rounded bg-label-primary px-3">
                                                                             <i class="fas fa-calendar-day"></i>
                                                                         </span>
-                                                                </div>
-                                                                <div
-                                                                        class="d-flex w-100 flex-wrap align-items-center justify-content-between ">
-                                                                    <div id="requestDate" class="me-2">
                                                                     </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="d-flex mb-0 pb-1">
-                                                                <div class="avatar flex-shrink-5 me-3">
-                                                                        <span
-                                                                                class="avatar-initial rounded bg-label-secondary px-3">
-                                                                            <i class="fas fa-calendar-check"></i>
-                                                                        </span>
-                                                                </div>
-                                                                <div
-                                                                        class="d-flex w-100 flex-wrap align-items-center justify-content-between">
-                                                                    <div id="deliverDate" class="me-2">
-
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <!-- Observaciones -->
-                                <div class="tab-pane fade" id="list-tuesday" role="tabpanel"
-                                     aria-labelledby="list-tuesday-list">
-                                    <div>
-                                        <div class="card-header mb-2 p-0">
-                                            <p class="text-auxiliar font-semibold">Observaciones</p>
-                                        </div>
-                                        <div class="card-body p-0">
-                                            <div class="bg-light p-4 rounded me-auto mb-2" id="observations">
-                                            </div>
-                                            <p class="mb-0 mt-3 font-semibold text-auxiliar">
-                                                Imágenes
-                                            </p>
-                                            <small class="text-muted fw-light">Toca para ampliar la imagen</small>
-                                            <!-- Aqui deben ir las imagenes -->
-                                            <div class="mt-1">
-                                                <div class="card-body p-0">
-                                                    <div id="carouselExampleControls"
-                                                         class="carousel slide carousel-dark" data-ride="carousel">
-                                                        <div class="carousel-inner">
-                                                            <div class="carousel-item active">
-                                                                <div class="col-12" data-bs-toggle="modal"
-                                                                     data-bs-target="#exampleModal">
                                                                     <div
-                                                                            class="card bg-light d-flex align-content-center align-items-center">
-                                                                        <div class="card-body m-0 p-0"
-                                                                             id="observationsImage">
+                                                                        class="d-flex w-100 flex-wrap align-items-center justify-content-between ">
+                                                                        <div id="requestDate" class="me-2">
                                                                         </div>
                                                                     </div>
+                                                                </li>
+                                                                <li class="d-flex mb-0 pb-1">
+                                                                    <div class="avatar flex-shrink-5 me-3">
+                                                                        <span
+                                                                            class="avatar-initial rounded bg-label-secondary px-3">
+                                                                            <i class="fas fa-calendar-check"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div
+                                                                        class="d-flex w-100 flex-wrap align-items-center justify-content-between">
+                                                                        <div id="deliverDate" class="me-2">
+
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <!-- Observaciones -->
+                                    <div class="tab-pane fade" id="list-tuesday" role="tabpanel"
+                                        aria-labelledby="list-tuesday-list">
+                                        <div>
+                                            <div class="card-header mb-2 p-0">
+                                                <p class="text-auxiliar font-semibold">Observaciones</p>
+                                            </div>
+                                            <div class="card-body p-0">
+                                                <div class="bg-light p-4 rounded me-auto mb-2" id="observations">
+                                                </div>
+                                                <div id="imgContainer">
+                                                    <p class="mb-0 mt-3 font-semibold text-auxiliar">
+                                                        Imágenes
+                                                    </p>
+                                                    <small class="text-muted fw-light">Toca para ampliar la
+                                                        imagen</small>
+                                                    <!-- Aqui deben ir las imagenes -->
+                                                    <div class="mt-3">
+                                                        <div class="card-body bg-light mb-0">
+                                                            <div class="p-3 mb-0 card shadow-none bg-light d-flex align-content-center align-items-center">
+                                                                <div class="card-body m-0 p-0" id="observationsImage" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                                 </div>
                                                             </div>
-
                                                         </div>
-                                                        <a class="carousel-control-prev"
-                                                           href="#carouselExampleControls" role="button"
-                                                           data-bs-slide="prev">
-                                                                <span class="carousel-control-prev-icon"
-                                                                      aria-hidden="true"></span>
-                                                            <span class="visually-hidden">Previous</span>
-                                                        </a>
-                                                        <a class="carousel-control-next"
-                                                           href="#carouselExampleControls" role="button"
-                                                           data-bs-slide="next">
-                                                                <span class="carousel-control-next-icon"
-                                                                      aria-hidden="true"></span>
-                                                            <span class="visually-hidden">Next</span>
-                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -213,43 +190,42 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="text-center">
-                        <p>2022 &copy; ThePandaDevs</p>
+                <footer>
+                    <div class="footer clearfix mb-0 text-muted">
+                        <div class="text-center">
+                            <p>2022 &copy; ThePandaDevs</p>
+                        </div>
+
                     </div>
-
-                </div>
-            </footer>
+                </footer>
+            </div>
         </div>
-    </div>
 
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="col-12">
-                        <div class="card bg-light d-flex align-content-center align-items-center mb-0">
-                            <div class="card-body m-0 p-0" id="imageModal">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="col-12">
+                            <div class="card bg-light d-flex align-content-center align-items-center mb-0">
+                                <div class="card-body m-0 p-0" id="imageModal">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="../../assets/vendors/fontawesome/all.min.js"></script>
-<script src="../../assets/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/js/components.js" type="module"></script>
-<script src="../../assets/js/logout.js" type="module"></script>
-<script src="../../assets/js/services/VisitDetailsServices.js" type="module"></script>
+    <script src="../../assets/vendors/fontawesome/all.min.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/components.js" type="module"></script>
+    <script src="../../assets/js/logout.js" type="module"></script>
+    <script src="../../assets/js/services/VisitDetailsServices.js" type="module"></script>
 </body>
 
 </html>

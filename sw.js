@@ -41,6 +41,9 @@ self.addEventListener("install", (event) => {
             "./assets/images/resources/san_jose_logo.png",
             "./assets/images/resources/store.png",
             "./assets/images/resources/woman-candys.png",
+            "./assets/images/resources/error-403.png",
+            "./assets/images/resources/error-404.png",
+            "./assets/images/resources/error-500.png",
             "./assets/images/favicon.ico",
 
 
@@ -71,7 +74,6 @@ self.addEventListener("install", (event) => {
             './assets/js/utils/LocalStorage.js',
             './assets/js/utils/NotifyService.js',
             './assets/js/utils/Routes.js',
-            './assets/js/app.js',
             './assets/js/authentication.js',
             './assets/js/bootstrap.bundle.min.js',
             './assets/js/components.js',
