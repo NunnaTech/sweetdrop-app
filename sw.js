@@ -6,63 +6,18 @@ self.addEventListener("install", (event) => {
     console.log("SW: Instalado");
     const staticCache = caches.open(STATIC_CACHE_NAME).then((cache) => {
         return cache.addAll([
+            // INIT
             "./",
             "./index.html",
             "./manifest.json",
-
-            // JS
             "./app.js",
-            "./assets/js/bootstrap.bundle.min.js",
-
-            // Authentication views
-            "./views/authentication/login.html",
-
-            // Error views
-            "./views/errors/error-403.html",
-            "./views/errors/error-404.html",
-            "./views/errors/error-500.html",
-
-            // Profile views
-            "./views/profile/profile.html",
-
-            // Dashboard views
-            "./views/dashboards/admin_dashboard.html",
-            "./views/dashboards/dealer_dashboard.html",
-
-            // Dealer views for dealer user
-            "./views/dealer_views/dealer_observations.html",
-            "./views/dealer_views/dealer_orders.html",
-            "./views/dealer_views/dealer_stores.html",
-            "./views/dealer_views/register_observation.html",
-
-            // Dealer views
-            "./views/dealers/dealers.html",
-            "./views/dealers/edit_dealer.html",
-            "./views/dealers/register_dealer.html",
-
-            // Order views
-            "./views/orders/observations.html",
-            "./views/orders/order_details.html",
-            "./views/orders/orders.html",
-            "./views/orders/register_order.html",
-            "./views/orders/register_visit.html",
-
-            // Product views
-            "./views/products/edit_product.html",
-            "./views/products/products.html",
-            "./views/products/register_product.html",
-
-            // Store views
-            "./views/store/edit_store.html",
-            "./views/store/register_store.html",
-            "./views/store/stores.html",
 
             // CSS
             "./assets/css/bootstrap.css",
             "./assets/css/landing-page.css",
             "./assets/css/style.css",
 
-            // Images
+            // IMAGES
             "./assets/images/device-mockups/iPhoneX/portrait_black.png",
             "./assets/images/icons/android-launchericon-48.png",
             "./assets/images/icons/android-launchericon-72.png",
@@ -73,11 +28,9 @@ self.addEventListener("install", (event) => {
             "./assets/images/logo/logo.png",
             "./assets/images/resources/add-order.png",
             "./assets/images/resources/bg-phone.jpg",
-            "./assets/images/resources/candies-right.png",
-            "./assets/images/resources/candies.png",
+            "./assets/images/resources/dealer.png",
             "./assets/images/resources/dealer-stores.png",
             "./assets/images/resources/dealer-visit.png",
-            "./assets/images/resources/dealer.png",
             "./assets/images/resources/delivery.png",
             "./assets/images/resources/dulces-chompys.png",
             "./assets/images/resources/gudu-mix.jpg",
@@ -85,17 +38,79 @@ self.addEventListener("install", (event) => {
             "./assets/images/resources/man-laptop.png",
             "./assets/images/resources/notes-details.png",
             "./assets/images/resources/order-history.png",
-            "./assets/images/resources/palanquetas.jpg",
-            "./assets/images/resources/paleta.jpg",
-            "./assets/images/resources/product.jpg",
             "./assets/images/resources/san_jose_logo.png",
             "./assets/images/resources/store.png",
             "./assets/images/resources/woman-candys.png",
             "./assets/images/favicon.ico",
 
-            //Vendors
+
+            // JS
+            './assets/js/services/AdminProductsService.js',
+            './assets/js/services/AdminRegisterStore.js',
+            './assets/js/services/AdminService.js',
+            './assets/js/services/AdminStoresService.js',
+            './assets/js/services/AdminUpdateStore.js',
+            './assets/js/services/API.js',
+            './assets/js/services/AuthService.js',
+            './assets/js/services/CreateOrderService.js',
+            './assets/js/services/Dealer.js',
+            './assets/js/services/DealerServices.js',
+            './assets/js/services/DealerStoresService.js',
+            './assets/js/services/DealerUpdateServices.js',
+            './assets/js/services/OrderDetailsService.js',
+            './assets/js/services/OrderServices.js',
+            './assets/js/services/ProductService.js',
+            './assets/js/services/StoreService.js',
+            './assets/js/services/VisitDetailsServices.js',
+            './assets/js/services/VisitServices.js',
+            './assets/js/utils/Camera.js',
+            './assets/js/utils/Camera-utils.js',
+            './assets/js/utils/FileFormat.js',
+            './assets/js/utils/Firestore.js',
+            './assets/js/utils/Firestore-functions.js',
+            './assets/js/utils/LocalStorage.js',
+            './assets/js/utils/NotifyService.js',
+            './assets/js/utils/Routes.js',
+            './assets/js/app.js',
+            './assets/js/authentication.js',
+            './assets/js/bootstrap.bundle.min.js',
+            './assets/js/components.js',
+            './assets/js/logout.js',
+            './assets/js/profile.js',
+            './assets/js/toastify.js',
+
+            // VENDORS
             "./assets/vendors/fontawesome/all.min.css",
             "./assets/vendors/fontawesome/all.min.js",
+            "./assets/vendors/notiflix/notiflix-3.2.5.min.css",
+            "./assets/vendors/notiflix/notiflix-3.2.5.min.js",
+
+            // VIEWS
+            "./views/authentication/login.html",
+            "./views/dashboards/admin_dashboard.html",
+            "./views/dashboards/dealer_dashboard.html",
+            "./views/dealer_views/dealer_stores.html",
+            "./views/dealers/dealers.html",
+            "./views/dealers/edit_dealer.html",
+            "./views/dealers/register_dealer.html",
+            "./views/errors/error-403.html",
+            "./views/errors/error-404.html",
+            "./views/errors/error-500.html",
+            "./views/orders/order_details.html",
+            "./views/orders/orders.html",
+            "./views/orders/register_order.html",
+            "./views/orders/register_visit.html",
+            "./views/orders/take_photo.html",
+            "./views/orders/visit_details.html",
+            "./views/products/edit_product.html",
+            "./views/products/products.html",
+            "./views/products/register_product.html",
+            "./views/profile/profile.html",
+            "./views/store/edit_store.html",
+            "./views/store/register_store.html",
+            "./views/store/stores.html",
+            "./views/templates/AdminNav.html",
+            "./views/templates/DealerNav.html",
         ]);
     });
 

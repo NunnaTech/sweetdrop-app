@@ -2,138 +2,138 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../../assets/js/utils/Routes.js"></script>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Registrar Repartidor</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
-    <link
-    rel="stylesheet"
-    href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css"
-  />
-  <script
-    src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js"
-    type="module"
-  ></script>
+    <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css"/>
+    <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
 </head>
 
 <body>
-    <div id="app">
-        <nav id="navTemplate"></nav>
-        
-        <div id="main">
+<div id="app">
+    <nav id="navTemplate"></nav>
 
-            <div class="card mb-0">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <div class="card-body page-heading m-0 px-4">
-                            <h3 class="text-center">Registrar nuevo repartidor</h3>
-                        </div>
+    <div id="main">
+
+        <div class="card mb-0">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="card-body page-heading m-0 px-4">
+                        <h3 class="text-center">Registrar nuevo repartidor</h3>
                     </div>
                 </div>
             </div>
-            <!-- Contenido de la página web -->
-            <div class="page-content p-4 ">
-                <section class="row">
-                      <div class="container-fluid py-4">
-                        <div class="row">
-                          <div class="col-md-12">
+        </div>
+        <!-- Contenido de la página web -->
+        <div class="page-content p-4 ">
+            <section class="row">
+                <div class="container-fluid py-4">
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="card">
-                              <div class="card-header pb-0">
-                                <div class="d-flex align-items-center">
-                                    <h3 class=" text-center">Datos del Repartidor</h3>
+                                <div class="card-header pb-0">
+                                    <div class="d-flex align-items-center">
+                                        <h3 class=" text-center">Datos del Repartidor</h3>
+                                    </div>
                                 </div>
-                              </div>
-                              <form id="formulario">
-                              <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group position-relative has-icon-left mb-4">
-                                            <label class="form-label" for="name">Nombre</label>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="owner"><i
-                                                        class="fas fa-user "></i></span>
-                                                    <input type="text" class="form-control"
-                                                    id="nombreU" name="nombreU"  placeholder="Armando" />
-                                                    <input id="id"  hidden type="text" class="form-control" placeholder="Armando" />
-                                                </div>
-                                        </div>
-                                        </div>
-                                      <div class="col-md-4">
-                                        <div class="form-group position-relative has-icon-left mb-4">
-                                            <label class="form-label" for="first_surname">Apellido Paterno</label>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="owner"><i
-                                                        class="fas fa-user "></i></span>
-                                                    <input type="text" class="form-control"
-                                                       id="paternoU" name="paternoU" placeholder="Fernández" />
-                                                </div>
-                                        </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group position-relative has-icon-left mb-4">
-                                                <label class="form-label" for="second_surname">Apellido Materno</label>
+                                <form id="formulario">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group position-relative has-icon-left mb-4">
+                                                    <label class="form-label" for="name">Nombre</label>
                                                     <div class="input-group mb-3">
-                                                        <span class="input-group-text" id="owner"><i
+                                                    <span class="input-group-text" id="owner"><i
                                                             class="fas fa-user "></i></span>
                                                         <input type="text" class="form-control"
-                                                        id="maternoU" name="maternoU" placeholder="Gómez" />
+                                                               id="nombreU" name="nombreU" placeholder="Armando"/>
+                                                        <input id="id" hidden type="text" class="form-control"
+                                                               placeholder="Armando"/>
                                                     </div>
+                                                </div>
                                             </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group position-relative has-icon-left mb-4">
+                                                    <label class="form-label" for="first_surname">Apellido
+                                                        Paterno</label>
+                                                    <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="owner"><i
+                                                            class="fas fa-user "></i></span>
+                                                        <input type="text" class="form-control"
+                                                               id="paternoU" name="paternoU" placeholder="Fernández"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group position-relative has-icon-left mb-4">
+                                                    <label class="form-label" for="second_surname">Apellido
+                                                        Materno</label>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text" id="owner"><i
+                                                                class="fas fa-user "></i></span>
+                                                        <input type="text" class="form-control"
+                                                               id="maternoU" name="maternoU" placeholder="Gómez"/>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group position-relative has-icon-left mb-4">
                                                     <label class="form-label" for="phone">Teléfono</label>
-                                                        <div class="input-group mb-3">
+                                                    <div class="input-group mb-3">
                                                             <span class="input-group-text" id="owner"><i
-                                                                class="fas fa-phone "></i></span>
-                                                            <input type="text" class="form-control"
-                                                            id="phoneU" name="phoneU" placeholder="7771342399" />
-                                                        </div>
-                                                </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group position-relative has-icon-left mb-4">
-                                                        <label class="form-label" for="email">Correo Electrónico</label>
-                                                            <div class="input-group mb-3">
-                                                                <span class="input-group-text" id="owner"><i
-                                                                        class="fas fa-envelope "></i></span>
-                                                                <input type="text" class="form-control"
-                                                                id="emailU" name="emailU" placeholder="armandoF@gmail.com" />
-                                                            </div>
+                                                                    class="fas fa-phone "></i></span>
+                                                        <input type="text" class="form-control"
+                                                               id="phoneU" name="phoneU" placeholder="7771342399"/>
                                                     </div>
                                                 </div>
-                                </div>
-                                <div class="d-flex align-items-center" >
-                                  <button id="btnRegister" type="submit" class="btn btn-primary btn-lg ms-auto">Registrar</button>
-                                </div>
-                              </div>
-                            </form>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group position-relative has-icon-left mb-4">
+                                                    <label class="form-label" for="email">Correo Electrónico</label>
+                                                    <div class="input-group mb-3">
+                                                                <span class="input-group-text" id="owner"><i
+                                                                        class="fas fa-envelope "></i></span>
+                                                        <input type="text" class="form-control"
+                                                               id="emailU" name="emailU"
+                                                               placeholder="armandoF@gmail.com"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <button id="btnRegister" type="submit"
+                                                    class="btn btn-primary btn-lg ms-auto">Registrar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                          </div>
                         </div>
-                      </div>
-                </section>
-            </div>
-            <!-- Termina contenido de la página web -->
-            <footer>
-
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="text-center">
-                        <p>2022 &copy; ThePandaDevs</p>
                     </div>
                 </div>
-            </footer>
+            </section>
         </div>
+        <!-- Termina contenido de la página web -->
+        <footer>
+
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="text-center">
+                    <p>2022 &copy; ThePandaDevs</p>
+                </div>
+            </div>
+        </footer>
     </div>
-    <script src="../../assets/vendors/fontawesome/all.min.js"></script>
-    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/services/Dealer.js" type="module"></script>
-    <script src="../../assets/js/components.js" type="module"></script>
-    <script src="../../assets/js/logout.js" type="module"></script>
+</div>
+<script src="../../assets/vendors/fontawesome/all.min.js"></script>
+<script src="../../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/services/Dealer.js" type="module"></script>
+<script src="../../assets/js/components.js" type="module"></script>
+<script src="../../assets/js/logout.js" type="module"></script>
 </body>
 
 </html>
