@@ -149,7 +149,7 @@ function renderStores(myStores) {
                           </span>
                   </div>
                   <div class="d-flex justify-content-between my-3 mt-4">
-                      <button type="submit" id="btnEliminar" class="btn btn-outline-auxiliar" >
+                      <button type="submit" id="btnEliminar" class="btn btn-outline-auxiliar" onclick="deleteStore(${store.id})">
                           <i class="fas fa-trash me-2"></i>
                           Eliminar 
                       </button>
@@ -160,28 +160,51 @@ function renderStores(myStores) {
                   </div>
               </div>
           </div>
-          </div>`;   
+          </div>`;  
     });
-    /*myStores.forEach((i) => {
-        let id =document.getElementById(`${i.id}`);
-          id.onclick =()=> {
-           deleteStore(id.id);
-               }
-    });*/
     
 }
 
 function deleteStore(id) {
-    fetch(API_URI+'/stores/'+id, {
-       method: "DELETE",
-       headers: HEADERS_URI,
-      })
-      .then((response) => response.json())
-     .then((data) => {
-      if (data.success === true) {
-        goToPage("../../../views/store/stores.html");
-       } else {
-         NotifyService.notificatonError('No se eliminó correctamente!');
+    Notiflix.Confirm.show(
+        'Confirmación',
+        '¿Estás seguro de eliminar la tienda?',
+        'Sí, eliminar',
+        'No, cancelar',
+        () => {
+            removeStore(id)
+        },
+        () => {
+        },
+        {
+            titleColor: '#5D51B4',
+            okButtonColor: '#f8f9fa',
+            okButtonBackground: '#54d37a',
+            cancelButtonColor: '#f8f9fa',
+            cancelButtonBackground: '#f3616d',
         }
+    );
+}
+
+function removeStore(id) {
+    NotifyService.loadingNotification();
+    fetch(`${API_URI}/stores/${id}`, {
+        method: "DELETE",
+        headers: HEADERS_URI,
+    })
+        .then((response) => {
+            NotifyService.loadingNotificationRemove();
+            if (response.status === 200) {
+                NotifyService.notificatonSuccess("Tienda eliminada correctamente");
+                goToPage("../../../views/store/stores.html")
+            } else {
+                NotifyService.notificatonError("Error al eliminar la tienda");
+            }
+        })
+        .catch((err) => {
+            NotifyService.loadingNotificationRemove();
+            NotifyService.notificatonError("Ha ocurrido un error");
         });
-       }
+}
+
+window.deleteStore = deleteStore;
