@@ -41,7 +41,6 @@ headers: HEADERS_URI,
         [
           nombreU.value,
           paternoU.value,
-          maternoU.value,
           phoneU.value,
           emailU.value,
         ].includes("")
