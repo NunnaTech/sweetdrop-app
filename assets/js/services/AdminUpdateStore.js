@@ -76,18 +76,3 @@ fetch(API_URI+'/stores/'+id, {
               });
           }
 
-         
-fetch(API_URI+'/stores/'+id, {
-    method: "DELETE",
-    headers: HEADERS_URI,
-    
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.success === true) {
-        NotifyService.notificatonSuccess('Se elimino Correctamente!');
-        goToPage("../../../views/store/stores.html");
-      } else {
-        NotifyService.notificatonError('No se elimino correctamente!');
-      }
-    });
