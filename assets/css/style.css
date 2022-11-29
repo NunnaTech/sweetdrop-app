@@ -1823,16 +1823,18 @@ a {
 /* Errors CSS */
 #error {
     height: 100vh;
-    background-color: #ebf3ff;
+    background-color: #ffffff;
     padding-top: 1rem
 }
 
 #error .img-error {
-    width: 100%
+    width: 40%;
+    height: auto; 
+
 }
 
 #error .error-title {
-    font-size: 4rem;
+    font-size: 2rem;
     margin-top: 3rem
 }
 

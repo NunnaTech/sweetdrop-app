@@ -3,13 +3,11 @@ import {goToPage} from "./utils/Routes.js";
 import AuthService from "./services/AuthService.js";
 import NotifyService from "./utils/NotifyService.js";
 
-let btnLogout;
-
-window.addEventListener('load', async () => {
+window.addEventListener('load', () => {
     setTimeout(() => {
-        btnLogout = document.querySelector('#btnLogout');
-        document.addEventListener('load', btnLogout.addEventListener('click', logout));
-    }, 2000);
+        let btnLogout = document.querySelector('#btnLogout');
+        btnLogout.addEventListener('click', confirmLogout)
+    }, 2000)
 })
 
 
@@ -28,3 +26,28 @@ function logout() {
 
     }).catch(error => NotifyService.notificatonError('Hubo un error en el servicio'));
 }
+
+
+function confirmLogout() {
+    Notiflix.Confirm.show(
+        'Salir de la aplicación',
+        '¿Estás seguro de salir y cerrar sesión?',
+        'Sí, cerrar',
+        'No, permanecer',
+        () => {
+            logout()
+        },
+        () => {
+        },
+        {
+            titleColor: '#5D51B4',
+            okButtonColor: '#f8f9fa',
+            okButtonBackground: '#54d37a',
+            cancelButtonColor: '#f8f9fa',
+            cancelButtonBackground: '#f3616d',
+        }
+    );
+}
+
+window.logout = logout
+window.confirmLogout = confirmLogout

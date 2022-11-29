@@ -20,6 +20,7 @@ const deliverDate = document.querySelector("#deliverDate");
 const observations = document.querySelector("#observations");
 const observationsImage = document.querySelector("#observationsImage");
 const imageModal = document.querySelector("#imageModal");
+const imgContainer = document.querySelector("#imgContainer");
 
 const getUrl = new URLSearchParams(window.location.search);
 let id = getUrl.get("id");
@@ -37,8 +38,7 @@ function getOrderDetails() {
   })
     .then((response) => response.json())
     .then((order) => {
-
-        console.log(order.data);
+       
 
       NotifyService.loadingNotificationRemove();
       storeId.innerHTML = `<a href="../orders/orders.html?id=${order.data.store_id}">Historial de ordenes</a>`;
@@ -66,8 +66,7 @@ function getOrderDetails() {
 
       folio.innerHTML = `Folio: ${order.data.folio}`;
       name.innerHTML = `<p class="fw-bold fs-5 text-auxiliar">${order.data.store.name}</p>`;
-      name.innerHTML = `<p class="fw-bold fs-5 text-auxiliar">${order.data.store.name}</p>`;
-      phone.innerHTML = `<i class="fas fa-phone me-2 "></i>${order.data.store.phone}</span>`;
+      phone.innerHTML = `<a class="text-secondary" href="tel:${order.data.store.phone}"><i class="fas fa-phone me-2 "></i>${order.data.store.phone}</a>`;
       address.innerHTML = `<i class="fas fa-map-marker-alt me-2"></i>${
         order.data.store.address + " CP " + order.data.store.zipcode
       }</span>`;
@@ -75,25 +74,33 @@ function getOrderDetails() {
       status.innerHTML = `<span class="badge bg-primary mt-3">  ${order.data.status.name}</span>`;
 
    
-      for (let i = 0; i < order.data.observations.length; i++) {
-        observationsArray.push(
-          `
-            <p>${order.data.observations[i].comment}</p>
+      if (order.data.observations.length > 0) {
+        for (let i = 0; i < order.data.observations.length; i++) {
+          observationsArray.push(
             `
-        );
-
-        imagesArray.push(
-          `
-            <img class="img-responsive"
-            src="${order.data.observations[i].images[i].image}"
-            alt="Imágen de la observación">
+              <p>${order.data.observations[i].comment}</p>
+              `
+          );
+  
+          imagesArray.push(
             `
-        );
-
-        observations.innerHTML = observationsArray.join("");
-        imageModal.innerHTML = imagesArray.join("");
-        observationsImage.innerHTML = imagesArray.join("");
+              <img class="img-responsive"
+              src="${order.data.observations[i].images[i].image}"
+              alt="Imágen de la observación">
+              `
+          );
+  
+          observations.innerHTML = observationsArray.join("");
+          imageModal.innerHTML = imagesArray.join("");
+          observationsImage.innerHTML = imagesArray.join("");
+        }
+      }else{
+        observations.innerHTML = `<p class="text-secondary">No se registraron observaciones en esta visita.</p>`;
+        //hide a div
+        imgContainer.style.display = "none";      
       }
+
+      
     })
     .catch((err) => {
       NotifyService.loadingNotificationRemove();

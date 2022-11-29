@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+     <script src="../../assets/js/utils/Routes.js" type="module"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiendas | Administrador</title>
@@ -50,11 +51,18 @@
         <div class="page-content">
             <div class="card mb-3 p-4">
                 <div class="form-group position-relative has-icon-left m-0">
-                    <input type="text" class="form-control " placeholder="Filtrar tienda por nombre">
+                    <input type="text" class="form-control" id="inputStores" placeholder="Filtrar tienda por nombre"/>
                     <div class="form-control-icon">
                         <i class="fas fa-search fs-6 text-secondary"></i>
                     </div>
                 </div>
+            </div>
+
+            <div class="d-md-flex flex-md-row-reverse my-3 mt-4 col-12">
+                <a href="register_store.html" class="btn btn-success">
+                    <i class="fas fa-plus me-2"></i>
+                    Agregar nueva
+                </a>
             </div>
             <section class="row gx-4" id="adminStores"></section>
         </div>

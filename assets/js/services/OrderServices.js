@@ -35,7 +35,7 @@ function getData() {
             NotifyService.loadingNotificationRemove();
             nameStore = data.data.name;
             name.innerHTML = `<p class="fw-bold fs-5 text-auxiliar">${data.data.name}</p>`;
-            phone.innerHTML = `<i class="fas fa-phone me-2 "></i>${data.data.phone}</span>`;
+            phone.innerHTML = `<a class="text-secondary" href="tel:${data.data.phone}"><i class="fas fa-phone me-2 "></i>${data.data.phone}</a>`;
             address.innerHTML = `<i class="fas fa-map-marker-alt me-2"></i>${data.data.address + " CP " + data.data.zipcode}</span>`;
             openAddress.innerHTML =
                 `<a href="http://maps.google.com/?q=${data.data.address + " " + data.data.zipcode}" target="_blank" class="btn btn-outline-primary font-bold">Abrir en Google Maps</a>`;

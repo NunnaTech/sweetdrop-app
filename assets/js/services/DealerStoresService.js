@@ -8,6 +8,7 @@ const user = getUser();
 
 let allStores = []
 let filterStores = []
+let nameSearched = "";
 
 getData();
 
@@ -32,6 +33,7 @@ function getData() {
 inputStores.addEventListener('keyup', e => {
     if (e.target.value.length > 0) {
         filterStores = allStores.filter(store => store.name.toLowerCase().includes(e.target.value.toLowerCase()))
+        nameSearched = e.target.value
         renderStores(filterStores)
     } else {
         renderStores(allStores)
@@ -44,7 +46,13 @@ function renderStores(myStores) {
           ${allStores.length === 0 ? "No tienes registrada alguna tienda" : +allStores.length + " tiendas"} </span>`;
     let card = document.getElementById("stores");
     if (myStores.length === 0) {
-        card.innerHTML = `<p class="card  py-5 bg-light  text-primary text-center">No tienes tiendas registradas</p>`;
+        card.innerHTML = `
+        <div class="col-12">
+            <div class="card py-5 ">
+                <p class="text-primary mb-0 fs-6 text-center">No se encontraron coincidencias con el nombre <span class="fw-bold">${nameSearched}</span></p>
+            </div>
+        </div>
+        `;
     } else {
         card.innerHTML = "";
     }

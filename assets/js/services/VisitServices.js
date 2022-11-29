@@ -39,7 +39,7 @@ function getInfoStore() {
     .then((data) => {
       NotifyService.loadingNotificationRemove();
       name.innerHTML = `<p class="fw-bold fs-5 text-auxiliar">${data.data.name}</p>`;
-      phone.innerHTML = `<i class="fas fa-phone me-2 "></i>${data.data.phone}</span>`;
+      phone.innerHTML = `<a class="text-secondary" href="tel:${data.data.phone}"><i class="fas fa-phone me-2 "></i>${data.data.phone}</a>`;
       address.innerHTML = `<i class="fas fa-map-marker-alt me-2"></i>${
         data.data.address + " CP " + data.data.zipcode
       }</span>`;
@@ -65,7 +65,7 @@ function getInfoStore() {
 }
 
 function validateForm() {
-  return comment.value !== "" && images.length !== 0;
+  return comment.value !== "" && sessionStorage.getItem("image") !== null;
 }
 
 async function registerVisit() {
