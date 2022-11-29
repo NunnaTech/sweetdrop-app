@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../../assets/js/utils/Routes.js" type="module"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiendas | Repartidores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico" />
+    <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css">
+    <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
+</head>
+
+<body>
+    <div id="app">
+        <nav id="navTemplate"></nav>
+        <div id="main">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="../dashboards/dealer_dashboard.html">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a href="../dashboards/dealer_dashboard.html">Tiendas</a></li>                           
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Asignar Repartidor
+                    </li>
+                </ol>
+            </nav>
+            <div class="mb-0 order-0">
+                <div class="card mb-0">
+                    <div class="card mb-0">
+                        <div class="d-flex align-items-center row">
+                            <div class="col-sm-7">
+                                <div class="card-body page-heading m-0 px-4">
+                                    <p class="fs-5 fw-bold">Por favor, asigna los repartidores para la tienda:</p>
+                                    <p id="name"><p class="fs-6 fw-bold text-auxiliar"><i class="fas fa-store me-2"></i>Patrick Murphy</p></p>
+                                    <p id="phone" class="text-primary"><a class="text-primary" href="tel:(246) 943-7838"><i class="fas fa-phone me-2 "></i>(246) 943-7838</a></p>
+                                    <div class="mt-3">
+                                        <p class="text-secondary" id="address"><i class="fas fa-map-marker-alt me-2"></i>P.O. Box 593, 8520 Elit Ave CP 68673</p>
+                                    </div>
+    
+                                </div>
+                            </div>
+                            <div class="col-sm-5 text-center text-sm-left ">
+                                <div class="card-body py-0 px-0 px-md-4">
+                                    <img src="../../assets/images/resources/asign-dealer.png" height="200" alt="add-order">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="page-content">
+                <div class="card mb-4 p-4">
+                    <div class="form-group position-relative has-icon-left m-0">
+                        <input type="text" class="form-control" id="inputStores"
+                            placeholder="Filtrar repartidor por nombre" />
+                        <div class="form-control-icon">
+                            <i class="fas fa-search fs-6 text-secondary"></i>
+                        </div>
+                    </div>
+                </div>
+                <section class="row gx-4">
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="mx-auto mb-3">
+                                    <img src="./../../assets/images/resources/user-icon.png"
+                                        alt="Avatar Image" class="rounded-circle" style="width: 50px">
+                                </div>
+                                <h5 class="mb-1 card-title">Luis Álvarez</h5>
+                                <div>
+                                    <p class="text-muted">luis@gmail.com</p>
+                                </div>
+                                <div class="col mt-3 mb-4 gap-2">
+                                    <span class="badge bg-label-auxiliar"><i class="fas fa-phone me-2"></i>777 344 50
+                                        36</span>
+                                </div>
+                                <div class="col my-3 gap-2">
+
+                                    <p class="badge bg-label-secondary p-4"><i
+                                            class="fas fa-user-clock me-2"></i>Repartidor desde: 2022-11-21</p>
+                                </div>
+
+                                <div class="d-flex align-items-center justify-content-around my-2 py-2">
+                                    <div>
+                                        <h4 class="mb-1 text-auxiliar">152</h4>
+                                        <p>Visitas</span>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="mb-1 text-success">67</h4>
+                                        <p>Ordenes</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="form-check-sm form-switch d-flex align-items-center">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                        <label class="form-check-label ms-3 fw-bold"
+                                            for="flexSwitchCheckDefault">Asignar Repartidor</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="mx-auto mb-3">
+                                    <img src="./../../assets/images/resources/user-icon.png"
+                                        alt="Avatar Image" class="rounded-circle" style="width: 50px">
+                                </div>
+                                <h5 class="mb-1 card-title">Luis Álvarez</h5>
+                                <div>
+                                    <p class="text-muted">luis@gmail.com</p>
+                                </div>
+                                <div class="col mt-3 mb-4 gap-2">
+                                    <span class="badge bg-label-auxiliar"><i class="fas fa-phone me-2"></i>777 344 50
+                                        36</span>
+                                </div>
+                                <div class="col my-3 gap-2">
+
+                                    <p class="badge bg-label-secondary p-4"><i
+                                            class="fas fa-user-clock me-2"></i>Repartidor desde: 2022-11-21</p>
+                                </div>
+
+                                <div class="d-flex align-items-center justify-content-around my-2 py-2">
+                                    <div>
+                                        <h4 class="mb-1 text-auxiliar">152</h4>
+                                        <p>Visitas</span>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="mb-1 text-success">67</h4>
+                                        <p>Ordenes</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="form-check-sm form-switch d-flex align-items-center">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                        <label class="form-check-label ms-3 fw-bold"
+                                            for="flexSwitchCheckDefault">Asignar Repartidor</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="mx-auto mb-3">
+                                    <img src="./../../assets/images/resources/user-icon.png"
+                                        alt="Avatar Image" class="rounded-circle" style="width: 50px">
+                                </div>
+                                <h5 class="mb-1 card-title">Luis Álvarez</h5>
+                                <div>
+                                    <p class="text-muted">luis@gmail.com</p>
+                                </div>
+                                <div class="col mt-3 mb-4 gap-2">
+                                    <span class="badge bg-label-auxiliar"><i class="fas fa-phone me-2"></i>777 344 50
+                                        36</span>
+                                </div>
+                                <div class="col my-3 gap-2">
+
+                                    <p class="badge bg-label-secondary p-4"><i
+                                            class="fas fa-user-clock me-2"></i>Repartidor desde: 2022-11-21</p>
+                                </div>
+
+                                <div class="d-flex align-items-center justify-content-around my-2 py-2">
+                                    <div>
+                                        <h4 class="mb-1 text-auxiliar">152</h4>
+                                        <p>Visitas</span>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="mb-1 text-success">67</h4>
+                                        <p>Ordenes</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="form-check-sm form-switch d-flex align-items-center">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                        <label class="form-check-label ms-3 fw-bold"
+                                            for="flexSwitchCheckDefault">Asignar Repartidor</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="text-center">
+                        <p>2022 &copy; ThePandaDevs</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="../../assets/vendors/fontawesome/all.min.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/components.js" type="module"></script>
+    <script src="../../assets/js/logout.js" type="module"></script>
+
+</body>
+
+</html>
