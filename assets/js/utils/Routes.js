@@ -1,6 +1,8 @@
 import {getUser} from './LocalStorage.js'
 
 const dealerPages = [
+    '/index.html',
+    '/views/authentication/login.html',
     '/views/dashboards/dealer_dashboard.html',
     '/views/views/products/edit_product.html',
     '/views/dealer_views/dealer_stores.html',
@@ -20,6 +22,8 @@ const dealerPages = [
 ];
 
 const adminPages = [
+    '/index.html',
+    '/views/authentication/login.html',
     '/views/dashboards/admin_dashboard.html',
     '/views/dashboards/orders.html',
     '/views/orders/order_details.html',
@@ -41,7 +45,6 @@ const publicPages = [
     '/views/errors/error-403.html',
     '/views/errors/error-404.html',
     '/views/errors/error-500.html',
-
 ];
 
 
