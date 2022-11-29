@@ -135,16 +135,22 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-    const respuesta = caches
-        .match(event.request)
-        .then((respCache) => {
-            if (respCache) return respCache;
-            return fetch(event.request).then((respWeb) => {
-                caches.open(DYNAMIC_CACHE_NAME).then((cache) => {
-                    cache.put(event.request, respWeb);
+    let respuesta;
+    if (event.request.url.includes("https://sweetdrop-production-bd28.up.railway.app/api")) {
+        console.log('es api')
+        respuesta = fetch(event.request);
+    } else {
+        respuesta = caches
+            .match(event.request)
+            .then((respCache) => {
+                if (respCache) return respCache;
+                return fetch(event.request).then((respWeb) => {
+                    caches.open(DYNAMIC_CACHE_NAME).then((cache) => {
+                        cache.put(event.request, respWeb);
+                    });
+                    return respWeb.clone();
                 });
-                return respWeb.clone();
-            });
-        })
+            })
+    }
     event.respondWith(respuesta);
 });
