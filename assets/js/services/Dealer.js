@@ -22,14 +22,12 @@ form.addEventListener("submit", validarFormulario);
  function validarFormulario(e) {
    e.preventDefault();
 
-   if (
-     [
-       nombreU.value,
-       paternoU.value,
-       maternoU.value,
-       phoneU.value,
-       emailU.value,
-     ].includes("")
+   if ([
+    nombreU.value,
+    paternoU.value,
+    phoneU.value,
+    emailU.value,
+  ].includes("")
    ) {
      NotifyService.notificatonError('Todos los campos son obligatorios')
      return true;
@@ -65,7 +63,8 @@ function getDealers() {
                               <i class="fas fa-truck-moving text-primary fs-3"></i>
                           </div>
                           <div class="me-2">
-                              <h5 class="mb-1 ">${dealer.name} ${dealer.first_surname} ${dealer.second_surname}
+                              <h5 class="mb-1 ">${dealer.name} ${dealer.first_surname} 
+                              ${dealer.second_surname === null ? "":""}
                               </h5>
                               <div class="dealer-info d-flex align-items-center">
                                   <span>
@@ -110,7 +109,7 @@ function getDealers() {
     dealers.data.forEach((i) => {
       let id =document.getElementById(`${i.id}`);
         id.onclick =()=> {
-         eliminarDealer(id.id);
+         deleteDealer(id.id)
              }
   });
 }
@@ -139,11 +138,41 @@ async function agregarDealer() {
       }
       });
   }
+
+
+
+
+
 //Eliminar Repartidor
+function deleteDealer(id) {
+  Notiflix.Confirm.show(
+      'Confirmación',
+      '¿Estás seguro de eliminar al Repartidor?',
+      'Sí, eliminar',
+      'No, cancelar',
+      () => {
+          eliminarDealer(id)
+      },
+      () => {
+      },
+      {
+          titleColor: '#5D51B4',
+          okButtonColor: '#f8f9fa',
+          okButtonBackground: '#54d37a',
+          cancelButtonColor: '#f8f9fa',
+          cancelButtonBackground: '#f3616d',
+      }
+  );
+}
+
+
+
+
 function eliminarDealer(id) {
   fetch(API_URI+'/users/'+id, {
      method: "DELETE",
      headers: HEADERS_URI,
+     
     })
     .then((response) => response.json())
    .then((data) => {
@@ -155,5 +184,5 @@ function eliminarDealer(id) {
       });
      }
 
-
+     window.deleteDealer = deleteDealer;
 
