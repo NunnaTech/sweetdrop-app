@@ -170,10 +170,10 @@ function loadCards(cards) {
                         }</a>
                     </div>
                     <div class="col-12 col-sm-6">
-                        <a href="../orders/order_details.html"
-                            class="btn btn-outline-secondary col-12">Ver más detalles
-                            <i class="fas fa-chevron-right text-secondary ms-2"></i>
-                        </a>
+                    <a href="../orders/order_details.html?id=${order.id}"
+                      class="btn btn-outline-secondary col-12">Ver más detalles
+                      <i class="fas fa-chevron-right text-secondary ms-2"></i>
+                    </a>
                     </div>
                 </div>
              </div>  
