@@ -4,16 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Productos</title>
+    <title>Actualizar Productos</title>
+
 
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
+    <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css">
+    <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
 </head>
 
 <body>
 <div id="app">
+     <nav id="navTemplate"></nav>
     <div id="main">
         <div class="mb-0 order-0">
             <div class="card mb-0">
@@ -24,7 +28,7 @@
                                 <div class="col-auto my-auto">
                                     <div class="h-100">
                                         <h1 class="mb-1">
-                                            Editar Productos
+                                            Actualizar Productos
                                         </h1>
                                     </div>
                                 </div>
@@ -37,17 +41,20 @@
             </div>
         </div>
         <hr class="horizontal dark">
+
         <div class="page-content">
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
                         <div class="row gx-4">
-                            <form class="form">
+
+
+                            <form class="form" id="updateProduct">
                                 <div class="row">
                                     <div class="col-md-6 col-12 mt-3 mb-4 ">
                                         <div class="form-group position-relative has-icon-left m-0">
-                                            <input type="text" id="lastname-column" class="form-control"
-                                                   name="name" placeholder="Nombre">
+                                            <input type="text" id="lastname-column" class="form-control" 
+                                                   name="name"  id="name" placeholder="Nombre">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-box fs-6 text-secondary"></i>
                                             </div>
@@ -57,7 +64,7 @@
                                         <div class="form-group position-relative has-icon-left m-0">
 
                                             <input type="number" id="price" class="form-control"
-                                                   name="price" placeholder="Precio Unitario">
+                                                   name="price" id="price" placeholder="Precio Unitario">
                                             <div class="form-control-icon">
                                                 <i class="fas fa-dollar-sign fs-6 text-secondary"></i>
                                             </div>
@@ -65,7 +72,7 @@
                                     </div>
                                     <br/>
                                     <div class="col-md-6 col-12 mt-3 mb-4 ">
-                                        <div class="form-group position-relative">
+                                        <div class="form-group position-relative" >
 
                                             <input class="form-control form-control-lg" id="formFileLg" type="file">
                                         </div>
@@ -79,7 +86,6 @@
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Enviar</button>
-                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">Cancelar</button>
                                     </div>
                                 </div>
                             </form>
@@ -89,7 +95,9 @@
                 </div>
             </div>
         </div>
+
     </div>
+</div>
 </div>
 
 
@@ -100,9 +108,15 @@
         </div>
     </div>
 </footer>
+</div>
+</div>
 
 <script src="../../assets/vendors/fontawesome/all.min.js"></script>
 <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/components.js" type="module"></script>
+<script src="../../assets/js/logout.js" type="module"></script>
+<script src="./../../assets/js/services/AdminUpdateProducts.js" type="module"></script>
+
 </body>
 
 </html>
