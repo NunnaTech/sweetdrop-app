@@ -6,6 +6,10 @@ import NotifyService from "./utils/NotifyService.js";
 const loginForm = document.querySelector('#loginForm') || document.createElement('form');
 const inputEmail = document.querySelector('#email') || document.createElement('input');
 const inputPassword = document.querySelector('#password') || document.createElement('input');
+const btnIconEye = document.querySelector('#btnIconEye');
+
+console.log(btnIconEye)
+
 loginForm.addEventListener('submit', login);
 document.addEventListener('DOMContentLoaded', sesionActive);
 
@@ -49,3 +53,14 @@ function login(e) {
     else NotifyService.notificatonError('Los campos no deben estar vacios');
 }
 
+
+btnIconEye.addEventListener('click', () => {
+    if (inputPassword.type === 'password') {
+        inputPassword.type = 'text';
+        btnIconEye.innerHTML = ' <span class="fas fa-eye"></span>'
+    } else {
+        inputPassword.type = 'password';
+        btnIconEye.classList.remove('fa-eye');
+        btnIconEye.innerHTML = ' <span class="fas fa-eye-slash"></span>'
+    }
+});
