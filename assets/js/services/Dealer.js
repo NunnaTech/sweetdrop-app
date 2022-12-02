@@ -132,13 +132,62 @@ async function agregarDealer() {
     .then((response) => response.json())
     .then((data) => {
        if (data.success === true) {
-         goToPage("../../views/dealers/dealers.html");
+         showPassword(data.data.rawPassword);
         } else {
          NotifyService.notificatonError('No se registro correctamente!')
       }
       });
   }
 
+function showPassword(data){
+
+  showModal(data);
+
+}
+
+var modalWrap = null;
+
+
+function showModal (data){
+  if (modalWrap !== null) {
+    modalWrap.remove();
+  }
+  modalWrap = document.createElement('div');
+  modalWrap.innerHTML = `
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="staticBackdropLabel" style="text-align:center;width:900px">Contraseña</h3>
+        <button type="button" onclick="redirection()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body row" >
+      <div class="col-3"></div>
+      <h4 class="col-6" style="text-align:center;width:800px;">Esta es tu contraseña!</h5>
+      </div>
+      <div class="modal-body row" >
+      <div class="col-3"></div>
+      <h1 class="col-6" style="text-align:center;width:950px;">${data}</h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="redirection()" class="btn" style="color:#f8f9fa;background-color:#54d37a">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+  `
+
+
+
+
+
+  document.body.append(modalWrap);
+
+  var modal = new bootstrap.Modal(modalWrap.querySelector('.modal'));
+ 
+  modal.show();
+
+}
 
 
 
@@ -184,5 +233,12 @@ function eliminarDealer(id) {
       });
      }
 
+     function redirection(){
+      goToPage("../../views/dealers/dealers.html");
+    }
+
      window.deleteDealer = deleteDealer;
+     window.redirection = redirection;
+
+     
 
