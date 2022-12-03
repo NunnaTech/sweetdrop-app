@@ -151,12 +151,19 @@ function renderStores(myStores) {
                   <div class="d-flex justify-content-between my-3 mt-4">
                       <button type="submit" id="btnEliminar" class="btn btn-outline-auxiliar" onclick="deleteStore(${store.id})">
                           <i class="fas fa-trash me-2"></i>
-                          Eliminar 
+                          Eliminar tienda
                       </button>
                      <a href='../../../views/store/edit_store.html?id=${store.id}' class="btn btn-info">
                           <i class="fas fa-info-circle me-2"></i>
                           Ver detalles
                       </a>
+                  </div>
+                  <hr>
+                  <div class="d-flex justify-content-center">
+                    <a href='../../../views/store/asign_dealers.html?id=${store.id}' class="btn btn-primary">
+                    <i class="fas fa-user-friends me-2"></i>
+                    Ver repartidores
+                    </a>
                   </div>
               </div>
           </div>
