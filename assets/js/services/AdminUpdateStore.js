@@ -4,7 +4,7 @@ import NotifyService from "../utils/NotifyService.js";
 
 const updateForm = document.querySelector('#updateForm') || document.createElement('form');
 const inputUpdateName = document.querySelector('#name') || document.createElement('input');
-const inputUpdatePhone = document.querySelector('#phone') || document.createElement('input');
+const inputUpdatePhone = document.querySelector('#phone')
 const inputUpdateAddress = document.querySelector('#address') || document.createElement('input');
 const inputUpdateZipcode = document.querySelector('#zipcode') || document.createElement('input');
 const inputUpdateOwner = document.querySelector('#owner') || document.createElement('input');
@@ -13,12 +13,14 @@ const inputUpdateOwner = document.querySelector('#owner') || document.createElem
 const getUrl = new URLSearchParams(window.location.search);
 let id = getUrl.get('id');
 
-
+NotifyService.loadingNotification('Cargando datos de la tienda')
 fetch(API_URI+'/stores/'+id, {
     method: "GET",
     headers: HEADERS_URI,
        }).then((response) => response.json())
          .then((data) => {
+
+          NotifyService.loadingNotificationRemove()
           inputUpdateName.value = data.data.name,
           inputUpdatePhone.value= data.data.phone;
           inputUpdateAddress.value= data.data.address;
@@ -64,14 +66,15 @@ fetch(API_URI+'/stores/'+id, {
               }),
             })
               .then((response) => response.json())
-              .then((data) => {
-                console.log(data);
+              .then((data) => {   
+                console.log(data)                          
                 if (data.success === true) {
-                  goToPage("../../../views/store/stores.html");
-                  NotifyService.notificatonSuccess('Tienda actualizada correctamente')
-                NotifyService.loadingNotificationRemove()
+                  NotifyService.notificatonSuccess("Tienda actualizada correctamente!");
+                  setTimeout(() => {
+                    goToPage("../../../views/store/stores.html");
+                  }, 2000);
                 } else {
-                  NotifyService.notificatonError('Error al actualizar');
+                  NotifyService.notificatonError('Ha ocurrido un error al actualizar la tienda, revisa los datos');
                 }
               });
           }

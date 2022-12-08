@@ -16,21 +16,29 @@
   <body>
     <div id="app">
         <nav id="navTemplate"></nav>
-
       <div id="main">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../dashboards/admin_dashboard.html">Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                 Repartidores
+              </li>
+          </ol>
+      </nav>
         <div class="card mb-0">
           <div class="row">
             <div class="col-12 text-center">
               <div class="card-body page-heading m-0 px-4">
-                <h3 class="text-center">Repartidores Registrados</h3>
+                <h3 class="text-center mb-1 m-0">Repartidores Registrados</h3>
+                <small class="text-muted">Lista de repartidores registrados en el sistema</small>
               </div>
             </div>
           </div>
         </div>
-        <div class="d-md-flex flex-md-row-reverse my-3 mt-4 col-12">
+        <div class="d-md-flex my-3 mt-4 col-12">
           <a href="register_dealer.html" class="btn btn-success">
-            <i class="fas fa-plus me-2"></i>
-            Agregar nuevo
+            <i class="fas fa-user-plus me-2"></i>
+            Registrar Repartidor
           </a>
         </div>
         <div class="page-content">
@@ -48,8 +56,9 @@
 
     <script src="../../assets/vendors/fontawesome/all.min.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/services/Dealer.js" type="module"></script>
     <script src="../../assets/js/components.js" type="module"></script>
     <script src="../../assets/js/logout.js" type="module"></script>
+    <script src="../../assets/js/services/Dealer.js" type="module"></script>
+
 </body>
 </html>

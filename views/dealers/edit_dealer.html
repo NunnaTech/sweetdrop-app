@@ -20,18 +20,26 @@
         <nav id="navTemplate"></nav>
 
         <div id="main">
-            <div class="card mb-0">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <div class="card-body page-heading m-0 px-4">
-                            <h3 class="text-center">Editar repartidor</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../dashboards/admin_dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="../dealers/dealers.html">Repartidores</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                   Editar Repartidor
+                </li>
+            </ol>        
 
             <!-- Contenido de la página web -->
             <div class="page-content p-4 ">
+                <div class="card mb-0">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="card-body page-heading m-0 px-4">
+                                <h3 class="text-center">Editar repartidor</h3>
+                                <small class="text-muted">Por favor, modifica los campos correspondiente:</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <section class="row">
                     <div class="container-fluid py-4">
                         <div class="row">
@@ -45,67 +53,72 @@
                                     <form id="formularioU">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label" for="name">Nombre</label>
+                                                    <label class="form-label text-primary" for="name">Nombre</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="owner"><i
                                                                 class="fas fa-user "></i></span>
-                                                                <input id="id"  hidden type="text" class="form-control" placeholder="Armando" />
-                                                        <input id="nombreU" type="text" class="form-control" placeholder="Armando" />
+                                                                <input id="id"  hidden type="text" class="form-control"  />
+                                                        <input id="nombreU" type="text" class="form-control"  />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label" for="first_surname">Apellido
+                                                    <label class="form-label text-primary" for="first_surname">Apellido
                                                         Paterno</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="owner"><i
                                                                 class="fas fa-user "></i></span>
                                                         <input id="paternoU" type="text" class="form-control"
-                                                            placeholder="Fernández" />
+                                                            />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label" for="second_surname">Apellido
+                                                    <label class="form-label text-primary" for="second_surname">Apellido
                                                         Materno</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="owner"><i
                                                                 class="fas fa-user "></i></span>
-                                                        <input  id="maternoU" type="text" class="form-control" placeholder="Gómez" />
+                                                        <input  id="maternoU" type="text" class="form-control"/>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group position-relative has-icon-left mb-4">
                                                     <input id="passwordU"  hidden type="text" class="form-control" />
-                                                    <label class="form-label" for="phone">Teléfono</label>
+                                                    <label class="form-label text-primary" for="phone">Teléfono</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="owner"><i
                                                                 class="fas fa-phone "></i></span>
                                                         <input id="phoneU" type="text" class="form-control"
-                                                            placeholder="7771342399" />
+                                                             />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label" for="email">Correo Electrónico</label>
+                                                    <label class="form-label text-primary" for="email">Correo Electrónico</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="owner"><i
                                                                 class="fas fa-envelope "></i></span>
                                                         <input id="emailU" type="text" class="form-control"
                                                             placeholder="armandoF@gmail.com" />
-                                                            <input id="role_idU"  hidden type="text" class="form-control" placeholder="Armando" />
+                                                            <input id="role_idU"  hidden type="text" class="form-control"  />
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="d-flex align-items-center">
-                                            <button class="btn btn-primary btn-lg ms-auto">Actualizar</button>
+                                        <div class="d-flex justify-content-between align-items-center mt-4">
+                                            <a href="./dealers.html"
+                                            class="btn btn-danger">
+                                            <i class="fas fa-chevron-left me-2"></i>Regresar
+                                        </a>
+                                            <button class="btn btn-primary">
+                                                <i class="fas fa-save me-2"></i>Actualizar Datos</button>
                                         </div>
                                     </div>
                                     </form>

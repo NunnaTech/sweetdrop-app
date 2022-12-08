@@ -51,7 +51,6 @@ const publicPages = [
 
 ((dealerPages, adminPages, publicPages) => {
     let user = getUser();
-    console.log(user);
     if (user != null) {
         switch (user.role_id) {
             case 1:

@@ -41,7 +41,7 @@ NotifyService.loadingNotification();
                                 <i class="fas fa-trash me-2"></i>
                                  Eliminar
                            </a>
-                           <a href="../views/products/edit_product.html" class="btn btn-outline-secondary col-12 "
+                           <a href="../products/edit_product.html" class="btn btn-outline-secondary col-12 "
                            type="submit">
                            <i class="fas fa-pencil-alt me-2"></i>
                        Ver Detalle
