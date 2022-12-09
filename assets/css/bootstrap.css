@@ -7100,6 +7100,10 @@ fieldset:disabled .btn {
     border-color: var(--bs-secondary) !important
 }
 
+.border-auxiliar {
+    border-color: var(--bs-auxiliar) !important
+}
+
 .border-success {
     border-color: #54d37a !important
 }

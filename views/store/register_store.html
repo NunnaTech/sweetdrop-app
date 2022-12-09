@@ -2,131 +2,128 @@
 <html lang="en">
 
 <head>
+     <script src="../../assets/js/utils/Routes.js" type="module"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registrar Tienda</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico" />
+    <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css">
+    <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
 </head>
 
 <body>
     <div id="app">
-        <!-- Navbar -->
-        <nav class="navbar nv-style  navbar-expand-md  navbar-light bg-primary">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="" href="#"> <img class="navbar-brand img-fluid" style="width: 100px; height:auto"
-                        src="/assets/images/logo/logo.png"></img></a>
-                <div class="collapse navbar-collapse  p-3 p-md-0" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active text-primary font-bold" aria-current="page" href="#"><i class="fas fa-home me-2"></i>Dashboard</a>
-                        </li>    
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../dealer_views/dealer_stores.html"><i class="fas fa-store me-2"></i>Tiendas</a>
-                        </li>  
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../profile/profile.html"><i class="fas fa-user me-2"></i>Perfil</a>
-                        </li>                                                  
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Acaba Navbar -->
+        <nav id="navTemplate"></nav>
         <div id="main">
-
-            <div class="card mb-0">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <div class="card-body page-heading m-0 px-4">
-                            <h3 class="text-center">Registrar tienda</h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="../dashboards/dealer_dashboard.html">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a href="../store/stores.html">Tiendas</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Registrar tienda
+                    </li>
+                </ol>
+            </nav>
+            <div class="mb-0 order-0">
+                <div class="card mb-0">
+                    <div class="d-flex align-items-center">
+                        <div class="col">
+                            <div class="card-body page-heading  m-0 px-4">
+                                <div class="row gx-4">
+                                    <div class="col-auto my-auto">
+                                        <div class="h-100">
+                                            <h1 class="mb-2">
+                                                Registrar Tienda
+                                            </h1>
+                                            <small class="text-muted">Por favor, llena los siguientes campos:</small>
+                                        </div>
+                                    </div>
+                                </div>                               
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+            <hr class="horizontal dark">
+
             <!-- Contenido de la página web -->
-            <div class="page-content p-4 ">
-                <section class="row">
-                      <div class="container-fluid py-4">
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="card">
-                              <div class="card-header pb-0">
-                                <div class="d-flex align-items-center">
-                                    <h3 class=" text-center">Datos de la Tienda</h3>
-                                </div>
-                              </div>
-                              <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group position-relative has-icon-left mb-4">
-                                            <label class="form-label" for="name">Nombre</label>
-                                                <div class="input-group mb-3"></span>
-                                                    <input type="text" class="form-control"
-                                                        placeholder="Abarrotes Domínguez" />
-                                                </div>
-                                        </div>
-                                        </div>
-                                      <div class="col-md-4">
-                                        <div class="form-group position-relative has-icon-left mb-4">
-                                            <label class="form-label" for="phone">Teléfono</label>
+            <div class="page-content">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="row gx-4">
+                                <form class="form" id="registerForm">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12 my-2">
+                                            <div class="form-group position-relative has-icon-left m-0">
+                                                <label class="form-label" for="name">Nombre</label>
                                                 <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="phone"><i
-                                                            class="fas fa-phone"></i></span>
+                                                    <span class="input-group-text"><i
+                                                        class="fas fa-store"></i></span>
                                                     <input type="text" class="form-control"
-                                                        placeholder="7775674323" />
+                                                        placeholder="Pj: Abarrotes Domínguez" id="name" name="name" />                                                  
                                                 </div>
+                                            </div>
                                         </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group position-relative has-icon-left mb-4">
+                                        <div class="col-md-6 col-12 my-2">
+                                            <div class="form-group position-relative has-icon-left m-0">
+                                                <label class="form-label" for="phone">Teléfono</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text"><i
+                                                            class="fas fa-phone"></i></span>
+                                                    <input type="number" class="form-control" placeholder="Pj: 7775674323" id="phone" name="phone" minlength="10" maxlength="10" />
+                                                </div>
+                                            </div>
+                                        </div>    
+                                        <div class="col-md-6 col-12 my-2">
+                                            <div class="form-group position-relative has-icon-left m-0">
+                                                <label class="form-label" for="owner">Nombre del Propietario</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text"><i class="fas fa-user "></i></span>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Pj: Alejandro López" id="owner" name="owner"/>
+                                                </div>
+                                            </div>
+                                        </div>                                
+                                        <div class="col-md-6 col-12 my-2">
+                                            <div class="form-group position-relative has-icon-left m-0">                                                
+                                                <label class="form-label" for="zipcode">Código Postal</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text"><i class="fas fa-city"></i></span>
+                                                    <input type="number" class="form-control" placeholder="Pj: 62000"
+                                                        id="zipcode" name="zipcode" minlength="5" maxlength="5" />
+                                                </div>
+                                            </div>
+                                        </div>                                    
+                                        <div class="col-12 mt-2 mb-5">
+                                            <div class="form-group position-relative has-icon-left m-0">
                                                 <label class="form-label" for="address">Dirección</label>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text" id="deliver_date"><i
-                                                                class="fas fa-map"></i></span>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Av.Plan de Ayala No.45" />
-                                                    </div>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="deliver_date"><i
+                                                            class="fas fa-map"></i></span>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Pj: Av.Plan de Ayala No.45" id="address" name="address"/>
+                                                </div>
                                             </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label" for="zipcode">Código Postal</label>
-                                                        <div class="input-group mb-3">
-                                                            <input type="number" class="form-control"
-                                                                placeholder="62000" />
-                                                        </div>
-                                                </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group position-relative has-icon-left mb-4">
-                                                        <label class="form-label" for="owner">Nombre del Propietario</label>
-                                                            <div class="input-group mb-3">
-                                                                <span class="input-group-text" id="owner"><i
-                                                                        class="fas fa-user "></i></span>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Alejandro López" />
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                  <button class="btn btn-primary btn-lg ms-auto">Registrar</button>
-                                </div>
-                              </div>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-between">
+                                            <a href="./stores.html" class="btn btn-danger me-1 mb-1">
+                                                <i class="fas fa-arrow-left me-2"></i>Regresar
+                                            </a>
+                                            <button type="submit" class="btn btn-primary me-1 mb-1" id="update">
+                                                <i class="fas fa-save me-2"></i>Registrar Tienda
+                                            </button>
+    
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                          </div>
                         </div>
-                      </div>
-                </section>
+                    </div>
+                </div>
             </div>
             <!-- Termina contenido de la página web -->
             <footer>
@@ -141,6 +138,9 @@
     </div>
     <script src="../../assets/vendors/fontawesome/all.min.js"></script>
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/components.js" type="module"></script>
+    <script src="../../assets/js/logout.js" type="module"></script>
+    <script src="./../../assets/js/services/AdminStoresService.js" type="module"></script>
 </body>
 
 </html>

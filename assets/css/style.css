@@ -24,6 +24,9 @@
     z-index: 999999;
 }
 
+.display-flex {
+    display: flex;
+}
 
 .card-float {
     position: fixed;   
@@ -425,6 +428,13 @@ input {
     background-color: #f652a11f !important;
     color: #F652A0 !important;
 }
+
+.bg-label-info {
+    background-color:#0dcaf029 !important;
+    color: #0dcaf0 !important;
+}
+
+
 
 
 
@@ -1813,16 +1823,18 @@ a {
 /* Errors CSS */
 #error {
     height: 100vh;
-    background-color: #ebf3ff;
+    background-color: #ffffff;
     padding-top: 1rem
 }
 
 #error .img-error {
-    width: 100%
+    width: 40%;
+    height: auto; 
+
 }
 
 #error .error-title {
-    font-size: 4rem;
+    font-size: 2rem;
     margin-top: 3rem
 }
 
@@ -1833,4 +1845,10 @@ a {
 .like {
 
     font-size: 1.5rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
