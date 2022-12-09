@@ -436,7 +436,7 @@ function getOrdersByStore() {
 function confirmFinishOrder(id) {
     Notiflix.Confirm.show(
         'Confirmación',
-        '¿Estás seguro de completar la oden?',
+        '¿Estás seguro de completar la orden?',
         'Sí, completar',
         'No, cancelar',
         () => {

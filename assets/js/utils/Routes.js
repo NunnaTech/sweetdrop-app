@@ -37,6 +37,7 @@ const adminPages = [
     '/views/store/stores.html',
     '/views/store/register_store.html',
     '/views/store/edit_store.html',
+    '/views/store/asign_dealers.html',
 ];
 
 const publicPages = [

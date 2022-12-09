@@ -289,7 +289,6 @@ async function createOrder() {
   })
     .then((response) => response.json())
     .then((order) => {
-      console.log(order);
       if (order.success) {
         // clear session storage
         sessionStorage.removeItem("image");

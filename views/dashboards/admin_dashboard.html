@@ -1,205 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-     <script src="../../assets/js/utils/Routes.js" type="module"></script>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <head>
+    <script src="../../assets/js/utils/Routes.js" type="module"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Admin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
-          rel="stylesheet"/>
-    <link rel="stylesheet" href="../../assets/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../../assets/css/style.css"/>
-    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
-    <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css"/>
-    <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../../assets/images/favicon.ico"
+    />
+    <link
+      rel="stylesheet"
+      href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css"
+    />
+    <script
+      src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js"
+      type="module"
+    ></script>
+  </head>
 
-<body>
-<div id="app">
-    <nav id="navTemplate"></nav>
-    <div id="main">
+  <body>
+    <div id="app">
+      <nav id="navTemplate"></nav>
+      <div id="main">
         <div class="page-heading mb-0">
-            <h3>Resumen de SweetDrop</h3>
-            <p class="m-0">
-                Bienvenido <span id="name"></span><br/>A continuación se muestran
-                información revelante.
-            </p>
+          <h3>Resumen de SweetDrop</h3>
+          <p class="m-0">
+            Bienvenido <span id="name"></span><br />A continuación se muestran
+            información revelante.
+          </p>
         </div>
-        <hr/>
+        <hr />
         <div class="page-content">
-            <section class="row">
-                <div class="col-12">
-                    <!-- Lista de cards -->
-                    <div class="row">
-                        <div class="col-6 col-xl-3 col-md-6 grid">
-                            <div class="card text-center">
-                                <div class="card-body py-4 px-3">
-                                    <div class="row">
-                                        <div class="col-md-4 icon-container">
-                                            <div class="stats-icon purple">
-                                                <i class="fas fa-shopping-bag fs-4 text-white"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 text-center my-2">
-                                            <h6 class="text-muted font-semibold">
-                                                Tiendas registradas
-                                            </h6>
-                                            <h6 id="totalStores"></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+          <section class="row">
+            <div class="col-12">
+              <!-- Lista de cards -->
+              <div class="row">
+                <div class="col-6 col-xl-3 col-md-6 grid">
+                  <div class="card text-center">
+                    <div class="card-body py-4 px-3">
+                      <div class="row">
+                        <div class="col-md-4 icon-container">
+                          <div class="stats-icon purple">
+                            <i class="fas fa-shopping-bag fs-4 text-white"></i>
+                          </div>
                         </div>
-                        <div class="col-6 col-xl-3 col-md-6 grid">
-                            <div class="card text-center">
-                                <div class="card-body py-4 px-3">
-                                    <div class="row">
-                                        <div class="col-md-4 icon-container">
-                                            <div class="stats-icon blue">
-                                                <i class="fas fa-clipboard text-white fs-4"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 text-center my-2">
-                                            <h6 class="text-muted font-semibold">
-                                                Órdenes registradas
-                                            </h6>
-                                            <h6 id="totalOrders"></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-8 text-center my-2">
+                          <h6 class="text-muted font-semibold">
+                            Tiendas registradas
+                          </h6>
+                          <h6 id="totalStores"></h6>
                         </div>
-                        <div class="col-6 col-xl-3 col-md-6 grid">
-                            <div class="card text-center">
-                                <div class="card-body py-4 px-3">
-                                    <div class="row">
-                                        <div class="col-md-4 icon-container">
-                                            <div class="stats-icon green">
-                                                <i class="fas fa-users text-white fs-4"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 text-center my-2">
-                                            <h6 class="text-muted font-semibold">
-                                                Total de repartidores
-                                            </h6>
-                                            <h6 id="totalDealer"></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-xl-3 col-md-6 grid">
-                            <div class="card text-center">
-                                <div class="card-body py-4 px-3">
-                                    <div class="row">
-                                        <div class="col-md-4 icon-container">
-                                            <div class="stats-icon red">
-                                                <i class="fas fa-candy-cane text-white fs-4"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 text-center my-2">
-                                            <h6 class="text-muted font-semibold">
-                                                Total de productos
-                                            </h6>
-                                            <h6 id="totalProducts"></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      </div>
                     </div>
-                    <!-- Total ventas card -->
-                    <div class="col-lg-12 mb-4 order-0">
-                        <div class="card">
-                            <div class="d-flex align-items-end row">
-                                <div class="col-sm-7">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-primary">Total de ventas</h5>
-                                        <p class="mb-1">
-                                            El total de ventas hasta el día de hoy es de
-                                        </p>
-                                        <div class="mb-4">
-                                            <span id="totalSell"></span>
-                                        </div>
-                                        <a href="orders.html" class="btn btn-sm btn-primary"
-                                        >Ver órdenes</a
-                                        >
-                                    </div>
-                                </div>
-                                <div class="col-sm-5 text-center text-sm-left">
-                                    <div class="card-body pb-0 px-0 px-md-4">
-                                        <img
-                                                src="../../assets/images/resources/man-laptop.png"
-                                                height="140"
-                                                alt="man-with-laptop"
-                                                data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                                                data-app-light-img="illustrations/man-with-laptop-light.png"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Lista órdenes carrusel -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Lista de órdenes</h4>
-                            <p>A continuación, se muestran las últimas 10 órdenes.</p>
-                        </div>
-                        <div class="card-body px-0">
-                            <div
-                                    id="carouselExampleControls"
-                                    class="carousel slide carousel-dark"
-                                    data-ride="carousel"
-                            >
-                                <div class="carousel-inner">
-                                    <div id="ownLastOrders"></div>
-                                </div>
-
-                                <a
-                                        class="carousel-control-prev px-0"
-                                        href="#carouselExampleControls"
-                                        role="button"
-                                        data-bs-slide="prev"
-                                >
-                      <span
-                              class="carousel-control-prev-icon"
-                              aria-hidden="true"
-                      ></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </a>
-                                <a
-                                        class="carousel-control-next px-0"
-                                        href="#carouselExampleControls"
-                                        role="button"
-                                        data-bs-slide="next"
-                                >
-                      <span
-                              class="carousel-control-next-icon"
-                              aria-hidden="true"
-                      ></span>
-                                    <span class="visually-hidden">Next</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
-            </section>
+                <div class="col-6 col-xl-3 col-md-6 grid">
+                  <div class="card text-center">
+                    <div class="card-body py-4 px-3">
+                      <div class="row">
+                        <div class="col-md-4 icon-container">
+                          <div class="stats-icon blue">
+                            <i class="fas fa-clipboard text-white fs-4"></i>
+                          </div>
+                        </div>
+                        <div class="col-md-8 text-center my-2">
+                          <h6 class="text-muted font-semibold">
+                            Órdenes registradas
+                          </h6>
+                          <h6 id="totalOrders"></h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 col-xl-3 col-md-6 grid">
+                  <div class="card text-center">
+                    <div class="card-body py-4 px-3">
+                      <div class="row">
+                        <div class="col-md-4 icon-container">
+                          <div class="stats-icon green">
+                            <i class="fas fa-users text-white fs-4"></i>
+                          </div>
+                        </div>
+                        <div class="col-md-8 text-center my-2">
+                          <h6 class="text-muted font-semibold">
+                            Total de repartidores
+                          </h6>
+                          <h6 id="totalDealer"></h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 col-xl-3 col-md-6 grid">
+                  <div class="card text-center">
+                    <div class="card-body py-4 px-3">
+                      <div class="row">
+                        <div class="col-md-4 icon-container">
+                          <div class="stats-icon red">
+                            <i class="fas fa-candy-cane text-white fs-4"></i>
+                          </div>
+                        </div>
+                        <div class="col-md-8 text-center my-2">
+                          <h6 class="text-muted font-semibold">
+                            Total de productos
+                          </h6>
+                          <h6 id="totalProducts"></h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Total ventas card -->
+              <div class="col-lg-12 mb-4 order-0">
+                <div class="card">
+                  <div class="d-flex align-items-end row">
+                    <div class="col-sm-7">
+                      <div class="card-body">
+                        <h5 class="card-title text-primary">Total de ventas</h5>
+                        <p class="mb-1">
+                          El total de ventas hasta el día de hoy es de
+                        </p>
+                        <div class="mb-4">
+                          <span id="totalSell"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-5 text-center text-sm-left">
+                      <div class="card-body pb-0 px-0 px-md-4">
+                        <img
+                          src="../../assets/images/resources/man-laptop.png"
+                          height="140"
+                          alt="man-with-laptop"
+                          data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                          data-app-light-img="illustrations/man-with-laptop-light.png"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Lista órdenes carrusel -->
+              <div class="card">
+                <div class="card-header">
+                  <h4>Lista de órdenes</h4>
+                  <p>A continuación, se muestran las últimas 10 órdenes.</p>
+                </div>
+                <div class="card-body px-0">
+                  <div
+                    id="carouselExampleControls"
+                    class="carousel slide carousel-dark"
+                    data-ride="carousel"
+                  >
+                    <div class="carousel-inner">
+                      <div id="ownLastOrders"></div>
+                    </div>
+
+                    <a
+                      class="carousel-control-prev px-0"
+                      href="#carouselExampleControls"
+                      role="button"
+                      data-bs-slide="prev"
+                    >
+                      <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a
+                      class="carousel-control-next px-0"
+                      href="#carouselExampleControls"
+                      role="button"
+                      data-bs-slide="next"
+                    >
+                      <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="visually-hidden">Next</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
         <footer>
-            <div class="footer clearfix mb-0 text-muted">
-                <div class="text-center">
-                    <p>2022 &copy; ThePandaDevs</p>
-                </div>
+          <div class="footer clearfix mb-0 text-muted">
+            <div class="text-center">
+              <p>2022 &copy; ThePandaDevs</p>
             </div>
+          </div>
         </footer>
+      </div>
     </div>
-</div>
 
-<script src="../../assets/vendors/fontawesome/all.min.js"></script>
-<script src="../../assets/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/js/components.js" type="module"></script>
-<script src="../../assets/js/logout.js" type="module"></script>
-<script src="../../assets/js/services/AdminService.js" type="module"></script>
-</body>
+    <script src="../../assets/vendors/fontawesome/all.min.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/components.js" type="module"></script>
+    <script src="../../assets/js/logout.js" type="module"></script>
+    <script
+      src="../../assets/js/services/AdminService.js"
+      type="module"
+    ></script>
+  </body>
 </html>

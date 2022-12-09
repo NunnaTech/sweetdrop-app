@@ -18,6 +18,36 @@
 <div id="app">
     <nav id="navTemplate"></nav>
     <div id="main">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="../dashboards/dealer_dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="../store/stores.html">Tiendas</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Detalles tienda
+                </li>
+            </ol>
+        </nav>
+        <div class="mb-0 order-0">
+            <div class="card mb-0">
+                <div class="d-flex align-items-center">
+                    <div class="col">
+                        <div class="card-body page-heading  m-0 px-4">
+                            <div class="row gx-4">
+                                <div class="col-auto my-auto">
+                                    <div class="h-100">
+                                        <h1 class="mb-2">
+                                            Actualizar Tienda
+                                        </h1>
+                                        <small class="text-muted">Por favor, modifica los datos necesarios:</small>
+                                    </div>
+                                </div>
+                            </div>                               
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
         <!-- Contenido de la página web -->
         <div class="page-content">
             <div class="card">
@@ -26,62 +56,69 @@
                         <div class="row gx-4">
                             <form class="form" id="updateForm">
                                 <div class="row">
-                                    <div class="col-md-6 col-12 mt-3 mb-4">
+                                    <small class="text-muted">Por favor, modifica los datos que necesites.</small>
+                                    <div class="col-md-6 col-12 my-2">
                                         <div class="form-group position-relative has-icon-left m-0">
                                             <label class="form-label" for="name">Nombre</label>
                                             <div class="input-group mb-3">
+                                                <span class="input-group-text"><i
+                                                    class="fas fa-store"></i></span>
                                                 <input type="text" class="form-control"
-                                                       placeholder="Abarrotes Domínguez" id="name" name="name"/>
-                                                <div class="form-control-icon">
-                                                    <i class="fas fa-store fs-6 text-secondary"></i>
-                                                </div>
+                                                        id="name" name="name"/>                                            
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12 mt-3 mb-4">
+                                    <div class="col-md-6 col-12 my-2">
                                         <div class="form-group position-relative has-icon-left m-0">
                                             <label class="form-label" for="phone">Teléfono</label>
                                             <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="phone"><i
+                                                    <span class="input-group-text"><i
                                                             class="fas fa-phone"></i></span>
-                                                <input type="text" class="form-control" placeholder="7775674323"
+                                                <input type="number" class="form-control" 
                                                        id="phone" name="phone"/>
                                             </div>
                                         </div>
+                                    </div>                               
+                               
+                                    <div class="col-md-6 col-12 my-2">
+                                        <div class="form-group position-relative has-icon-left m-0">
+                                            <label class="form-label" for="owner">Nombre del Propietario</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text"><i class="fas fa-user "></i></span>
+                                                <input type="text" class="form-control"
+                                                        id="owner" name="owner"/>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 col-12 mt-3 mb-4">
+                                    <div class="col-md-6 col-12 my-2">
+                                        <div class="form-group position-relative has-icon-left m-0">
+                                            <label class="form-label" for="zipcode">Código Postal</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text"><i
+                                                    class="fas fa-city"></i></span>
+                                                <input type="number" maxlength="5" class="form-control" 
+                                                       id="zipcode" name="zipcode"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-0 mt-2 mb-5">
                                         <div class="form-group position-relative has-icon-left m-0">
                                             <label class="form-label" for="address">Dirección</label>
                                             <div class="input-group mb-3">
                                                     <span class="input-group-text" id="deliver_date"><i
                                                             class="fas fa-map"></i></span>
                                                 <input type="text" class="form-control"
-                                                       placeholder="Av.Plan de Ayala No.45" id="address"
+                                                        id="address"
                                                        name="address"/>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12 mt-3 mb-4">
-                                        <div class="form-group position-relative has-icon-left m-0">
-                                            <label class="form-label" for="zipcode">Código Postal</label>
-                                            <div class="input-group mb-3">
-                                                <input type="number" class="form-control" placeholder="62000"
-                                                       id="zipcode" name="zipcode"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12 mt-3 mb-4">
-                                        <div class="form-group position-relative has-icon-left m-0">
-                                            <label class="form-label" for="owner">Nombre del Propietario</label>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text"><i class="fas fa-user "></i></span>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Alejandro López" id="owner" name="owner"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1" id="update">Enviar
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <a href="./stores.html" class="btn btn-danger me-1 mb-1">
+                                            <i class="fas fa-arrow-left me-2"></i>Regresar
+                                        </a>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1" id="update">
+                                            <i class="fas fa-save me-2"></i>Guardar Cambios
                                         </button>
 
                                     </div>
