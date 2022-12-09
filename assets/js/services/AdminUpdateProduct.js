@@ -2,12 +2,13 @@ import { API_URI, HEADERS_URI } from "./API.js";
 import { goToPage } from "../utils/Routes.js";
 import NotifyService from "../utils/NotifyService.js";
 import { saveImageFirestore } from "../utils/Firestore-functions.js";
-//import { fileToBase64 } from "../utils/FileFormat.js";
 
 const updateForm =
   document.querySelector("#updateForm") || document.createElement("form");
 const inputUpdateName =
   document.querySelector("#name") || document.createElement("input");
+const inputUpdateSku =
+  document.querySelector("#sku") || document.createElement("input");
 const inputUpdatePrice =
   document.querySelector("#price") || document.createElement("input");
 const inputUpdateDescription =
@@ -15,18 +16,44 @@ const inputUpdateDescription =
 const inputUpdateImage =
   document.querySelector("#image") || document.createElement("input");
 
+const getUrl = new URLSearchParams(window.location.search);
+const id = getUrl.get("id");
 let sku = "";
 let image = "";
 let newImage = false;
 // get data product
+getProduct();
+
 // check if image was changed
-inputUpdateImage.addEventListener("change", async (e) => {
+inputUpdateImage.addEventListener("change", (e) => {
   if (e.target.value !== "") {
     newImage = true;
-    console.log("new image", e.target.value);
-    setPreviewImage(e.target.files[0]);
+    console.log("new image");
+    setNewPreviewImage(e.target.files[0]);
   }
 });
+async function getProduct() {
+  NotifyService.loadingNotification();
+  fetch(API_URI + "/products/" + id, {
+    method: "GET",
+    headers: HEADERS_URI,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      (inputUpdateName.value = data.data.name),
+        (inputUpdatePrice.value = data.data.price);
+      inputUpdateDescription.value = data.data.description;
+      image = data.data.image;
+      inputUpdateSku.value = data.data.sku;
+      sku = data.data.sku;
+      setPreviewImage(image);
+      NotifyService.loadingNotificationRemove();
+    })
+    .catch((err) => {
+      console.log(err);
+      NotifyService.loadingNotificationRemove();
+    });
+}
 
 updateForm.addEventListener("submit", validInputsUpdate);
 
@@ -43,24 +70,27 @@ function validInputsUpdate(e) {
     NotifyService.notificatonError("Todos los campos son obligatorios");
     return true;
   } else {
-    addProduct();
+    updateProduct();
   }
 }
 
-async function addProduct() {
+async function updateProduct() {
+  NotifyService.loadingNotification();
+
   if (newImage) {
     // upload image to firebase
     image = await saveImageFirestore(inputUpdateImage.files[0]);
   }
   const body = JSON.stringify({
     sku: sku,
+    id: id,
     name: inputUpdateName.value,
     price: inputUpdatePrice.value,
     description: inputUpdateDescription.value,
     image: image,
   });
   fetch(API_URI + "/products/", {
-    method: "POST",
+    method: "PUT",
     headers: HEADERS_URI,
 
     body: body,
@@ -70,15 +100,21 @@ async function addProduct() {
       console.log(data);
       if (data.success === true) {
         goToPage("../../../views/products/products.html");
-        NotifyService.notificatonSuccess("Producto agregado correctamente");
+        NotifyService.notificatonSuccess("Producto actualizada correctamente");
         NotifyService.loadingNotificationRemove();
       } else {
-        NotifyService.notificatonError("Error al Agregar");
+        NotifyService.notificatonError("Error al actualizar");
+        NotifyService.loadingNotificationRemove();
       }
     });
 }
 
-function setPreviewImage(file) {
+function setPreviewImage(url) {
+  const imagePreview = document.getElementById("image-preview");
+  imagePreview.src = url;
+  imagePreview.setAttribute("style", "width: 30%;");
+}
+function setNewPreviewImage(file) {
   const imagePreview = document.getElementById("image-preview");
 
   var reader = new FileReader();
