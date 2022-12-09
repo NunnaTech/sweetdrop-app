@@ -8,7 +8,6 @@ const inputEmail = document.querySelector('#email') || document.createElement('i
 const inputPassword = document.querySelector('#password') || document.createElement('input');
 const btnIconEye = document.querySelector('#btnIconEye');
 
-console.log(btnIconEye)
 
 loginForm.addEventListener('submit', login);
 document.addEventListener('DOMContentLoaded', sesionActive);

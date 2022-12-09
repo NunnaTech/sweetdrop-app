@@ -64,7 +64,6 @@ async function actualizarDealer() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.data);
       if (data.success === true) {
         NotifyService.notificatonSuccess(
           "Repartidor actualizado correctamente!"      

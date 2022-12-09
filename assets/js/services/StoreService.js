@@ -20,8 +20,7 @@ fetch(API_URI + `/stores/${id}`, {
 .then((response) => response.json())
 .then((data) => {    
 
-    console.log(data);
-    
+
     name.value = `${data.data.name}`;
     phone.value = `${data.data.phone}`;
     address.value = `${data.data.address}`;

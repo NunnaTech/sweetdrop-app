@@ -14,8 +14,6 @@ const phoneU = document.getElementById("phoneU");
 const emailU = document.getElementById("emailU");
 const password = document.getElementById("password");
 const copyBtn = document.getElementById("copyBtn");
-const btnRegister = document.getElementById("btnRegister");
-const btnRedirect = document.getElementById("btnRedirect");
 
 const contenedor = document.getElementById("content-page");
 
@@ -124,13 +122,11 @@ async function agregarDealer() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       if (data.success === true) {
         password.innerHTML = data.data.rawPassword;
 
         NotifyService.loadingNotification();
-        btnRegister.setAttribute("data-bs-toggle", "modal");
-        btnRegister.setAttribute("data-bs-target", "#exampleModal");
+        document.getElementById("btnShowModalPassword").click();
         NotifyService.loadingNotificationRemove();
         copyTextToClipboard();
 
@@ -141,10 +137,6 @@ async function agregarDealer() {
         btnRedirect.addEventListener("click", () => {
           goToPage("../../views/dealers/dealers.html");
         });
-      } else {
-        NotifyService.notificatonError(
-          "Por favor, verifica los datos ingresados"
-        );
       }
     });
 }
@@ -201,7 +193,6 @@ function copyTextToClipboard() {
     document.execCommand("Copy");
     textArea.remove();
     NotifyService.notificatonSuccess("Contraseña copiada correctamente!");
-    console.log(textArea.value);
     navigator.clipboard.writeText(textArea.value);
   });
 }

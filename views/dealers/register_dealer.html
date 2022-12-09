@@ -99,7 +99,7 @@
                                                             <span class="input-group-text" id="owner"><i
                                                                     class="fas fa-phone "></i></span>
                                                             <input type="text" class="form-control" id="phoneU"
-                                                                name="phoneU" placeholder="Pj: 7771342399" />
+                                                                name="phoneU" placeholder="Pj: 7771342399" minlength="10" maxlength="10" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,10 +120,11 @@
                                                 <a href="./dealers.html" class="btn btn-danger">
                                                     <i class="fas fa-chevron-left me-2"></i>Regresar
                                                 </a>
-                                                <button id="btnRegister" type="submit" class="btn btn-primary"
-                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <button id="btnRegister" type="submit" class="btn btn-primary">
                                                     <i class="fas fa-user-plus me-2"></i>Registrar Repartidor
                                                 </button>
+
+                                                <button type="button" id="btnShowModalPassword" hidden data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
                                             </div>
                                         </div>
                                     </form>

@@ -64,9 +64,9 @@ function getDealers() {
 function addDealer(getDealerId, statusDealer) {
     for (let i = 0; i < statusDealer.length; i++) {
       if (statusDealer[i].classList.contains("alreadyDealer")) {
-        console.log("ya es dealer");
+        //console.log("ya es dealer");
       } else {
-        console.log("no es dealer");
+        //console.log("no es dealer");
       }
     }
   dealersByStore.push({ id: getDealerId });

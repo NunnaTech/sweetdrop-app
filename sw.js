@@ -140,7 +140,6 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
     let respuesta;
     if (event.request.url.includes("https://sweetdrop-production-bd28.up.railway.app/api")) {
-        console.log('es api')
         respuesta = fetch(event.request);
     } else {
         respuesta = caches
