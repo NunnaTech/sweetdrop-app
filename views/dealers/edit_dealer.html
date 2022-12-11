@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-     <script src="../../assets/js/utils/Routes.js" type="module"></script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../../assets/js/utils/Routes.js" type="module"></script>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Editar Repartidor</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
@@ -16,134 +16,115 @@
 </head>
 
 <body>
-    <div id="app">
-        <nav id="navTemplate"></nav>
-
-        <div id="main">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../dashboards/admin_dashboard.html">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="../dealers/dealers.html">Repartidores</a></li>
-                <li class="breadcrumb-item active" aria-current="page">
-                   Editar Repartidor
-                </li>
-            </ol>        
-
-            <!-- Contenido de la página web -->
-            <div class="page-content p-4 ">
-                <div class="card mb-0">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <div class="card-body page-heading m-0 px-4">
-                                <h3 class="text-center">Editar repartidor</h3>
-                                <small class="text-muted">Por favor, modifica los campos correspondiente:</small>
-                            </div>
+<div id="app">
+    <nav id="navTemplate"></nav>
+    <div id="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../dashboards/admin_dashboard.html">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="../dealers/dealers.html">Repartidores</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Editar Repartidor</li>
+        </ol>
+        <div class="page-content p-4 ">
+            <div class="card mb-0">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="card-body page-heading m-0 px-4">
+                            <h3 class="text-center">Editar repartidor</h3>
+                            <small class="text-muted">Por favor, modifica los campos correspondiente:</small>
                         </div>
                     </div>
                 </div>
-                <section class="row">
-                    <div class="container-fluid py-4">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header pb-0">
-                                        <div class="d-flex align-items-center">
-                                            <h3 class=" text-center">Datos del Repartidor</h3>
-                                        </div>
+            </div>
+            <section class="row">
+                <div class="container-fluid py-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header pb-0">
+                                    <div class="d-flex align-items-center">
+                                        <h3 class=" text-center">Datos del Repartidor</h3>
                                     </div>
-                                    <form id="formularioU">
+                                </div>
+                                <form id="formularioU">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label text-primary" for="name">Nombre</label>
+                                                    <label class="form-label text-primary" for="nombreU">Nombre</label>
                                                     <div class="input-group mb-3">
-                                                        <span class="input-group-text" id="owner"><i
-                                                                class="fas fa-user "></i></span>
-                                                                <input id="id"  hidden type="text" class="form-control"  />
-                                                        <input id="nombreU" type="text" class="form-control"  />
+                                                        <span class="input-group-text"><i class="fas fa-user "></i></span>
+                                                        <input id="id" hidden type="text" class="form-control"/>
+                                                        <input id="nombreU" name="nombreU" type="text" class="form-control" maxlength="50"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label text-primary" for="first_surname">Apellido
-                                                        Paterno</label>
+                                                    <label class="form-label text-primary" for="paternoU">Apellido Paterno</label>
                                                     <div class="input-group mb-3">
-                                                        <span class="input-group-text" id="owner"><i
-                                                                class="fas fa-user "></i></span>
-                                                        <input id="paternoU" type="text" class="form-control"
-                                                            />
+                                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                        <input id="paternoU" name="paternoU" type="text" class="form-control" maxlength="50"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label text-primary" for="second_surname">Apellido
-                                                        Materno</label>
+                                                    <label class="form-label text-primary" for="maternoU">Apellido Materno</label>
                                                     <div class="input-group mb-3">
-                                                        <span class="input-group-text" id="owner"><i
-                                                                class="fas fa-user "></i></span>
-                                                        <input  id="maternoU" type="text" class="form-control"/>
+                                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                        <input id="maternoU" name="maternoU" type="text" class="form-control" maxlength="50"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group position-relative has-icon-left mb-4">
-                                                    <input id="passwordU"  hidden type="text" class="form-control" />
-                                                    <label class="form-label text-primary" for="phone">Teléfono</label>
+                                                    <input id="passwordU" hidden type="text" class="form-control"/>
+                                                    <label class="form-label text-primary" for="phoneU">Teléfono</label>
                                                     <div class="input-group mb-3">
-                                                        <span class="input-group-text" id="owner"><i
-                                                                class="fas fa-phone "></i></span>
-                                                        <input id="phoneU" type="text" class="form-control"
-                                                             />
+                                                        <span class="input-group-text" ><i class="fas fa-phone "></i></span>
+                                                        <input id="phoneU" name="phoneU" type="text" class="form-control" maxlength="10"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group position-relative has-icon-left mb-4">
-                                                    <label class="form-label text-primary" for="email">Correo Electrónico</label>
+                                                    <label class="form-label text-primary" for="emailU">Correo Electrónico</label>
                                                     <div class="input-group mb-3">
-                                                        <span class="input-group-text" id="owner"><i
-                                                                class="fas fa-envelope "></i></span>
-                                                        <input id="emailU" type="text" class="form-control"
-                                                            placeholder="armandoF@gmail.com" />
-                                                            <input id="role_idU"  hidden type="text" class="form-control"  />
+                                                        <span class="input-group-text" ><i class="fas fa-envelope "></i></span>
+                                                        <input id="emailU" type="text" maxlength="50" name="emailU" class="form-control" placeholder="armandoF@gmail.com"/>
+                                                        <input id="role_idU" hidden type="text" class="form-control"/>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center mt-4">
-                                            <a href="./dealers.html"
-                                            class="btn btn-danger">
-                                            <i class="fas fa-chevron-left me-2"></i>Regresar
-                                        </a>
-                                            <button class="btn btn-primary">
-                                                <i class="fas fa-save me-2"></i>Actualizar Datos</button>
+                                            <a href="./dealers.html" class="btn btn-danger"><i class="fas fa-chevron-left me-2"></i>Regresar</a>
+                                            <button class="btn btn-primary"><i class="fas fa-save me-2"></i>Actualizar Datos</button>
                                         </div>
                                     </div>
-                                    </form>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
-            <!-- Termina contenido de la página web -->
-            <footer>
-
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="text-center">
-                        <p>2022 &copy; ThePandaDevs</p>
-                    </div>
                 </div>
-            </footer>
+            </section>
         </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="text-center">
+                    <p>2022 &copy; ThePandaDevs</p>
+                </div>
+            </div>
+        </footer>
     </div>
-    <script src="../../assets/vendors/fontawesome/all.min.js"></script>
-    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/services/DealerUpdateServices.js" type="module"></script>
-    <script src="../../assets/js/components.js" type="module"></script>
-    <script src="../../assets/js/logout.js" type="module"></script>
+</div>
+
+<script src="../../assets/js/utils/Validations.js"></script>
+<script src="../../assets/vendors/fontawesome/all.min.js"></script>
+<script src="../../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/services/DealerUpdateServices.js" type="module"></script>
+<script src="../../assets/js/components.js" type="module"></script>
+<script src="../../assets/js/logout.js" type="module"></script>
 </body>
 
 </html>
