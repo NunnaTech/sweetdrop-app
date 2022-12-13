@@ -6,18 +6,15 @@ self.addEventListener("install", (event) => {
     console.log("SW: Instalado");
     const staticCache = caches.open(STATIC_CACHE_NAME).then((cache) => {
         return cache.addAll([
-            // INIT
             "./",
             "./index.html",
             "./manifest.json",
             "./app.js",
 
-            // CSS
             "./assets/css/bootstrap.css",
             "./assets/css/landing-page.css",
             "./assets/css/style.css",
 
-            // IMAGES
             "./assets/images/device-mockups/iPhoneX/portrait_black.png",
             "./assets/images/icons/android-launchericon-48.png",
             "./assets/images/icons/android-launchericon-72.png",
@@ -48,10 +45,7 @@ self.addEventListener("install", (event) => {
             "./assets/images/resources/error-500.png",
             "./assets/images/favicon.ico",
 
-
-            // JS
             './assets/js/services/AdminProductsService.js',
-            './assets/js/services/AdminRegisterStore.js',
             './assets/js/services/AdminService.js',
             './assets/js/services/AdminStoresService.js',
             './assets/js/services/AdminUpdateStore.js',
@@ -83,13 +77,11 @@ self.addEventListener("install", (event) => {
             './assets/js/profile.js',
             './assets/js/toastify.js',
 
-            // VENDORS
             "./assets/vendors/fontawesome/all.min.css",
             "./assets/vendors/fontawesome/all.min.js",
             "./assets/vendors/notiflix/notiflix-3.2.5.min.css",
             "./assets/vendors/notiflix/notiflix-3.2.5.min.js",
 
-            // VIEWS
             "./views/authentication/login.html",
             "./views/dashboards/admin_dashboard.html",
             "./views/dashboards/dealer_dashboard.html",
@@ -112,7 +104,7 @@ self.addEventListener("install", (event) => {
             "./views/profile/profile.html",
             "./views/store/asign_dealers.html",
             "./views/store/edit_store.html",
-            "./views/store/register_store.html",      
+            "./views/store/register_store.html",
             "./views/store/stores.html",
             "./views/templates/AdminNav.html",
             "./views/templates/DealerNav.html",
@@ -127,6 +119,7 @@ self.addEventListener("install", (event) => {
             "https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js",
             "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js",
             "https://fonts.gstatic.com/s/nunito/v25/XRXV3I6Li01BKofINeaB.woff2",
+            "https://i.imgur.com/SiMTXOF.png"
         ]);
     });
 
@@ -137,23 +130,40 @@ self.addEventListener("activate", (event) => {
     console.log("SW: Activado");
 });
 
-self.addEventListener("fetch", (event) => {
-    let respuesta;
-    if (event.request.url.includes("https://sweetdrop-production-bd28.up.railway.app/api")) {
-        console.log('es api')
-        respuesta = fetch(event.request);
-    } else {
-        respuesta = caches
-            .match(event.request)
-            .then((respCache) => {
-                if (respCache) return respCache;
-                return fetch(event.request).then((respWeb) => {
-                    caches.open(DYNAMIC_CACHE_NAME).then((cache) => {
-                        cache.put(event.request, respWeb);
-                    });
-                    return respWeb.clone();
-                });
+
+const clearCache = (cacheName, maxItemSize) => {
+    caches.open(cacheName).then((cache) => {
+        return cache.keys().then((items) => {
+            if (items.length >= maxItemSize) cache.delete(items[0]).then(() => {
+                clearCache(cacheName, maxItemSize)
             })
+        })
+    })
+}
+
+self.addEventListener("fetch", (event) => {
+    if (event.request.clone().method === 'POST' || event.request.clone().method === 'PUT') {
+
+        // PUCHDB
+
+    } else {
+        let response = fetch(event.request).then((networkResponse) => {
+            if (networkResponse.status === 200) {
+                caches.open(DYNAMIC_CACHE_NAME).then(cache => {
+                    cache.put(event.request, networkResponse);
+                    clearCache(DYNAMIC_CACHE_NAME, 150)
+                })
+                return networkResponse.clone()
+            } else {
+                if (event.request.headers.get('accept').includes('text/css')) return caches.match('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
+                if (event.request.headers.get('accept').includes('text/html')) return caches.match('./views/errors/error-404.html');
+            }
+        }).catch(() => {
+            return caches.match(event.request).then((cacheResponse) => {
+                if (cacheResponse) return cacheResponse
+                if (event.request.headers.get('accept').includes('text/html')) return caches.match('./views/errors/error-500.html');
+            })
+        })
+        event.respondWith(response);
     }
-    event.respondWith(respuesta);
 });

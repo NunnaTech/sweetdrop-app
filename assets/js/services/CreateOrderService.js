@@ -59,12 +59,8 @@ function getInfoStore() {
       });
       name.innerHTML = `<p class="fw-bold fs-5 text-auxiliar">${data.data.name}</p>`;
       phone.innerHTML = `<a class="text-secondary" href="tel:${data.data.phone}"><i class="fas fa-phone me-2 "></i>${data.data.phone}</a>`;
-      address.innerHTML = `<i class="fas fa-map-marker-alt me-2"></i>${
-        data.data.address + " CP " + data.data.zipcode
-      }</span>`;
-      openAddress.innerHTML = `<a href="http://maps.google.com/?q=${
-        data.data.address + " " + data.data.zipcode
-      }" target="_blank" class="btn btn-outline-primary font-bold">Abrir en Google Maps</a>`;
+      address.innerHTML = `<i class="fas fa-map-marker-alt me-2"></i>${data.data.address + " CP " + data.data.zipcode}</span>`;
+      openAddress.innerHTML = `<a href="http://maps.google.com/?q=${data.data.address + " " + data.data.zipcode}" target="_blank" class="btn btn-outline-primary font-bold">Abrir en Google Maps</a>`;
     })
     .catch((err) => {
       NotifyService.loadingNotificationRemove();
@@ -73,10 +69,8 @@ function getInfoStore() {
       );
     });
 
-  // load text from session storage
   const observations = sessionStorage.getItem("observations");
   if (observations) comment.value = observations;
-  // load images from session storage
   const image = sessionStorage.getItem("image");
   if (image) {
     storeImage.setAttribute("src", image);
@@ -173,6 +167,8 @@ function render(products) {
     );
     inputQuantity.setAttribute("type", "number");
     inputQuantity.setAttribute("min", "0");
+    inputQuantity.setAttribute("max", "99");
+    inputQuantity.name = "inpQuantity";
     inputQuantity.setAttribute("value", "0");
     inputQuantity.dataset.id = product.id;
     inputQuantity.dataset.quantity = 0;

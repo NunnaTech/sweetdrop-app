@@ -106,8 +106,6 @@ function updateProfile() {
         NotifyService.notificatonError(
           "El perfil no fue actualizado, favor de revisar"
         );
-        console.log(data);
-        console.log(newUser);
       }
     })
     .catch((error) =>

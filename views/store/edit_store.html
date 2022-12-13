@@ -35,9 +35,7 @@
                             <div class="row gx-4">
                                 <div class="col-auto my-auto">
                                     <div class="h-100">
-                                        <h1 class="mb-2">
-                                            Actualizar Tienda
-                                        </h1>
+                                        <h1 class="mb-2">Actualizar Tienda</h1>
                                         <small class="text-muted">Por favor, modifica los datos necesarios:</small>
                                     </div>
                                 </div>
@@ -48,7 +46,6 @@
             </div>
         </div>
         <hr>
-        <!-- Contenido de la página web -->
         <div class="page-content">
             <div class="card">
                 <div class="card-content">
@@ -61,10 +58,8 @@
                                         <div class="form-group position-relative has-icon-left m-0">
                                             <label class="form-label" for="name">Nombre</label>
                                             <div class="input-group mb-3">
-                                                <span class="input-group-text"><i
-                                                    class="fas fa-store"></i></span>
-                                                <input type="text" class="form-control"
-                                                        id="name" name="name"/>                                            
+                                                <span class="input-group-text"><i class="fas fa-store"></i></span>
+                                                <input type="text" class="form-control" id="name" name="name" maxlength="80"/>
                                             </div>
                                         </div>
                                     </div>
@@ -72,10 +67,8 @@
                                         <div class="form-group position-relative has-icon-left m-0">
                                             <label class="form-label" for="phone">Teléfono</label>
                                             <div class="input-group mb-3">
-                                                    <span class="input-group-text"><i
-                                                            class="fas fa-phone"></i></span>
-                                                <input type="number" class="form-control" 
-                                                       id="phone" name="phone"/>
+                                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                <input type="text" class="form-control" id="phone" name="phone" maxlength="10"/>
                                             </div>
                                         </div>
                                     </div>                               
@@ -85,8 +78,7 @@
                                             <label class="form-label" for="owner">Nombre del Propietario</label>
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text"><i class="fas fa-user "></i></span>
-                                                <input type="text" class="form-control"
-                                                        id="owner" name="owner"/>
+                                                <input type="text" class="form-control" id="owner" name="owner" maxlength="80"/>
                                             </div>
                                         </div>
                                     </div>
@@ -94,10 +86,8 @@
                                         <div class="form-group position-relative has-icon-left m-0">
                                             <label class="form-label" for="zipcode">Código Postal</label>
                                             <div class="input-group mb-3">
-                                                <span class="input-group-text"><i
-                                                    class="fas fa-city"></i></span>
-                                                <input type="number" maxlength="5" class="form-control" 
-                                                       id="zipcode" name="zipcode"/>
+                                                <span class="input-group-text"><i class="fas fa-city"></i></span>
+                                                <input type="text" maxlength="5" class="form-control" id="zipcode" name="zipcode"/>
                                             </div>
                                         </div>
                                     </div>
@@ -105,11 +95,8 @@
                                         <div class="form-group position-relative has-icon-left m-0">
                                             <label class="form-label" for="address">Dirección</label>
                                             <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="deliver_date"><i
-                                                            class="fas fa-map"></i></span>
-                                                <input type="text" class="form-control"
-                                                        id="address"
-                                                       name="address"/>
+                                                <span class="input-group-text" id="deliver_date"><i class="fas fa-map"></i></span>
+                                                <input type="text" class="form-control" id="address" name="address" maxlength="100"/>
                                             </div>
                                         </div>
                                     </div>
@@ -129,9 +116,7 @@
                 </div>
             </div>
         </div>
-        <!-- Termina contenido de la página web -->
         <footer>
-
             <div class="footer clearfix mb-0 text-muted">
                 <div class="text-center">
                     <p>2022 &copy; ThePandaDevs</p>
@@ -140,11 +125,13 @@
         </footer>
     </div>
 </div>
+<script src="../../assets/js/utils/Validations.js"></script>
 <script src="../../assets/vendors/fontawesome/all.min.js"></script>
 <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../../assets/js/components.js" type="module"></script>
 <script src="../../assets/js/logout.js" type="module"></script>
 <script src="./../../assets/js/services/AdminUpdateStore.js" type="module"></script>
+<script src="../../assets/js/utils/InternetConnection.js" type="module"></script>
 </body>
 
 </html>

@@ -86,7 +86,6 @@ async function registerVisit() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
 
       if (data.success) {
         // clear session storage

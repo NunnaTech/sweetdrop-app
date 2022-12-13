@@ -31,7 +31,7 @@ fetch(API_URI + "/stores/" + id, {
     inputUpdateZipcode.value = data.data.zipcode;
     inputUpdateOwner.value = data.data.owner;
   })
-  .catch((err) => console.log(err));
+  .catch((err) => NotifyService.notificatonError('Error al traer los datos de la tienda'));
 
 updateForm.addEventListener("submit", validInputsUpdate);
 
@@ -70,7 +70,6 @@ async function updateStore() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       if (data.success === true) {
         NotifyService.notificatonSuccess("Tienda actualizada correctamente!");
         setTimeout(() => {

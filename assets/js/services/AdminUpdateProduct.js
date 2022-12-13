@@ -28,7 +28,6 @@ getProduct();
 inputUpdateImage.addEventListener("change", (e) => {
   if (e.target.value !== "") {
     newImage = true;
-    console.log("new image");
     setNewPreviewImage(e.target.files[0]);
   }
 });
@@ -50,7 +49,6 @@ async function getProduct() {
       NotifyService.loadingNotificationRemove();
     })
     .catch((err) => {
-      console.log(err);
       NotifyService.loadingNotificationRemove();
     });
 }
@@ -97,7 +95,6 @@ async function updateProduct() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       if (data.success === true) {
         goToPage("../../../views/products/products.html");
         NotifyService.notificatonSuccess("Producto actualizada correctamente");
@@ -120,7 +117,6 @@ function setNewPreviewImage(file) {
   var reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = function () {
-    console.log(reader.result);
     imagePreview.src = reader.result;
     imagePreview.setAttribute("style", "width: 30%; display: block;");
   };

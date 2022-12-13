@@ -25,6 +25,25 @@ class NotifyService {
     notificatonInfo(text) {
         Notiflix.Notify.info(text);
     }
+
+    notificationFallInternet() {
+        Notiflix.Notify.info('Atención, estás navegando sin conexión a internet', {
+            clickToClose: true,
+            cssAnimation: true,
+            closeButton: true,
+            useIcon: true,
+            position: 'center-top',
+            fontSize: '16px',
+        });
+    }
+
+    notificationInternetComeBack() {
+        Notiflix.Notify.success('Conexión a internet establecida',{
+            showOnlyTheLastOne: true,
+        })
+    }
+
+
 }
 
 

@@ -23,7 +23,6 @@ let newImage = false;
 inputUpdateImage.addEventListener("change", async (e) => {
   if (e.target.value !== "") {
     newImage = true;
-    console.log("new image", e.target.value);
     setPreviewImage(e.target.files[0]);
   }
 });
@@ -67,7 +66,6 @@ async function addProduct() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       if (data.success === true) {
         goToPage("../../../views/products/products.html");
         NotifyService.notificatonSuccess("Producto agregado correctamente");
@@ -84,7 +82,6 @@ function setPreviewImage(file) {
   var reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = function () {
-    console.log(reader.result);
     imagePreview.src = reader.result;
     imagePreview.setAttribute("style", "width: 30%; display: block;");
   };

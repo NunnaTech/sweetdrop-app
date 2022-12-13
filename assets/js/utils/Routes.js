@@ -76,7 +76,7 @@ function goToPage(page) {
 
 
 function goToForbbidenPage() {
-    window.location.href = '../../../views/errors/error-403.html';
+    window.location.href = '../../views/errors/error-403.html';
 }
 
 export {
