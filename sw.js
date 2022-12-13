@@ -157,13 +157,11 @@ self.addEventListener("fetch", (event) => {
             } else {
                 if (event.request.headers.get('accept').includes('text/css')) return caches.match('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
                 if (event.request.headers.get('accept').includes('text/html')) return caches.match('./views/errors/error-404.html');
-                if (event.request.headers.get('accept').includes('image')) return caches.match('https://i.imgur.com/SiMTXOF.png');
             }
         }).catch(() => {
             return caches.match(event.request).then((cacheResponse) => {
                 if (cacheResponse) return cacheResponse
                 if (event.request.headers.get('accept').includes('text/html')) return caches.match('./views/errors/error-500.html');
-                if (event.request.headers.get('accept').includes('image')) return caches.match('https://i.imgur.com/SiMTXOF.png');
             })
         })
         event.respondWith(response);
