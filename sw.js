@@ -195,6 +195,6 @@ self.addEventListener('sync', (event) => {
     if (event.tag === 'sync-visit-order') {
         const responseSync = postVisitOrder();
         event.waitUntil(responseSync);
-        successSync("Sincronización exitosa, se han sincronizado los datos correctamente");
+        successSync();
     }
 })

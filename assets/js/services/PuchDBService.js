@@ -1,6 +1,5 @@
 const db = new PouchDB('sweetdropdb');
 
-
 function saveVisitOrder(body, url, method, token) {
     const _id = new Date().toISOString();
     return db.put({_id, body: body, url: url, method: method, token: token}).then(response => {
@@ -20,9 +19,10 @@ function saveVisitOrder(body, url, method, token) {
 
 function postVisitOrder() {
     const promises = [];
-    db.allDocs({include_docs: true}).then((docs) => {
+    db.allDocs({include_docs: true, attachments: true}).then((docs) => {
         docs.rows.forEach(row => {
             const {body, url, method, token} = row.doc;
+            console.log(body);
             const petition = fetch(url, {
                 method: method,
                 body: JSON.stringify(body),
@@ -39,6 +39,6 @@ function postVisitOrder() {
     return Promise.all(promises);
 }
 
-function successSync(text) {
-    Notiflix.Notify.success(text);
+function successSync() {
+    console.log("Sincronización exitosa, se han sincronizado los datos correctamente");
 }
