@@ -63,6 +63,7 @@ self.addEventListener("install", (event) => {
             './assets/js/services/VisitDetailsServices.js',
             './assets/js/services/VisitServices.js',
             './assets/js/utils/Camera.js',
+            './assets/js/utils/InternetConnection.js',
             './assets/js/utils/Camera-utils.js',
             './assets/js/utils/FileFormat.js',
             './assets/js/utils/Firestore.js',
@@ -148,20 +149,24 @@ self.addEventListener("fetch", (event) => {
 
     } else {
         let response = fetch(event.request).then((networkResponse) => {
-            if (networkResponse.status === 200) {
-                caches.open(DYNAMIC_CACHE_NAME).then(cache => {
-                    cache.put(event.request, networkResponse);
-                    clearCache(DYNAMIC_CACHE_NAME, 150)
+            if(networkResponse.ok){
+                caches.match(event.request).then((cacheResponse) => {
+                    if (cacheResponse === undefined) {
+                        caches.open(DYNAMIC_CACHE_NAME).then(cache => {
+                            cache.put(event.request, networkResponse);
+                            clearCache(DYNAMIC_CACHE_NAME, 150)
+                        })
+                    }
                 })
-                return networkResponse.clone()
-            } else {
+            }else{
                 if (event.request.headers.get('accept').includes('text/css')) return caches.match('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
                 if (event.request.headers.get('accept').includes('text/html')) return caches.match('./views/errors/error-404.html');
             }
+            return networkResponse.clone()
         }).catch(() => {
             return caches.match(event.request).then((cacheResponse) => {
                 if (cacheResponse) return cacheResponse
-                if (event.request.headers.get('accept').includes('text/html')) return caches.match('./views/errors/error-500.html');
+                if (event.request.headers.get('accept').includes('text/html')) return caches.match('./views/errors/error-404.html');
             })
         })
         event.respondWith(response);
