@@ -17,7 +17,6 @@ const container = document.querySelector("#container");
 const storeImage = document.querySelector("#storeImage");
 const openCamera = document.querySelector("#button-camera");
 
-
 const getUrl = new URLSearchParams(window.location.search);
 let id = getUrl.get("id");
 const user = getUser();
@@ -26,14 +25,14 @@ let productsArray = [];
 
 let imagesUrl = [];
 
-
 openCamera.addEventListener("click", () => {
   window.location.href = "../../../views/orders/take_photo.html";
   sessionStorage.setItem("photoType", "order");
   sessionStorage.setItem("orderId", id);
   sessionStorage.setItem("observations", comment.value);
+  sessionStorage.setItem("received_by", received_by.value);
+  sessionStorage.setItem("products", JSON.stringify(productsArray));
 });
-
 
 getInfoStore();
 getProducts();
@@ -59,8 +58,12 @@ function getInfoStore() {
       });
       name.innerHTML = `<p class="fw-bold fs-5 text-auxiliar">${data.data.name}</p>`;
       phone.innerHTML = `<a class="text-secondary" href="tel:${data.data.phone}"><i class="fas fa-phone me-2 "></i>${data.data.phone}</a>`;
-      address.innerHTML = `<i class="fas fa-map-marker-alt me-2"></i>${data.data.address + " CP " + data.data.zipcode}</span>`;
-      openAddress.innerHTML = `<a href="http://maps.google.com/?q=${data.data.address + " " + data.data.zipcode}" target="_blank" class="btn btn-outline-primary font-bold">Abrir en Google Maps</a>`;
+      address.innerHTML = `<i class="fas fa-map-marker-alt me-2"></i>${
+        data.data.address + " CP " + data.data.zipcode
+      }</span>`;
+      openAddress.innerHTML = `<a href="http://maps.google.com/?q=${
+        data.data.address + " " + data.data.zipcode
+      }" target="_blank" class="btn btn-outline-primary font-bold">Abrir en Google Maps</a>`;
     })
     .catch((err) => {
       NotifyService.loadingNotificationRemove();
@@ -68,16 +71,37 @@ function getInfoStore() {
         "Ha ocurrido un error al cargar los datos"
       );
     });
-
+}
+function getDataFromSessionStorage() {
+  // observations
   const observations = sessionStorage.getItem("observations");
   if (observations) comment.value = observations;
+  //image
   const image = sessionStorage.getItem("image");
   if (image) {
     storeImage.setAttribute("src", image);
     storeImage.setAttribute("style", "visibility: visible");
   }
+  // received_by
+  const received = sessionStorage.getItem("received_by");
+  if (received) {
+    received_by.value = received;
+  }
+  // products
+  const products = sessionStorage.getItem("products");
+  if (products) {
+    productsArray = JSON.parse(products);
+    renderProducts(productsArray);
+  }
 }
-
+function renderProducts(products) {
+  setTimeout(() => {
+    products.forEach((element) => {
+      let card = document.getElementById(`product_${element.id}`);
+      card.value = element.quantity;
+    });
+  }, 1000);
+}
 function getProducts() {
   NotifyService.loadingNotification();
   fetch(API_URI + `/products`, {
@@ -99,6 +123,7 @@ function getProducts() {
         "Ha ocurrido un error al cargar los productos."
       );
     });
+  getDataFromSessionStorage();
 }
 
 function render(products) {
@@ -171,6 +196,7 @@ function render(products) {
     inputQuantity.name = "inpQuantity";
     inputQuantity.setAttribute("value", "0");
     inputQuantity.dataset.id = product.id;
+    inputQuantity.setAttribute("id", "product_" + product.id);
     inputQuantity.dataset.quantity = 0;
 
     let btnMinus = document.createElement("button");
@@ -253,10 +279,7 @@ function addProduct(event, productId) {
         });
         // do not reload the page
         event.preventDefault();
-        NotifyService.notificatonSuccess(
-          "Producto agregado"
-        );
-       
+        NotifyService.notificatonSuccess("Producto agregado");
       } else {
         event.preventDefault();
         NotifyService.notificatonError("Por favor, agrega al menos 1 unidad");
@@ -291,6 +314,8 @@ async function createOrder() {
         sessionStorage.removeItem("observations");
         sessionStorage.removeItem("photoType");
         sessionStorage.removeItem("orderId");
+        sessionStorage.removeItem("received_by");
+        sessionStorage.removeItem("products");
         // send notifications
         NotifyService.loadingNotificationRemove();
         NotifyService.notificatonSuccess(
@@ -318,7 +343,7 @@ async function createOrder() {
 }
 
 function validateForm() {
-  return (    
+  return (
     received_by.value !== "" &&
     products.length !== 0 &&
     comment.value !== "" &&
