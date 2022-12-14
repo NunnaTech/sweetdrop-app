@@ -50,74 +50,85 @@
         </div>
         <hr class="my-4"/>
         <div class="page-content">
-            <form id="formOrder">
-                <div class="card">
-                    <div class="card-header pb-0">
-                        <h4 class="card-title mt-2">Agregar detalles de la orden</h4>
-                        <p class="mb-1">
-                            Por favor, llena los siguientes datos para realizar la orden
-                        </p>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="list-group list-group-horizontal-sm mb-4 text-center" role="tablist">
-                                <a class="list-group-item list-group-item-action active" id="list-sunday-list"
-                                   data-bs-toggle="list"
-                                   href="#list-sunday" role="tab" aria-selected="true"><i class="fas fa-user me-2"></i>Persona que recibirá</a>
-                                <a class="list-group-item list-group-item-action" id="list-monday-list"
-                                   data-bs-toggle="list"
-                                   href="#list-monday" role="tab" aria-selected="false" tabindex="-1"><i class="fas fa-candy-cane me-2"></i>Seleccionar Productos</a>
-                                <a class="list-group-item list-group-item-action" id="list-tuesday-list"
-                                   data-bs-toggle="list"
-                                   href="#list-tuesday" role="tab" aria-selected="false" tabindex="-1"><i class="fas fa-eye me-2"></i>Observaciones</a>
+
+            <div class="card">
+                <div class="card-header pb-0">
+                    <h4 class="card-title mt-2">Agregar detalles de la orden</h4>
+                    <p class="mb-1">
+                        Por favor, llena los siguientes datos para realizar la orden
+                    </p>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="list-group list-group-horizontal-sm mb-4 text-center" role="tablist">
+                            <a class="list-group-item list-group-item-action active" id="list-sunday-list"
+                               data-bs-toggle="list"
+                               href="#list-sunday" role="tab" aria-selected="true"><i class="fas fa-user me-2"></i>Persona
+                                que recibirá</a>
+                            <a class="list-group-item list-group-item-action" id="list-monday-list"
+                               data-bs-toggle="list"
+                               href="#list-monday" role="tab" aria-selected="false" tabindex="-1"><i
+                                    class="fas fa-candy-cane me-2"></i>Seleccionar Productos</a>
+                            <a class="list-group-item list-group-item-action" id="list-tuesday-list"
+                               data-bs-toggle="list"
+                               href="#list-tuesday" role="tab" aria-selected="false" tabindex="-1"><i
+                                    class="fas fa-eye me-2"></i>Observaciones</a>
+                        </div>
+                        <hr/>
+                        <div class="tab-content text-justify">
+                            <div class="tab-pane fade show active" id="list-sunday" role="tabpanel"
+                                 aria-labelledby="list-sunday-list">
+                                <p class="text-auxiliar font-semibold">Introduce el nombre de la persona que se
+                                    encargará de recibir el pedido:</p>
+                                <div class="card-body form-check px-5">
+                                    <input type="checkbox"
+                                           class="form-check-input form-check-primary form-check-glow"
+                                           name="customCheck" id="isTheOwner"/>
+                                    <label class="form-check-label mt-2" for="isTheOwner">El que recibe es el
+                                        dueño</label>
+                                </div>
+
+                                <div class="form-group mt-4">
+                                    <label for="received_by">Nombre completo</label>
+                                    <small class="text-muted">(Pj: Fernanda Torres Leyva)</small>
+                                    <input type="text" class="form-control mt-2"
+                                           placeholder="Introducir nombre completo" maxlength="80" id="received_by"
+                                           name="received_by"/>
+                                </div>
                             </div>
-                            <hr/>
-                            <div class="tab-content text-justify">
-                                <div class="tab-pane fade show active" id="list-sunday" role="tabpanel"
-                                     aria-labelledby="list-sunday-list">
-                                    <p class="text-auxiliar font-semibold">Introduce el nombre de la persona que se encargará de recibir el pedido:</p>
-                                    <div class="card-body form-check px-5">
-                                        <input type="checkbox"
-                                               class="form-check-input form-check-primary form-check-glow"
-                                               name="customCheck" id="isTheOwner"/>
-                                        <label class="form-check-label mt-2" for="isTheOwner">El que recibe es el
-                                            dueño</label>
+
+                            <div class="tab-pane fade" id="list-monday" role="tabpanel"
+                                 aria-labelledby="list-monday-list">
+                                <p class="text-auxiliar font-semibold">Selecciona los productos pertinentes de la
+                                    orden.</p>
+                                <section class="row gx-4" id="products"></section>
+                            </div>
+
+                            <div class="tab-pane fade" id="list-tuesday" role="tabpanel"
+                                 aria-labelledby="list-tuesday-list">
+                                <div>
+                                    <div class="card-header mb-2 p-0">
+                                        <p class="text-auxiliar font-semibold">Agrega tus observaciones sobre esta
+                                            orden</p>
                                     </div>
-
-                                    <div class="form-group mt-4">
-                                        <label for="received_by">Nombre completo</label>
-                                        <small class="text-muted">(Pj: Fernanda Torres Leyva)</small>
-                                        <input type="text" class="form-control mt-2" placeholder="Introducir nombre completo" maxlength="80" id="received_by" name="received_by"/>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="list-monday" role="tabpanel"
-                                     aria-labelledby="list-monday-list">
-                                    <p class="text-auxiliar font-semibold">Selecciona los productos pertinentes de la orden.</p>
-                                    <section class="row gx-4" id="products"></section>
-                                </div>
-
-                                <div class="tab-pane fade" id="list-tuesday" role="tabpanel" aria-labelledby="list-tuesday-list">
-                                    <div>
-                                        <div class="card-header mb-2 p-0">
-                                            <p class="text-auxiliar font-semibold">Agrega tus observaciones sobre esta orden</p>
+                                    <div class="card-body p-0">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Leave a comment here"
+                                                      id="comment" maxlength="200"></textarea>
+                                            <label for="comment">Tus observaciones</label>
                                         </div>
-                                        <div class="card-body p-0">
-                                            <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Leave a comment here" id="comment" maxlength="200"></textarea>
-                                                <label for="comment">Tus observaciones</label>
-                                            </div>
-                                            <p class="my-3 font-semibold text-auxiliar">Subir foto
-                                                <small class="text-muted fw-light">Realiza una foto a la evidencia correspondiente.</small>
-                                            </p>
-                                            <div class="m-0">
-                                                <button type="button" id="button-camera" class="btn btn-secondary col-12">
-                                                    <i class="fas fa-camera me-2"></i>Abrir cámara
-                                                </button>
-                                            </div>
-                                            <div class="card-body py-1 px-1 px-md-4 d-flex justify-content-center">
-                                                <img id="storeImage" height="200" alt="add-order" style="visibility: hidden"/>
-                                            </div>
+                                        <p class="my-3 font-semibold text-auxiliar">Subir foto
+                                            <small class="text-muted fw-light">Realiza una foto a la evidencia
+                                                correspondiente.</small>
+                                        </p>
+                                        <div class="m-0">
+                                            <button type="button" id="button-camera" class="btn btn-secondary col-12">
+                                                <i class="fas fa-camera me-2"></i>Abrir cámara
+                                            </button>
+                                        </div>
+                                        <div class="card-body py-1 px-1 px-md-4 d-flex justify-content-center">
+                                            <img id="storeImage" height="200" alt="add-order"
+                                                 style="visibility: hidden"/>
                                         </div>
                                     </div>
                                 </div>
@@ -125,12 +136,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="btn-float mt-2 d-flex justify-content-center">
-                    <button class="btn btn-primary col-10 btn-floating">
-                        <i class="fas fa-file-signature me-2"></i>Realizar Orden
-                    </button>
-                </div>
-            </form>
+            </div>
+            <div class="btn-float mt-2 d-flex justify-content-center">
+                <button id="formOrder" class="btn btn-primary col-10 btn-floating">
+                    <i class="fas fa-file-signature me-2"></i>Realizar Orden
+                </button>
+            </div>
+
         </div>
         <footer>
             <div class="footer clearfix mb-5 pb-2 mt-0 text-muted">

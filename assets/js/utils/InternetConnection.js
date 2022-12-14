@@ -4,7 +4,10 @@ isOnline(false);
 
 function isOnline(initial) {
     if (initial) {
-        if (navigator.onLine) NotifyService.notificationInternetComeBack();
+        if (navigator.onLine){
+            NotifyService.notificationInternetComeBack()
+            setTimeout(() => {location.reload()}, 2000);
+        }
         else NotifyService.notificationFallInternet();
     }
 }

@@ -49,10 +49,8 @@ function getInfoStore() {
                 "Ha ocurrido un error al cargar los datos"
             );
         });
-    // load text from session storage
     const observations = sessionStorage.getItem("observations");
     if (observations) comment.value = observations;
-    // load images from session storage
     const image = sessionStorage.getItem("image");
     if (image) {
         storeImage.setAttribute("src", image);
@@ -61,42 +59,41 @@ function getInfoStore() {
 }
 
 function validateForm() {
-    return comment.value !== "" && sessionStorage.getItem("image") !== null;
+    return comment.value !== "";
 }
 
 async function registerVisit() {
-    let imageUrl = ""
-    NotifyService.loadingNotification();
-    const image = base64ToFile(
-        sessionStorage.getItem("image"),
-        new Date().getTime() + ".jpg"
-    );
-    if (navigator.onLine) {
-        imageUrl = await saveImageFirestore(image);
-    } else {
-        console.log(image)
-        console.log(sessionStorage.getItem("image"))
-        imageUrl = image
+
+    let data = {
+        store_id: id,
+        comment: comment.value,
+        images: [],
     }
+
+    NotifyService.loadingNotification();
+
+    if (sessionStorage.getItem("image") != null) {
+        const image = base64ToFile(sessionStorage.getItem("image"), new Date().getTime() + ".jpg");
+        if (navigator.onLine) {
+            let imageUrl = await saveImageFirestore(image);
+            data.images.push(imageUrl);
+        } else {
+            data.images.push(image)
+        }
+    }
+
     fetch(API_URI + `/orders/visit`, {
         method: "POST",
         headers: HEADERS_URI,
-        body: JSON.stringify({
-            store_id: id,
-            comment: comment.value,
-            images: [imageUrl],
-        }),
+        body: JSON.stringify(data),
     })
         .then((response) => response.json())
         .then((data) => {
-
             if (data.success) {
-                // clear session storage
                 sessionStorage.removeItem("image");
                 sessionStorage.removeItem("observations");
                 sessionStorage.removeItem("photoType");
                 sessionStorage.removeItem("orderId");
-                // send notifications
                 NotifyService.loadingNotificationRemove();
                 NotifyService.notificatonSuccess("Visita registrada correctamente");
                 setTimeout(() => {
