@@ -1,6 +1,19 @@
+importScripts('./assets/vendors/puchdb/pouchdb.min.js')
+importScripts('./assets/js/services/PuchDBService.js')
+
 const STATIC_CACHE_NAME = "static-cache-v1";
 const INMUTABLE_CACHE_NAME = "inmutable-cache-v1";
 const DYNAMIC_CACHE_NAME = "dynamic-cache-v1";
+
+const clearCache = (cacheName, maxItemSize) => {
+    caches.open(cacheName).then((cache) => {
+        return cache.keys().then((items) => {
+            if (items.length >= maxItemSize) cache.delete(items[0]).then(() => {
+                clearCache(cacheName, maxItemSize)
+            })
+        })
+    })
+}
 
 self.addEventListener("install", (event) => {
     console.log("SW: Instalado");
@@ -62,6 +75,7 @@ self.addEventListener("install", (event) => {
             './assets/js/services/StoreService.js',
             './assets/js/services/VisitDetailsServices.js',
             './assets/js/services/VisitServices.js',
+            './assets/js/services/PuchDBService.js',
             './assets/js/utils/Camera.js',
             './assets/js/utils/InternetConnection.js',
             './assets/js/utils/Camera-utils.js',
@@ -82,6 +96,7 @@ self.addEventListener("install", (event) => {
             "./assets/vendors/fontawesome/all.min.js",
             "./assets/vendors/notiflix/notiflix-3.2.5.min.css",
             "./assets/vendors/notiflix/notiflix-3.2.5.min.js",
+            "./assets/vendors/puchdb/pouchdb.min.js",
 
             "./views/authentication/login.html",
             "./views/dashboards/admin_dashboard.html",
@@ -131,25 +146,26 @@ self.addEventListener("activate", (event) => {
     console.log("SW: Activado");
 });
 
-
-const clearCache = (cacheName, maxItemSize) => {
-    caches.open(cacheName).then((cache) => {
-        return cache.keys().then((items) => {
-            if (items.length >= maxItemSize) cache.delete(items[0]).then(() => {
-                clearCache(cacheName, maxItemSize)
-            })
-        })
-    })
-}
-
 self.addEventListener("fetch", (event) => {
     if (event.request.clone().method === 'POST' || event.request.clone().method === 'PUT') {
-
-        // PUCHDB
-
+        const petitionAPI = fetch(event.request.clone())
+            .then((response) => response)
+            .catch(err => {
+                if (self.registration.sync) {
+                    return event.request.clone().json().then(json => {
+                        return saveVisitOrder(
+                            json,
+                            event.request.url,
+                            event.request.method,
+                            event.request.headers.get("Authorization")
+                        );
+                    })
+                }
+            })
+        event.respondWith(petitionAPI);
     } else {
         let response = fetch(event.request).then((networkResponse) => {
-            if(networkResponse.ok){
+            if (networkResponse.ok) {
                 caches.match(event.request).then((cacheResponse) => {
                     if (cacheResponse === undefined) {
                         caches.open(DYNAMIC_CACHE_NAME).then(cache => {
@@ -158,7 +174,7 @@ self.addEventListener("fetch", (event) => {
                         })
                     }
                 })
-            }else{
+            } else {
                 if (event.request.headers.get('accept').includes('text/css')) return caches.match('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
                 if (event.request.headers.get('accept').includes('text/html')) return caches.match('./views/errors/error-404.html');
             }
@@ -172,3 +188,12 @@ self.addEventListener("fetch", (event) => {
         event.respondWith(response);
     }
 });
+
+
+self.addEventListener('sync', (event) => {
+    console.log("SW: Sync");
+    if (event.tag === 'sync-visit-order') {
+        const responseSync = postVisitOrder();
+        event.waitUntil(responseSync);
+    }
+})
