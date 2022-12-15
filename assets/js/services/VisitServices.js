@@ -14,7 +14,7 @@ const storeImage = document.querySelector("#storeImage");
 const dangerText = document.querySelector("#dangerText");
 
 openCamera.addEventListener("click", () => {
-    window.location.href = "../../../views/orders/take_photo.html";
+    window.location.href = "../../views/orders/take_photo.html";
     sessionStorage.setItem("photoType", "visit");
     sessionStorage.setItem("orderId", id);
     sessionStorage.setItem("observations", comment.value);

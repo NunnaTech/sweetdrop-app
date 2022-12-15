@@ -24,7 +24,7 @@ let productsArray = [];
 
 
 openCamera.addEventListener("click", () => {
-    window.location.href = "../../../views/orders/take_photo.html";
+    window.location.href = "../../views/orders/take_photo.html";
     sessionStorage.setItem("photoType", "order");
     sessionStorage.setItem("orderId", id);
     sessionStorage.setItem("observations", comment.value);

@@ -10,6 +10,7 @@ class Camera {
         video: {
           width: 300,
           height: 300,
+          facingMode: { exact: "environment" }
         },
         audio: false,
       })
