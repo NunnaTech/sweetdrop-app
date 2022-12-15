@@ -1,51 +1,53 @@
 import {getUser} from './LocalStorage.js'
 
+const APP_URL = window.location.host.includes('localhost') ? "." : "./sweetdrop-app"
+
 const dealerPages = [
-    '/index.html',
-    '/views/authentication/login.html',
-    '/views/dashboards/dealer_dashboard.html',
-    '/views/views/products/edit_product.html',
-    '/views/dealer_views/dealer_stores.html',
-    '/views/orders/order_details.html',
-    '/views/orders/orders.html',
-    '/views/orders/register_order.html',
-    '/views/orders/register_visit.html',
-    '/views/orders/take_photo.html',
-    '/views/orders/visit_details.html',
-    '/views/products/products.html',
-    '/views/products/edit_product.html',
-    '/views/products/register_product.html',
-    '/views/profile/profile.html',
-    '/views/store/register_store.html',
-    '/views/store/edit_store.html',
-    '/views/store/stores.html',
+    `${APP_URL}/index.html`,
+    `${APP_URL}/views/authentication/login.html`,
+    `${APP_URL}/views/dashboards/dealer_dashboard.html`,
+    `${APP_URL}/views/views/products/edit_product.html`,
+    `${APP_URL}/views/dealer_views/dealer_stores.html`,
+    `${APP_URL}/views/orders/order_details.html`,
+    `${APP_URL}/views/orders/orders.html`,
+    `${APP_URL}/views/orders/register_order.html`,
+    `${APP_URL}/views/orders/register_visit.html`,
+    `${APP_URL}/views/orders/take_photo.html`,
+    `${APP_URL}/views/orders/visit_details.html`,
+    `${APP_URL}/views/products/products.html`,
+    `${APP_URL}/views/products/edit_product.html`,
+    `${APP_URL}/views/products/register_product.html`,
+    `${APP_URL}/views/profile/profile.html`,
+    `${APP_URL}/views/store/register_store.html`,
+    `${APP_URL}/views/store/edit_store.html`,
+    `${APP_URL}/views/store/stores.html`,
 ];
 
 const adminPages = [
-    '/index.html',
-    '/views/authentication/login.html',
-    '/views/dashboards/admin_dashboard.html',
-    '/views/dashboards/orders.html',
-    '/views/orders/order_details.html',
-    '/views/dealers/dealers.html',
-    '/views/dealers/register_dealer.html',
-    '/views/dealers/edit_dealer.html?id=6',
-    '/views/products/products.html',
-    '/views/products/edit_product.html',
-    '/views/products/register_product.html',
-    '/views/profile/profile.html',
-    '/views/store/stores.html',
-    '/views/store/register_store.html',
-    '/views/store/edit_store.html',
-    '/views/store/asign_dealers.html',
+    `${APP_URL}/index.html`,
+    `${APP_URL}/views/authentication/login.html`,
+    `${APP_URL}/views/dashboards/admin_dashboard.html`,
+    `${APP_URL}/views/dashboards/orders.html`,
+    `${APP_URL}/views/orders/order_details.html`,
+    `${APP_URL}/views/dealers/dealers.html`,
+    `${APP_URL}/views/dealers/register_dealer.html`,
+    `${APP_URL}/views/dealers/edit_dealer.html?id=6`,
+    `${APP_URL}/views/products/products.html`,
+    `${APP_URL}/views/products/edit_product.html`,
+    `${APP_URL}/views/products/register_product.html`,
+    `${APP_URL}/views/profile/profile.html`,
+    `${APP_URL}/views/store/stores.html`,
+    `${APP_URL}/views/store/register_store.html`,
+    `${APP_URL}/views/store/edit_store.html`,
+    `${APP_URL}/views/store/asign_dealers.html`,
 ];
 
 const publicPages = [
-    '/index.html',
-    '/views/authentication/login.html',
-    '/views/errors/error-403.html',
-    '/views/errors/error-404.html',
-    '/views/errors/error-500.html',
+    `${APP_URL}/index.html`,
+    `${APP_URL}/views/authentication/login.html`,
+    `${APP_URL}/views/errors/error-403.html`,
+    `${APP_URL}/views/errors/error-404.html`,
+    `${APP_URL}/views/errors/error-500.html`,
 ];
 
 
@@ -76,7 +78,7 @@ function goToPage(page) {
 
 
 function goToForbbidenPage() {
-    window.location.href = '../../../views/errors/error-403.html';
+    window.location.href = `../../views/errors/error-403.html`;
 }
 
 export {

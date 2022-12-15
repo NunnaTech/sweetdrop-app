@@ -2,124 +2,122 @@
 <html lang="en">
 
 <head>
-     <script src="../../assets/js/utils/Routes.js" type="module"></script>
+    <script src="../../assets/js/utils/Routes.js" type="module"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Repartidor</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
     <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css">
     <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
 </head>
 
 <body>
-    <div id="app">
-        <nav id="navTemplate"></nav>
-        <div id="main">
-            <div class="page-heading mb-0">
-                <h3>Resumen de SweetDrop</h3>
-                <p class="m-0">Bienvenido
-                    <span id="name"></span>
-                    <br>
-                    A continuación se muestran información revelante.
-                </p>
-            </div>
-            <hr>           
-            <div class="page-content">
-                <section class="row">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-lg-6 mb-4 order-0 grid">
-                                <div class="card">
-                                    <div class="d-flex align-items-end row">
-                                        <div class="col-sm-7">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-primary">Tiendas Asignadas</h5>
-                                                <p class="mb-1">Actualmente tienes asignadas </p>
-                                                <div class="mb-4" id="totalStores"></div>
-                                                <a href="../dealer_views/dealer_stores.html"
-                                                    id="viewStores" class="btn btn-sm btn-primary">Ver
-                                                    Tiendas</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5 text-center text-sm-left">
-                                            <div class="card-body pb-0 px-0 px-md-4">
-                                                <img class="" src="../../assets/images/resources/dealer-stores.png"
-                                                    height="200" alt="man-with-laptop">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-4 order-0 grid">
-                                <div class="card">
-                                    <div class="d-flex align-items-end row">
-                                        <div class="col-sm-7">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-primary">Total de Ordenes</h5>
-                                                <p class="mb-1">Has realizado un total de </p>
-                                                <div class="mb-4" id="totalOrders"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5 text-center text-sm-left ">
-                                            <div class="card-body pb-0 px-0 px-md-4">
-                                                <img src="../../assets/images/resources/woman-candys.png" height="200"
-                                                    alt="man-with-laptop">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Lista ordenes carrusel -->
-                        <div class="card">
-                            <div class="card-header pt-4 pb-0">
-                                <h4>Lista de ordenes</h4>
-                                <p>A continuación, se muestran las últimas 10 ordenes.</p>
-                            </div>
-                            <div class="card-body px-0">
-                                <div id="carouselExampleControls" class="carousel slide carousel-dark"
-                                    data-ride="carousel">
-                                    <div class="carousel-inner">                                       
-                                        <div id="ownLastOrders"></div>
-                                    </div>
-                                    <a class="carousel-control-prev px-0" href="#carouselExampleControls" role="button"
-                                        data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next px-0" href="#carouselExampleControls" role="button"
-                                        data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="text-center">
-                        <p>2022 &copy; ThePandaDevs</p>
-                    </div>
-
-                </div>
-            </footer>
+<div id="app">
+    <nav id="navTemplate"></nav>
+    <div id="main">
+        <div class="page-heading mb-0">
+            <h3>Resumen de SweetDrop</h3>
+            <p class="m-0">Bienvenido
+                <span id="name"></span>
+                <br>
+                A continuación se muestran información revelante.
+            </p>
         </div>
+        <hr>
+        <div class="page-content">
+            <section class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4 order-0 grid">
+                            <div class="card">
+                                <div class="d-flex align-items-end row">
+                                    <div class="col-sm-7">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-primary">Tiendas Asignadas</h5>
+                                            <p class="mb-1">Actualmente tienes asignadas </p>
+                                            <div class="mb-4" id="totalStores"></div>
+                                            <a href="../dealer_views/dealer_stores.html"
+                                               id="viewStores" class="btn btn-sm btn-primary">Ver
+                                                Tiendas</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 text-center text-sm-left">
+                                        <div class="card-body pb-0 px-0 px-md-4">
+                                            <img class="" src="../../assets/images/resources/dealer-stores.png"
+                                                 height="200" alt="man-with-laptop">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4 order-0 grid">
+                            <div class="card">
+                                <div class="d-flex align-items-end row">
+                                    <div class="col-sm-7">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-primary">Total de Ordenes</h5>
+                                            <p class="mb-1">Has realizado un total de </p>
+                                            <div class="mb-4" id="totalOrders"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 text-center text-sm-left ">
+                                        <div class="card-body pb-0 px-0 px-md-4">
+                                            <img src="../../assets/images/resources/woman-candys.png" height="200"
+                                                 alt="man-with-laptop">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header pt-4 pb-0">
+                            <h4>Lista de ordenes</h4>
+                            <p>A continuación, se muestran las últimas 10 ordenes.</p>
+                        </div>
+                        <div class="card-body px-0">
+                            <div id="carouselExampleControls" class="carousel slide carousel-dark"
+                                 data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div id="ownLastOrders"></div>
+                                </div>
+                                <a class="carousel-control-prev px-0" href="#carouselExampleControls" role="button"
+                                   data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </a>
+                                <a class="carousel-control-next px-0" href="#carouselExampleControls" role="button"
+                                   data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="text-center">
+                    <p>2022 &copy; ThePandaDevs</p>
+                </div>
+
+            </div>
+        </footer>
     </div>
+</div>
 
 
-    <script src="../../assets/vendors/fontawesome/all.min.js"></script>
-    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/components.js" type="module"></script>
-    <script src="../../assets/js/logout.js" type="module"></script>
-    <script src="../../assets/js/services/DealerServices.js" type="module"></script>
-
-
+<script src="../../assets/vendors/fontawesome/all.min.js"></script>
+<script src="../../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/components.js" type="module"></script>
+<script src="../../assets/js/logout.js" type="module"></script>
+<script src="../../assets/js/services/DealerServices.js" type="module"></script>
+<script src="../../assets/js/utils/InternetConnection.js" type="module"></script>
 
 </body>
 </html>

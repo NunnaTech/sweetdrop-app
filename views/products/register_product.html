@@ -1,207 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <script src="../../assets/js/utils/Routes.js" type="module"></script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Agregar Producto</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../../assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="../../assets/css/style.css" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="../../assets/images/favicon.ico"
-    />
-    <link
-      rel="stylesheet"
-      href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css"
-    />
-    <script
-      src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js"
-      type="module"
-    ></script>
-  </head>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../assets/css/style.css"/>
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
+    <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css"/>
+    <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
+</head>
 
-  <body>
-    <div id="app">
-      <nav id="navTemplate"></nav>
-      <div id="main">
+<body>
+<div id="app">
+    <nav id="navTemplate"></nav>
+    <div id="main">
         <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item active">
-              <a href="../dashboards/admin_dashboard.html">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">
-              <a href="./products.html">Productos</a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">
-              Agregar Producto
-            </li>
-          </ol>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="../dashboards/admin_dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="./products.html">Productos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Agregar Producto</li>
+            </ol>
         </nav>
         <div class="mb-0 order-0">
-          <div class="card mb-0">
-            <div class="d-flex align-items-center">
-              <div class="col">
-                <div class="card-body page-heading m-0 px-4">
-                  <div class="row gx-4">
-                    <div class="col-auto my-auto">
-                      <div class="h-100">
-                        <h1 class="mb-0">Registrar Producto</h1>
-                      </div>
+            <div class="card mb-0">
+                <div class="d-flex align-items-center">
+                    <div class="col">
+                        <div class="card-body page-heading m-0 px-4">
+                            <div class="row gx-4">
+                                <div class="col-auto my-auto">
+                                    <div class="h-100">
+                                        <h1 class="mb-0">Registrar Producto</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-        <hr class="horizontal dark" />
-        <!-- Contenido de la página web -->
+        <hr class="horizontal dark"/>
         <div class="page-content">
-          <div class="card">
-            <div class="card-content">
-              <div class="card-body">
-                <div class="row gx-4">
-                  <form class="form" id="updateForm">
-                    <div class="row">
-                      <div class="col-md-6 col-12 my-2">
-                        <div
-                          class="form-group position-relative has-icon-left m-0"
-                        >
-                          <label class="form-label" for="name">Nombre</label>
-                          <div class="input-group mb-3">
-                            <span class="input-group-text"
-                              ><i class="fas fa-box fs-6 text-secondary"></i
-                            ></span>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="name"
-                              name="name"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-12 my-2">
-                        <div
-                          class="form-group position-relative has-icon-left m-0"
-                        >
-                          <label class="form-label" for="price">Precio</label>
-                          <div class="input-group mb-3">
-                            <span class="input-group-text"
-                              ><i
-                                class="fas fa-dollar-sign fs-6 text-secondary"
-                              ></i>
-                            </span>
-                            <input
-                              type="number"
-                              class="form-control"
-                              id="price"
-                              name="price"
-                            />
-                          </div>
-                        </div>
-                      </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="row gx-4">
+                            <form class="form" id="updateForm">
+                                <div class="row">
+                                    <div class="col-md-6 col-12 my-2">
+                                        <div class="form-group position-relative has-icon-left m-0">
+                                            <label class="form-label" for="name">Nombre</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text"><i class="fas fa-box fs-6 text-secondary"></i></span>
+                                                <input type="text" class="form-control" id="name" name="name" maxlength="50"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12 my-2">
+                                        <div class="form-group position-relative has-icon-left m-0">
+                                            <label class="form-label" for="price">Precio</label>
+                                            <div class="input-group mb-3"><span class="input-group-text"><i class="fas fa-dollar-sign fs-6 text-secondary"></i></span>
+                                                <input type="text" class="form-control" id="price" name="price" maxlength="5"/>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                      <div class="col-md-12 col-12 my-2">
-                        <div
-                          class="form-group position-relative has-icon-left m-0"
-                        >
-                          <label class="form-label" for="description"
-                            >Descripción</label
-                          >
-                          <div class="input-group mb-3">
-                            <span class="input-group-text"
-                              ><i class="fas fa-info"></i
-                            ></span>
-                            <textarea
-                              class="form-control"
-                              id="description"
-                              rows="3"
-                              name="description"
-                            ></textarea>
-                          </div>
+                                    <div class="col-md-12 col-12 my-2">
+                                        <div class="form-group position-relative has-icon-left m-0">
+                                            <label class="form-label" for="description">Descripción</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text"><i class="fas fa-info"></i></span>
+                                                <textarea class="form-control" id="description" rows="3" name="description" maxlength="200"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12 my-2">
+                                        <div class="form-group position-relative has-icon-left m-0">
+                                            <label class="form-label" for="image">Imagen</label>
+                                            <div class="input-group mb-3"><span class="input-group-text"><i class="fas fa-image"></i></span>
+                                                <input type="file" class="form-control" id="image" name="image"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12 my-2 mt-3">
+                                        <div class="form-group position-relative has-icon-left m-0">
+                                            <label class="form-label" for="image">Previsualización</label>
+                                            <div class="row mb-12 d-flex justify-content-center">
+                                                <img id="image-preview" class="img-fluid rounded align-self-center" alt="Product." style="display: none"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <a href="./products.html" class="btn btn-danger me-1 mb-1">
+                                            <i class="fas fa-arrow-left me-2"></i>Regresar
+                                        </a>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1" id="update">
+                                            <i class="fas fa-save me-2"></i>Guardar
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                      </div>
-                      <div class="col-md-6 col-12 my-2">
-                        <div
-                          class="form-group position-relative has-icon-left m-0"
-                        >
-                          <label class="form-label" for="image">Imagen</label>
-                          <div class="input-group mb-3">
-                            <span class="input-group-text"
-                              ><i class="fas fa-image"></i
-                            ></span>
-                            <input
-                              type="file"
-                              class="form-control"
-                              id="image"
-                              name="image"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-12 my-2 mt-3">
-                        <div
-                          class="form-group position-relative has-icon-left m-0"
-                        >
-                          <label class="form-label" for="image"
-                            >Previsualización</label
-                          >
-                          <div class="row mb-12 d-flex justify-content-center">
-                            <img
-                              id="image-preview"
-                              class="img-fluid rounded align-self-center"
-                              alt="Product."
-                              style="display: none"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12 d-flex justify-content-between">
-                        <a
-                          href="./products.html"
-                          class="btn btn-danger me-1 mb-1"
-                        >
-                          <i class="fas fa-arrow-left me-2"></i>Regresar
-                        </a>
-                        <button
-                          type="submit"
-                          class="btn btn-primary me-1 mb-1"
-                          id="update"
-                        >
-                          <i class="fas fa-save me-2"></i>Guardar
-                        </button>
-                      </div>
                     </div>
-                  </form>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-        <!-- Termina contenido de la página web -->
         <footer>
-          <div class="footer clearfix mb-0 text-muted">
-            <div class="text-center">
-              <p>2022 &copy; ThePandaDevs</p>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="text-center">
+                    <p>2022 &copy; ThePandaDevs</p>
+                </div>
             </div>
-          </div>
         </footer>
-      </div>
     </div>
-    <script src="../../assets/vendors/fontawesome/all.min.js"></script>
-    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/components.js" type="module"></script>
-    <script src="../../assets/js/logout.js" type="module"></script>
-    <script
-      src="./../../assets/js/services/AdminProductsService.js"
-      type="module"
-    ></script>
-  </body>
+</div>
+<script src="../../assets/js/utils/Validations.js"></script>
+<script src="../../assets/vendors/fontawesome/all.min.js"></script>
+<script src="../../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/components.js" type="module"></script>
+<script src="../../assets/js/logout.js" type="module"></script>
+<script src="./../../assets/js/services/AdminProductsService.js" type="module"></script>
+<script src="../../assets/js/utils/InternetConnection.js" type="module"></script>
+</body>
 </html>

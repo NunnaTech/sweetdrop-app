@@ -122,7 +122,7 @@ input {
 
 .alert-warning {
     background-color: #eaca4a;
-    color: #fff
+    color: #626262
 }
 
 .alert-warning a {
@@ -171,8 +171,14 @@ input {
 }
 
 .alert-light-primary {
-    background-color: #ebf3ff
+    background-color: #5d51b452;
 }
+
+
+.alert-light-auxiliar {
+    background-color: #f652a040;
+}
+
 
 .alert-light-secondary {
     background-color: #e6eaee
@@ -187,7 +193,8 @@ input {
 }
 
 .alert-light-warning {
-    background-color: #fffdd8
+    background-color: #fffdd8;
+    color: #c2b600;
 }
 
 .alert-light-info {

@@ -35,16 +35,17 @@ function getProductos() {
                                 <p class="card-text text-auxiliar font-extrabold">$ ${product.price}
                                     MXN
                                 </p>
-                                <div class="input-group my-3">
+                                <div class="my-3">
+                                </a>
+                                <a href="../../views/products/edit_product.html?id=${product.id}" class="btn btn-outline-secondary col-12 mb-3"
+                                  type="submit">
+                                  <i class="fas fa-pencil-alt me-2"></i>
+                                  Ver Detalles
+                                </a> 
                                 <a   id="${product.id}" class="btn btn-outline-danger col-12" >
                                 <i class="fas fa-trash me-2"></i>
                                  Eliminar
-                           </a>
-                           <a href="../../views/products/edit_product.html?id=${product.id}" class="btn btn-outline-secondary col-12 "
-                           type="submit">
-                           <i class="fas fa-pencil-alt me-2"></i>
-                       Ver Detalle
-               </a> 
+                                </a>
                             </div>
                         </div>
                       </div>

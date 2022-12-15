@@ -1,23 +1,33 @@
+importScripts('./assets/vendors/puchdb/pouchdb.min.js')
+importScripts('./assets/js/services/PuchDBService.js')
+
 const STATIC_CACHE_NAME = "static-cache-v1";
 const INMUTABLE_CACHE_NAME = "inmutable-cache-v1";
 const DYNAMIC_CACHE_NAME = "dynamic-cache-v1";
+
+const clearCache = (cacheName, maxItemSize) => {
+    caches.open(cacheName).then((cache) => {
+        return cache.keys().then((items) => {
+            if (items.length >= maxItemSize) cache.delete(items[0]).then(() => {
+                clearCache(cacheName, maxItemSize)
+            })
+        })
+    })
+}
 
 self.addEventListener("install", (event) => {
     console.log("SW: Instalado");
     const staticCache = caches.open(STATIC_CACHE_NAME).then((cache) => {
         return cache.addAll([
-            // INIT
             "./",
             "./index.html",
             "./manifest.json",
             "./app.js",
 
-            // CSS
             "./assets/css/bootstrap.css",
             "./assets/css/landing-page.css",
             "./assets/css/style.css",
 
-            // IMAGES
             "./assets/images/device-mockups/iPhoneX/portrait_black.png",
             "./assets/images/icons/android-launchericon-48.png",
             "./assets/images/icons/android-launchericon-72.png",
@@ -48,10 +58,7 @@ self.addEventListener("install", (event) => {
             "./assets/images/resources/error-500.png",
             "./assets/images/favicon.ico",
 
-
-            // JS
             './assets/js/services/AdminProductsService.js',
-            './assets/js/services/AdminRegisterStore.js',
             './assets/js/services/AdminService.js',
             './assets/js/services/AdminStoresService.js',
             './assets/js/services/AdminUpdateStore.js',
@@ -68,7 +75,9 @@ self.addEventListener("install", (event) => {
             './assets/js/services/StoreService.js',
             './assets/js/services/VisitDetailsServices.js',
             './assets/js/services/VisitServices.js',
+            './assets/js/services/PuchDBService.js',
             './assets/js/utils/Camera.js',
+            './assets/js/utils/InternetConnection.js',
             './assets/js/utils/Camera-utils.js',
             './assets/js/utils/FileFormat.js',
             './assets/js/utils/Firestore.js',
@@ -83,13 +92,12 @@ self.addEventListener("install", (event) => {
             './assets/js/profile.js',
             './assets/js/toastify.js',
 
-            // VENDORS
             "./assets/vendors/fontawesome/all.min.css",
             "./assets/vendors/fontawesome/all.min.js",
             "./assets/vendors/notiflix/notiflix-3.2.5.min.css",
             "./assets/vendors/notiflix/notiflix-3.2.5.min.js",
+            "./assets/vendors/puchdb/pouchdb.min.js",
 
-            // VIEWS
             "./views/authentication/login.html",
             "./views/dashboards/admin_dashboard.html",
             "./views/dashboards/dealer_dashboard.html",
@@ -112,7 +120,7 @@ self.addEventListener("install", (event) => {
             "./views/profile/profile.html",
             "./views/store/asign_dealers.html",
             "./views/store/edit_store.html",
-            "./views/store/register_store.html",      
+            "./views/store/register_store.html",
             "./views/store/stores.html",
             "./views/templates/AdminNav.html",
             "./views/templates/DealerNav.html",
@@ -127,6 +135,7 @@ self.addEventListener("install", (event) => {
             "https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js",
             "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js",
             "https://fonts.gstatic.com/s/nunito/v25/XRXV3I6Li01BKofINeaB.woff2",
+            "https://i.imgur.com/SiMTXOF.png"
         ]);
     });
 
@@ -138,21 +147,54 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-    let respuesta;
-    if (event.request.url.includes("https://sweetdrop-production-bd28.up.railway.app/api")) {
-        respuesta = fetch(event.request);
-    } else {
-        respuesta = caches
-            .match(event.request)
-            .then((respCache) => {
-                if (respCache) return respCache;
-                return fetch(event.request).then((respWeb) => {
-                    caches.open(DYNAMIC_CACHE_NAME).then((cache) => {
-                        cache.put(event.request, respWeb);
-                    });
-                    return respWeb.clone();
-                });
+    if (event.request.clone().method === 'POST' || event.request.clone().method === 'PUT') {
+        const petitionAPI = fetch(event.request.clone())
+            .then((response) => response)
+            .catch(err => {
+                if (self.registration.sync) {
+                    return event.request.clone().json().then(json => {
+                        return saveVisitOrder(
+                            json,
+                            event.request.url,
+                            event.request.method,
+                            event.request.headers.get("Authorization")
+                        );
+                    })
+                }
             })
+        event.respondWith(petitionAPI);
+    } else {
+        let response = fetch(event.request).then((networkResponse) => {
+            if (networkResponse.ok) {
+                caches.match(event.request).then((cacheResponse) => {
+                    if (cacheResponse === undefined) {
+                        caches.open(DYNAMIC_CACHE_NAME).then(cache => {
+                            cache.put(event.request, networkResponse);
+                            clearCache(DYNAMIC_CACHE_NAME, 150)
+                        })
+                    }
+                })
+            } else {
+                if (event.request.headers.get('accept').includes('text/css')) return caches.match('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
+                if (event.request.headers.get('accept').includes('text/html')) return caches.match('./views/errors/error-404.html');
+            }
+            return networkResponse.clone()
+        }).catch(() => {
+            return caches.match(event.request).then((cacheResponse) => {
+                if (cacheResponse) return cacheResponse
+                if (event.request.headers.get('accept').includes('text/html')) return caches.match('./views/errors/error-404.html');
+            })
+        })
+        event.respondWith(response);
     }
-    event.respondWith(respuesta);
 });
+
+
+self.addEventListener('sync', (event) => {
+    console.log("SW: Sync");
+    if (event.tag === 'sync-visit-order') {
+        const responseSync = postVisitOrder();
+        event.waitUntil(responseSync);
+        successSync();
+    }
+})

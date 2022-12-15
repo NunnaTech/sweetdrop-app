@@ -2,103 +2,124 @@
 <html lang="en">
 
 <head>
-     <script src="../../assets/js/utils/Routes.js" type="module"></script>
+    <script src="../../assets/js/utils/Routes.js" type="module"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial de Ordenes</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico" />
     <link rel="stylesheet" href="../../assets/vendors/notiflix/notiflix-3.2.5.min.css">
     <script src="../../assets/vendors/notiflix/notiflix-3.2.5.min.js" type="module"></script>
 </head>
 
 <body>
 
-<div id="app">
-    <nav id="navTemplate"></nav>
+    <div id="app">
+        <nav id="navTemplate"></nav>
 
-    <div id="main">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item "><a href="../dashboards/dealer_dashboard.html">Dashboard</a></li>
-                <li class="breadcrumb-item "><a href="../dealer_views/dealer_stores.html">Tiendas</a></li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    Historial de ordenes
-                </li>
-            </ol>
-        </nav>
-        <div class="mb-0 order-0">
-            <div class="card mb-0">
-                <div class="d-flex align-items-center row">
-                    <div class="col-sm-7">
-                        <div class="card-body page-heading m-0 px-4">
-                            <h3>Historial de Ordenes</h3>
-                            <p id="name"></p>
-                            <span id="phone" class="text-secondary"></span>
-                            <div class="mt-3">
-                                <span class="text-secondary" id="address"></span>
+        <div id="main">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item "><a href="../dashboards/dealer_dashboard.html">Dashboard</a></li>
+                    <li class="breadcrumb-item "><a href="../dealer_views/dealer_stores.html">Tiendas</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Historial de ordenes
+                    </li>
+                </ol>
+            </nav>
+            <div class="mb-0 order-0">
+                <div class="card mb-0">
+                    <div class="d-flex align-items-center row">
+                        <div class="col-sm-7">
+                            <div class="card-body page-heading m-0 px-4">
+                                <h3>Historial de Ordenes</h3>
+                                <p id="name"></p>
+                                <span id="phone" class="text-secondary"></span>
+                                <div class="mt-3">
+                                    <span class="text-secondary" id="address"></span>
+                                </div>
+                                <div class="my-3" id="openAddress">
+                                </div>
                             </div>
-                            <div class="my-3" id="openAddress">
-                            </div>                           
                         </div>
-                    </div>
-                    <div class="col-sm-5 text-center text-sm-left ">
-                        <div class="card-body py-0 px-0 px-md-4">
-                            <img src="../../assets/images/resources/order-history.png" height="300" alt="add-order"/>
+                        <div class="col-sm-5 text-center text-sm-left ">
+                            <div class="card-body py-0 px-0 px-md-4">
+                                <img src="../../assets/images/resources/order-history.png" height="300"
+                                    alt="add-order" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <hr class="my-4">
+            <div class="page-content">
+                <div id="offline-orders" class="card bg-white p-4">
+                    <p class="fw-bold fs-5 mt-2 mb-4 text-secondary">
+                        <i class="fas fa-wifi me-2"></i>
+                        Visitas y Ordenes realizadas sin conexión.
+                    </p>
+                    <div class="alert alert-warning">
+                        <i class="fas fa-file-signature me-2"></i>Hay <strong id="totalOfflineOrders"></strong> orden(es) y/o visita(s) que serán publicadas
+                        con internet.
+                    </div>                  
+                </div>
+                <div class="card p-4 bg-light">
+                    <p class="fw-bold fs-5 mt-2 mb-4 text-secondary">
+                        <i class="fas fa-filter me-2"></i>
+                        Filtrar orden por estatus
+                    </p>
+                    <div class="container p-0">
+                        <div class="card-body p-0">
+
+                            <div class="list-group list-group-horizontal-sm mb-1 text-center" role="tablist">
+                                <a class="list-group-item list-group-item-action btn-primary active"
+                                    id="list-sunday-list" data-bs-toggle="list" href="#list-sunday" role="tab"
+                                    aria-selected="true"> <i class="fas fa-walking me-2"></i>Visitada</a>
+                                <a class="list-group-item list-group-item-action btn-primary " id="list-monday-list"
+                                    data-bs-toggle="list" href="#list-monday" role="tab" aria-selected="false"
+                                    tabindex="-1"> <i class="fas fa-spinner me-2"></i>En proceso</a>
+                                <a class="list-group-item list-group-item-action btn-primary " id="list-tuesday-list"
+                                    data-bs-toggle="list" href="#list-tuesday" role="tab" aria-selected="false"
+                                    tabindex="-1"><i class="fas fa-check-circle me-2"></i>Finalizada</a>
+                            </div>
+                            <div class="tab-content text-justify">
+                                <div class="tab-pane fade active show" id="list-sunday" role="tabpanel"
+                                    aria-labelledby="list-sunday-list">
+                                    <section class="row gx-5 mt-5" id="ordersVisit"></section>
+                                </div>
+                                <div class="tab-pane fade" id="list-monday" role="tabpanel"
+                                    aria-labelledby="list-monday-list">
+                                    <section class="row gx-5 mt-5" id="ordersInProcess"></section>
+                                </div>
+                                <div class="tab-pane fade" id="list-tuesday" role="tabpanel"
+                                    aria-labelledby="list-tuesday-list">
+                                    <section class="row gx-5 mt-5" id="orderFinished"></section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="text-center">
+                        <p>2022 &copy; ThePandaDevs</p>
+                    </div>
+
+                </div>
+            </footer>
         </div>
-        <hr class="my-4">
-        <div class="page-content">
-            <div class="card p-4 bg-light">               
-                <p class="fw-bold fs-5 mt-2 mb-4 text-secondary">
-                    <i class="fas fa-filter me-2"></i>
-                    Filtrar orden por estatus
-                </p>
-                <div class="container p-0">
-                    <div class="card-body p-0">
-
-                        <div class="list-group list-group-horizontal-sm mb-1 text-center" role="tablist">
-                            <a class="list-group-item list-group-item-action btn-primary active" id="list-sunday-list" data-bs-toggle="list" href="#list-sunday" role="tab" aria-selected="true"> <i class="fas fa-walking me-2"></i>Visitada</a>
-                            <a class="list-group-item list-group-item-action btn-primary " id="list-monday-list" data-bs-toggle="list" href="#list-monday" role="tab" aria-selected="false" tabindex="-1"> <i class="fas fa-spinner me-2"></i>En proceso</a>
-                            <a class="list-group-item list-group-item-action btn-primary " id="list-tuesday-list" data-bs-toggle="list" href="#list-tuesday" role="tab" aria-selected="false" tabindex="-1"><i class="fas fa-check-circle me-2"></i>Finalizada</a>
-                        </div>
-                        <div class="tab-content text-justify">
-                            <div class="tab-pane fade active show" id="list-sunday" role="tabpanel" aria-labelledby="list-sunday-list">
-                                <section class="row gx-5 mt-5" id="ordersVisit"></section>
-                            </div>
-                            <div class="tab-pane fade" id="list-monday" role="tabpanel" aria-labelledby="list-monday-list">
-                                <section class="row gx-5 mt-5" id="ordersInProcess"></section>
-                            </div>
-                            <div class="tab-pane fade" id="list-tuesday" role="tabpanel" aria-labelledby="list-tuesday-list">
-                                <section class="row gx-5 mt-5" id="orderFinished"></section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer>
-            <div class="footer clearfix mb-0 text-muted">
-                <div class="text-center">
-                    <p>2022 &copy; ThePandaDevs</p>
-                </div>
-
-            </div>
-        </footer>
     </div>
-</div>
 
 
-<script src="../../assets/vendors/fontawesome/all.min.js"></script>
-<script src="../../assets/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/js/components.js" type="module"></script>
-<script src="../../assets/js/logout.js" type="module"></script>
-<script src="../../assets/js/services/OrderServices.js" type="module"></script>
+    <script src="../../assets/vendors/fontawesome/all.min.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/components.js" type="module"></script>
+    <script src="../../assets/js/logout.js" type="module"></script>
+    <script src="../../assets/js/services/OrderServices.js" type="module"></script>
+    <script src="../../assets/js/utils/InternetConnection.js" type="module"></script>
 </body>
 
 </html>
