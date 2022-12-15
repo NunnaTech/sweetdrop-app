@@ -21,8 +21,7 @@ function postVisitOrder() {
     const promises = [];
     db.allDocs({include_docs: true, attachments: true}).then((docs) => {
         docs.rows.forEach(row => {
-            const {body, url, method, token} = row.doc;
-            console.log(body);
+            const {body, url, method, token} = row.doc;            
             const petition = fetch(url, {
                 method: method,
                 body: JSON.stringify(body),
@@ -38,6 +37,8 @@ function postVisitOrder() {
     })
     return Promise.all(promises);
 }
+
+
 
 function successSync() {
     console.log("Sincronización exitosa, se han sincronizado los datos correctamente");

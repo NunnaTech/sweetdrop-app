@@ -15,6 +15,7 @@ const formOrder = document.querySelector("#formOrder");
 const container = document.querySelector("#container");
 const storeImage = document.querySelector("#storeImage");
 const openCamera = document.querySelector("#button-camera");
+const dangerText = document.querySelector("#dangerText");
 
 const getUrl = new URLSearchParams(window.location.search);
 let id = getUrl.get("id");
@@ -33,6 +34,7 @@ openCamera.addEventListener("click", () => {
 
 getInfoStore();
 getProducts();
+isOnline();
 
 formOrder.addEventListener("click", saveOrder);
 
@@ -355,5 +357,14 @@ function saveOrder(e) {
     else NotifyService.notificatonError("Los campos no deben estar vacios");
 }
 
+function isOnline() {
+    if (navigator.onLine) {        
+        openCamera.removeAttribute("disabled", "disabled");
+        dangerText.classList.add("d-none");
+    } else {
+        openCamera.setAttribute("disabled", "disabled");
+        dangerText.classList.remove("d-none");
+    }
+}
 
 window.addProduct = addProduct

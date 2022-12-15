@@ -11,6 +11,7 @@ const comment = document.querySelector("#comment");
 const formVisit = document.querySelector("#formVisit");
 const openCamera = document.querySelector("#button-camera");
 const storeImage = document.querySelector("#storeImage");
+const dangerText = document.querySelector("#dangerText");
 
 openCamera.addEventListener("click", () => {
     window.location.href = "../../../views/orders/take_photo.html";
@@ -24,6 +25,7 @@ const getUrl = new URLSearchParams(window.location.search);
 const id = getUrl.get("id");
 
 getInfoStore();
+isOnline();
 
 function getInfoStore() {
     NotifyService.loadingNotification();
@@ -118,4 +120,14 @@ function saveVisit(e) {
     e.preventDefault();
     if (validateForm()) registerVisit();
     else NotifyService.notificatonError("Los campos no deben estar vacios");
+}
+
+function isOnline() {
+    if (navigator.onLine) {        
+        openCamera.removeAttribute("disabled", "disabled");
+        dangerText.classList.add("d-none");
+    } else {
+        openCamera.setAttribute("disabled", "disabled");
+        dangerText.classList.remove("d-none");
+    }
 }

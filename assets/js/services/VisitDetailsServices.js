@@ -81,8 +81,7 @@ function getOrderDetails() {
 
 
         })
-        .catch((err) => {
-            console.log(err)
+        .catch((err) => {            
             NotifyService.loadingNotificationRemove();
             NotifyService.notificatonError(
                 "Ha ocurrido un error al cargar los datos"
