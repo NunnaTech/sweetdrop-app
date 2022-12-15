@@ -328,7 +328,7 @@ async function createOrder() {
                     "Redireccionando a la lista de ordenes"
                 );
                 setTimeout(() => {
-                    window.location.href = "../../../views/orders/orders.html?id=" + id;
+                    window.location.href = "../../views/orders/orders.html?id=" + id;
                 }, 2000);
             } else {
                 NotifyService.loadingNotificationRemove();

@@ -99,7 +99,7 @@ async function registerVisit() {
                 NotifyService.loadingNotificationRemove();
                 NotifyService.notificatonSuccess("Visita registrada correctamente");
                 setTimeout(() => {
-                    window.location.href = "../../../views/orders/orders.html?id=" + id;
+                    window.location.href = "../../views/orders/orders.html?id=" + id;
                 }, 1000);
             } else {
                 NotifyService.loadingNotificationRemove();
