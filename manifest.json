@@ -1,7 +1,7 @@
 {
     "name": "SweetDrop",
     "short_name": "SweetDrop",
-    "start_url": "/index.html",
+    "start_url": "./index.html",
     "display": "standalone",
     "orientation": "portrait",
     "description": "Aplicación para entrega de dulces",
