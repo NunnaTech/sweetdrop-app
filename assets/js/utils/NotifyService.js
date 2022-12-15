@@ -27,7 +27,7 @@ class NotifyService {
     }
 
     notificationFallInternet() {
-        Notiflix.Notify.info('Atención, estás navegando sin conexión a internet', {
+        Notiflix.Notify.warning('Atención, estás navegando sin conexión a internet', {
             clickToClose: true,
             cssAnimation: true,
             closeButton: true,
@@ -42,8 +42,6 @@ class NotifyService {
             showOnlyTheLastOne: true,
         })
     }
-
-
 }
 
 
