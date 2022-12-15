@@ -185,6 +185,7 @@ self.addEventListener("fetch", (event) => {
             return caches.match(event.request).then((cacheResponse) => {
                 if (cacheResponse) return cacheResponse
                 if (event.request.headers.get('accept').includes('text/html')) return caches.match('./views/errors/offline.html');
+                if (event.request.headers.get('accept').includes('image')) return caches.match('https://i.imgur.com/SiMTXOF.png');
             })
         })
         event.respondWith(response);
