@@ -56,6 +56,7 @@ self.addEventListener("install", (event) => {
             "./assets/images/resources/error-403.png",
             "./assets/images/resources/error-404.png",
             "./assets/images/resources/error-500.png",
+            "./assets/images/resources/offline.png",
             "./assets/images/favicon.ico",
 
             './assets/js/services/AdminProductsService.js',
@@ -108,6 +109,7 @@ self.addEventListener("install", (event) => {
             "./views/errors/error-403.html",
             "./views/errors/error-404.html",
             "./views/errors/error-500.html",
+            "./views/errors/offline.html",
             "./views/orders/order_details.html",
             "./views/orders/orders.html",
             "./views/orders/register_order.html",
@@ -182,7 +184,7 @@ self.addEventListener("fetch", (event) => {
         }).catch(() => {
             return caches.match(event.request).then((cacheResponse) => {
                 if (cacheResponse) return cacheResponse
-                if (event.request.headers.get('accept').includes('text/html')) return caches.match('./views/errors/error-404.html');
+                if (event.request.headers.get('accept').includes('text/html')) return caches.match('./views/errors/offline.html');
             })
         })
         event.respondWith(response);
