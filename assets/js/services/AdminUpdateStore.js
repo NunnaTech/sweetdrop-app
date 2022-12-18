@@ -73,7 +73,7 @@ async function updateStore() {
       if (data.success === true) {
         NotifyService.notificatonSuccess("Tienda actualizada correctamente!");
         setTimeout(() => {
-          goToPage("../../../views/store/stores.html");
+          goToPage("../../views/dealer_views/dealer_stores.html");
         }, 2000);
       } else {
         NotifyService.notificatonError(

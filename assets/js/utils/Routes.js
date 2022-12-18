@@ -21,6 +21,10 @@ const dealerPages = [
     `${APP_URL}/views/store/register_store.html`,
     `${APP_URL}/views/store/edit_store.html`,
     `${APP_URL}/views/store/stores.html`,
+    `${APP_URL}/views/errors/error-403.html`,
+    `${APP_URL}/views/errors/error-404.html`,
+    `${APP_URL}/views/errors/error-500.html`,
+    `${APP_URL}/views/errors/offline.html`,
 ];
 
 const adminPages = [
@@ -40,6 +44,10 @@ const adminPages = [
     `${APP_URL}/views/store/register_store.html`,
     `${APP_URL}/views/store/edit_store.html`,
     `${APP_URL}/views/store/asign_dealers.html`,
+    `${APP_URL}/views/errors/error-403.html`,
+    `${APP_URL}/views/errors/error-404.html`,
+    `${APP_URL}/views/errors/error-500.html`,
+    `${APP_URL}/views/errors/offline.html`,
 ];
 
 const publicPages = [
@@ -48,6 +56,7 @@ const publicPages = [
     `${APP_URL}/views/errors/error-403.html`,
     `${APP_URL}/views/errors/error-404.html`,
     `${APP_URL}/views/errors/error-500.html`,
+    `${APP_URL}/views/errors/offline.html`,
 ];
 
 

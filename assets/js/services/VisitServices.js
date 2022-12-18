@@ -14,7 +14,7 @@ const storeImage = document.querySelector("#storeImage");
 const dangerText = document.querySelector("#dangerText");
 
 openCamera.addEventListener("click", () => {
-    window.location.href = "../../../views/orders/take_photo.html";
+    window.location.href = "../../views/orders/take_photo.html";
     sessionStorage.setItem("photoType", "visit");
     sessionStorage.setItem("orderId", id);
     sessionStorage.setItem("observations", comment.value);
@@ -99,7 +99,7 @@ async function registerVisit() {
                 NotifyService.loadingNotificationRemove();
                 NotifyService.notificatonSuccess("Visita registrada correctamente");
                 setTimeout(() => {
-                    window.location.href = "../../../views/orders/orders.html?id=" + id;
+                    window.location.href = "../../views/orders/orders.html?id=" + id;
                 }, 1000);
             } else {
                 NotifyService.loadingNotificationRemove();

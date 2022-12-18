@@ -98,7 +98,7 @@ async function registerStore() {
         NotifyService.loadingNotificationRemove();
         NotifyService.notificatonSuccess("Tienda registrada correctamente!");
         setTimeout(() => {
-          goToPage("../../../views/store/stores.html");
+          goToPage("../../views/store/stores.html");
         }, 2000);
       } else {
         NotifyService.notificatonError(
@@ -169,14 +169,14 @@ function renderStores(myStores) {
                           <i class="fas fa-trash me-2"></i>
                           Eliminar tienda
                       </button>
-                     <a href='../../../views/store/edit_store.html?id=${store.id}' class="btn btn-outline-secondary">
+                     <a href='../../views/store/edit_store.html?id=${store.id}' class="btn btn-outline-secondary">
                           <i class="fas fa-info-circle me-2"></i>
                           Ver detalles
                       </a>
                   </div>
                   <hr>
                   <div class="d-flex justify-content-center">
-                    <a href='../../../views/store/asign_dealers.html?id=${store.id}' class="btn btn-primary">
+                    <a href='../../views/store/asign_dealers.html?id=${store.id}' class="btn btn-primary">
                     <i class="fas fa-user-friends me-2"></i>
                     Ver repartidores
                     </a>
@@ -218,7 +218,7 @@ function removeStore(id) {
       if (response.status === 200) {
         NotifyService.notificatonSuccess("Tienda eliminada correctamente!");
         setTimeout(() => {
-          goToPage("../../../views/store/stores.html");
+          goToPage("../../views/store/stores.html");
         }, 2000);
       } else {
         NotifyService.notificatonError("Ha ocurrido un error, intente de nuevo");

@@ -96,7 +96,7 @@ async function updateProduct() {
     .then((response) => response.json())
     .then((data) => {
       if (data.success === true) {
-        goToPage("../../../views/products/products.html");
+        goToPage("../../views/products/products.html");
         NotifyService.notificatonSuccess("Producto actualizada correctamente");
         NotifyService.loadingNotificationRemove();
       } else {

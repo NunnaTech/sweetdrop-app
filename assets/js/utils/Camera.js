@@ -8,8 +8,9 @@ class Camera {
     navigator.mediaDevices
       .getUserMedia({
         video: {
-          width: 300,
-          height: 300,
+          width: { ideal:300 },
+          height: { ideal:300 },
+          facingMode: 'environment' 
         },
         audio: false,
       })

@@ -19,8 +19,8 @@ btnTakePhoto.addEventListener("click", function () {
 const saveImage = async (image) => {
   sessionStorage.setItem("image", image);
   if (sessionStorage.getItem("photoType") === "visit") {
-    location.href = `/views/orders/register_visit.html?id=${orderId}`;
+    location.href = `../../views/orders/register_visit.html?id=${orderId}`;
   } else {
-    location.href = `/views/orders/register_order.html?id=${orderId}`;
+    location.href = `../../views/orders/register_order.html?id=${orderId}`;
   }
 };

@@ -24,7 +24,7 @@ let productsArray = [];
 
 
 openCamera.addEventListener("click", () => {
-    window.location.href = "../../../views/orders/take_photo.html";
+    window.location.href = "../../views/orders/take_photo.html";
     sessionStorage.setItem("photoType", "order");
     sessionStorage.setItem("orderId", id);
     sessionStorage.setItem("observations", comment.value);
@@ -328,7 +328,7 @@ async function createOrder() {
                     "Redireccionando a la lista de ordenes"
                 );
                 setTimeout(() => {
-                    window.location.href = "../../../views/orders/orders.html?id=" + id;
+                    window.location.href = "../../views/orders/orders.html?id=" + id;
                 }, 2000);
             } else {
                 NotifyService.loadingNotificationRemove();
