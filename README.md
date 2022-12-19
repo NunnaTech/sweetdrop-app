@@ -36,14 +36,14 @@
 -   [MySQL](https://www.mysql.com/)
 -   [Railway](https://railway.app/)
 
-[contributors-shield]: https://img.shields.io/github/contributors/HectorSaldes/liber.svg?style=for-the-badge&logo=counterstrike&color=2557A7
+[contributors-shield]: https://img.shields.io/github/contributors/ThePandaDevs/sweetdrop-app.svg?style=for-the-badge&logo=counterstrike&color=2557A7
 [contributors-url]: https://github.com/ThePandaDevs/sweetdrop-app/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/HectorSaldes/liber.svg?style=for-the-badge&logo=forestry&color=EAF3FB
+[forks-shield]: https://img.shields.io/github/forks/ThePandaDevs/sweetdrop-app.svg?style=for-the-badge&logo=forestry&color=EAF3FB
 [forks-url]: https://github.com/ThePandaDevs/sweetdrop-app/network/members
-[stars-shield]: https://img.shields.io/github/stars/HectorSaldes/liber.svg?style=for-the-badge&logo=riseup&color=F763B6
+[stars-shield]: https://img.shields.io/github/stars/ThePandaDevs/sweetdrop-app.svg?style=for-the-badge&logo=riseup&color=F763B6
 [stars-url]: https://github.com/ThePandaDevs/sweetdrop-app/stargazers
-[issues-shield]: https://img.shields.io/github/issues/HectorSaldes/liber.svg?style=for-the-badge&logo=stardock&color=2557A7
+[issues-shield]: https://img.shields.io/github/issues/ThePandaDevs/sweetdrop-app.svg?style=for-the-badge&logo=stardock&color=2557A7
 [issues-url]: https://github.com/ThePandaDevs/sweetdrop-app/issues
-[license-shield]: https://img.shields.io/github/license/HectorSaldes/liber.svg?style=for-the-badge&logo=wikidata&color=E6E2E2
+[license-shield]: https://img.shields.io/github/license/ThePandaDevs/sweetdrop-app.svg?style=for-the-badge&logo=wikidata&color=E6E2E2
 [license-url]: https://github.com/ThePandaDevs/sweetdrop-app/blob/master/LICENSE.txt
 [photo-mockup]: https://s3.aws-k8s.generated.photos/ai-generated-photos/upscaler-uploads/uploads/28/f8092fb1-2cc3-42c4-b725-776a7c60e876.png
